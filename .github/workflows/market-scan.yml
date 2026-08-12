@@ -76,6 +76,20 @@ jobs:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: market-scanner scan --provider "$SCAN_PROVIDER" --output-dir "$MARKET_SCANNER_OUTPUT_DIR"
 
+      # Renders the watchlist on the run page itself, so it is readable in a
+      # browser or the GitHub mobile app without downloading the artifact.
+      - name: Publish watchlist to the run summary
+        if: always()
+        shell: bash
+        run: |
+          watchlist="$MARKET_SCANNER_OUTPUT_DIR/market-scan.md"
+          if [[ -f "$watchlist" ]]; then
+            cat "$watchlist" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "## No watchlist produced" >> "$GITHUB_STEP_SUMMARY"
+            echo "The scan did not write a report. Check the scan step logs." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Upload watchlist and run metadata
         if: always()
         uses: actions/upload-artifact@v7.0.1

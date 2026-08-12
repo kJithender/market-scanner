@@ -33,6 +33,13 @@ def test_scheduled_provider_is_configurable_without_editing_the_workflow() -> No
     assert "if: env.SCAN_PROVIDER == 'alpaca'" in text
 
 
+def test_watchlist_is_published_to_the_run_summary() -> None:
+    text = _workflow_text()
+    assert 'cat "$watchlist" >> "$GITHUB_STEP_SUMMARY"' in text
+    # The summary must still say something when no report was written.
+    assert "No watchlist produced" in text
+
+
 def test_workflow_tests_scans_and_uploads_artifacts() -> None:
     text = _workflow_text()
     assert "timeout-minutes: 30" in text
