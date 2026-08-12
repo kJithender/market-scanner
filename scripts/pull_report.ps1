@@ -70,9 +70,22 @@ try {
         Write-Log "WARNING: report is over 18 hours old; the scheduled scan may not have run."
     }
 
-    if (-not $NoOpen) {
+    # Reports now publish every half hour, so opening every new one would mean a
+    # browser tab every 30 minutes. Open only the first report of each day.
+    $openedFile = Join-Path $logDir ".last-opened-date"
+    $today = (Get-Date).ToString("yyyy-MM-dd")
+    $lastOpened = if (Test-Path $openedFile) { (Get-Content $openedFile -Raw).Trim() } else { "" }
+
+    if ($NoOpen) {
+        Write-Log "Report refreshed; not opening (-NoOpen)."
+    }
+    elseif ($lastOpened -eq $today) {
+        Write-Log "Report refreshed; dashboard already opened today."
+    }
+    else {
         Start-Process $report
-        Write-Log "Opened the dashboard."
+        Set-Content -Path $openedFile -Value $today -Encoding utf8
+        Write-Log "Opened the dashboard (first report of $today)."
     }
 }
 catch {
