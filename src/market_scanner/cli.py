@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 from market_scanner.config import load_config, load_symbols
-from market_scanner.providers import AlpacaProvider, DemoProvider
+from market_scanner.providers import AlpacaProvider, DemoProvider, YahooProvider
 from market_scanner.providers.alpaca import ProviderError
 from market_scanner.reporting import write_reports
 from market_scanner.scanner import scan_market
@@ -22,7 +22,7 @@ def parser() -> argparse.ArgumentParser:
     root.add_argument("--version", action="version", version="%(prog)s 0.1.0")
     commands = root.add_subparsers(dest="command", required=True)
     scan = commands.add_parser("scan", help="run a market scan")
-    scan.add_argument("--provider", choices=("alpaca", "demo"), default="alpaca")
+    scan.add_argument("--provider", choices=("alpaca", "yahoo", "demo"), default="alpaca")
     scan.add_argument("--config")
     scan.add_argument("--symbols", help="comma-separated symbol override")
     scan.add_argument("--universe")
@@ -44,6 +44,10 @@ async def _scan(args: argparse.Namespace) -> int:
         raise ValueError("no symbols supplied")
     if args.provider == "demo":
         provider = DemoProvider()
+    elif args.provider == "yahoo":
+        provider = YahooProvider(
+            timeout=int(provider_config.get("request_timeout_seconds", 30)),
+        )
     else:
         provider = AlpacaProvider(
             feed=args.feed or provider_config.get("feed", "iex"),

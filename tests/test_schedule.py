@@ -22,7 +22,15 @@ def test_workflow_is_manually_dispatchable_and_least_privilege() -> None:
     assert re.search(r"^\s{2}workflow_dispatch:\s*$", text, re.MULTILINE)
     assert re.search(r"^permissions:\n  contents: read$", text, re.MULTILINE)
     assert re.search(r"^  cancel-in-progress: false$", text, re.MULTILINE)
-    assert re.search(r"options:\n\s+- alpaca\n\s+- demo", text)
+    assert re.search(r"options:\n\s+- alpaca\n\s+- yahoo\n\s+- demo", text)
+
+
+def test_scheduled_provider_is_configurable_without_editing_the_workflow() -> None:
+    text = _workflow_text()
+    assert "SCAN_PROVIDER: ${{ inputs.provider || vars.SCAN_PROVIDER || 'alpaca' }}" in text
+    assert 'market-scanner scan --provider "$SCAN_PROVIDER"' in text
+    # Alpaca credentials must still be enforced when Alpaca is the provider.
+    assert "if: env.SCAN_PROVIDER == 'alpaca'" in text
 
 
 def test_workflow_tests_scans_and_uploads_artifacts() -> None:

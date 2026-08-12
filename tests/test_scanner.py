@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 import asyncio
+from dataclasses import replace
 
 from market_scanner.config import load_symbols
 from market_scanner.models import ScanConfig
 from market_scanner.providers import DemoProvider
 from market_scanner.scanner import scan_market
-from market_scanner.scoring import all_eligible, eligibility
+from market_scanner.scoring import all_eligible, eligibility, rank_score
 
 
 def test_exact_filter_boundaries_and_strict_gates() -> None:
@@ -55,3 +56,56 @@ def test_scanner_never_pads_when_fewer_than_ten_pass() -> None:
     result = asyncio.run(scan_market(DemoProvider(), ["AMD"], ScanConfig()))
     assert len(result.candidates) == 1
     assert any("not padded" in warning for warning in result.warnings)
+
+
+def test_unmeasurable_gates_are_omitted_not_passed() -> None:
+    base = dict(
+        config=ScanConfig(),
+        price=50.0,
+        average_volume=2_000_000,
+        atr_pct=3.0,
+        beta=1.2,
+        clean_trend=True,
+        clear_levels=True,
+        has_catalyst=True,
+    )
+    gates = eligibility(**base, spread_pct=None, rvol=None)
+    assert "tight_spread" not in gates, "an unmeasured gate must not appear as a pass"
+    assert "rvol" not in gates
+    assert all_eligible(gates), "remaining measured gates still decide eligibility"
+
+
+def test_unmeasured_metrics_score_zero_for_their_component() -> None:
+    measured = dict(
+        rvol=3.0,
+        atr_pct=3.5,
+        beta=1.5,
+        spread_pct=0.0,
+        trend_score=100.0,
+        catalyst_count=2,
+        gap_pct=5.0,
+    )
+    full = rank_score(**measured)
+    without_rvol = rank_score(**{**measured, "rvol": None})
+    without_spread = rank_score(**{**measured, "spread_pct": None})
+    assert without_rvol == full - 30
+    assert without_spread == full - 10
+
+
+def test_unverified_provider_gates_are_reported_in_warnings_and_filters() -> None:
+    class SpreadlessProvider(DemoProvider):
+        name = "spreadless"
+
+        async def get_snapshots(self, symbols, as_of, config):
+            snapshots, warnings = await super().get_snapshots(symbols, as_of, config)
+            marked = [
+                replace(snapshot, unverified_gates=("tight_spread",)) for snapshot in snapshots
+            ]
+            return marked, warnings
+
+    result = asyncio.run(scan_market(SpreadlessProvider(), load_symbols(), ScanConfig()))
+    assert result.candidates, "the remaining gates should still qualify names"
+    assert all(item.spread_percent is None for item in result.candidates)
+    assert all("tight_spread" not in item.passed_filters for item in result.candidates)
+    assert "NOT VERIFIED" in result.filters["spread"]
+    assert any("unevaluated" in warning for warning in result.warnings)

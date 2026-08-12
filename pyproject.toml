@@ -20,7 +20,10 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
 ]
-dependencies = []
+dependencies = [
+  # Windows ships no system IANA tz database for zoneinfo.
+  'tzdata; sys_platform == "win32"',
+]
 
 [project.optional-dependencies]
 dev = [

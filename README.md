@@ -54,6 +54,13 @@ No credentials yet? Exercise the complete pipeline deterministically:
 open artifacts/market-scan.html
 ```
 
+Or scan **real** prices with no account at all, accepting two unverifiable
+gates (see [Yahoo feed](#yahoo-feed) before relying on it):
+
+```bash
+.venv/bin/market-scanner scan --provider yahoo --output-dir artifacts
+```
+
 You can override the seed universe:
 
 ```bash
@@ -82,6 +89,22 @@ from live to demo data.
 - **Alpaca feed:** defaults to IEX for broad account compatibility. IEX quotes
   reflect one venue and may understate consolidated volume or differ from NBBO.
   Use SIP only when your subscription permits it.
+- <a id="yahoo-feed"></a>**Yahoo feed:** needs no credentials and supplies real
+  prices, adjusted daily OHLCV, and headlines, but Yahoo's public API publishes
+  **no bid/ask quote** and reports **zero extended-hours volume**. Two hard
+  gates therefore cannot be measured:
+
+  | Gate | Alpaca | Yahoo |
+  | --- | --- | --- |
+  | Tight spread | measured | **never evaluated** — no bid/ask is published |
+  | RVOL | measured | **not evaluated premarket**; intraday runs measure regular-session volume instead |
+
+  The scanner omits an unmeasurable gate rather than scoring it as a pass, and
+  reports it as `NOT VERIFIED` in the filters, `null` in JSON/CSV, and `—` in
+  the tables. A Yahoo watchlist has cleared fewer requirements than an Alpaca
+  one, so at 06:00 PT it cannot confirm the premarket volume surge the scanner
+  exists to find. Yahoo's API is also unofficial, rate-limited, and can change
+  without notice. Use Alpaca for the intended premarket workflow.
 - **06:00 PT timing:** 09:00 ET on normal US trading days. RVOL compares
   cumulative extended-hours volume through the same time-of-day across prior
   sessions where data is available; inspect the report's method/warnings.
@@ -126,9 +149,10 @@ every push and pull request.
 ## Architecture
 
 ```text
-provider (Alpaca/demo)
+provider (Alpaca/Yahoo/demo)
   → normalized quotes, daily/minute bars, news, earnings
-  → hard eligibility gates
+  → hard eligibility gates (a gate the provider cannot measure is
+    reported unverified, never assumed to pass)
   → technical/catalyst scoring
   → rank + cap (never relax/pad)
   → JSON / CSV / Markdown / HTML

@@ -36,15 +36,24 @@ def filter_descriptions(config: ScanConfig) -> dict[str, str]:
 def _evaluate(snapshot: MarketSnapshot, config: ScanConfig) -> Candidate | tuple[str, ...]:
     if len(snapshot.daily_bars) < max(config.history_days - 5, 61):
         return ("insufficient_history",)
+    unverified = set(snapshot.unverified_gates)
     try:
         price = snapshot.price
         average_volume = fmean(bar.volume for bar in snapshot.daily_bars[-20:])
-        spread_pct = spread_percent(snapshot.quote.bid, snapshot.quote.ask)
+        spread_pct = (
+            None
+            if "tight_spread" in unverified
+            else spread_percent(snapshot.quote.bid, snapshot.quote.ask)
+        )
         atr_pct = atr_percent(snapshot.daily_bars, price)
         beta = return_beta(snapshot.daily_bars, snapshot.benchmark_bars)
-        rvol = relative_volume(
-            snapshot.current_premarket_volume,
-            snapshot.historical_premarket_volumes,
+        rvol = (
+            None
+            if "rvol" in unverified
+            else relative_volume(
+                snapshot.current_premarket_volume,
+                snapshot.historical_premarket_volumes,
+            )
         )
         clean_trend, direction, trend_score = trend_structure(snapshot.daily_bars)
         clear_levels, support, resistance = key_levels(
@@ -77,13 +86,14 @@ def _evaluate(snapshot: MarketSnapshot, config: ScanConfig) -> Candidate | tuple
         return tuple(name for name, passed in gates.items() if not passed)
 
     atr_value = atr_pct / 100 * price
+    rvol_text = "unverified" if rvol is None else f"{rvol:.2f}"
     if direction == "downtrend":
         stop = max(price + atr_value, resistance)
         per_share_risk = stop - price
         target = price - per_share_risk * config.reward_to_risk
         thesis = (
             f"Clean downtrend; watch rejection below ${resistance:.2f} with "
-            f"RVOL {rvol:.2f} and {gap_pct:+.2f}% gap."
+            f"RVOL {rvol_text} and {gap_pct:+.2f}% gap."
         )
     else:
         stop = max(price - atr_value, max(support, 0.01))
@@ -91,7 +101,7 @@ def _evaluate(snapshot: MarketSnapshot, config: ScanConfig) -> Candidate | tuple
         target = price + per_share_risk * config.reward_to_risk
         thesis = (
             f"Clean uptrend; watch hold above ${support:.2f} with "
-            f"RVOL {rvol:.2f} and {gap_pct:+.2f}% gap."
+            f"RVOL {rvol_text} and {gap_pct:+.2f}% gap."
         )
     shares = int(config.risk_per_trade_dollars // per_share_risk) if per_share_risk > 0 else 0
     score = rank_score(
@@ -109,11 +119,11 @@ def _evaluate(snapshot: MarketSnapshot, config: ScanConfig) -> Candidate | tuple
         price=round(price, 4),
         avg_volume=round(average_volume, 0),
         current_volume=snapshot.current_premarket_volume,
-        rvol=round(rvol, 3),
+        rvol=None if rvol is None else round(rvol, 3),
         rvol_method=snapshot.rvol_method,
         atr_percent=round(atr_pct, 3),
         beta=round(beta, 3),
-        spread_percent=round(spread_pct, 4),
+        spread_percent=None if spread_pct is None else round(spread_pct, 4),
         gap_percent=round(gap_pct, 3),
         trend=direction,
         trend_score=round(trend_score, 2),
@@ -158,6 +168,19 @@ async def scan_market(provider, symbols: list[str], config: ScanConfig, as_of=No
         Candidate(**{**item.__dict__, "rank": rank}) for rank, item in enumerate(qualified, 1)
     ]
     warnings = list(provider_warnings)
+    filters = filter_descriptions(config)
+    unverified = sorted({gate for snapshot in snapshots for gate in snapshot.unverified_gates})
+    if unverified:
+        filter_keys = {"tight_spread": "spread"}
+        for gate in unverified:
+            key = filter_keys.get(gate, gate)
+            if key in filters:
+                filters[key] += " — NOT VERIFIED: provider published no data"
+        warnings.append(
+            "Hard gates left unevaluated because the provider publishes no data for them: "
+            + ", ".join(unverified)
+            + ". Those requirements are unproven for every symbol listed below."
+        )
     if len(qualified) < config.minimum_watchlist_size:
         warnings.append(
             f"Only {len(qualified)} symbols passed every hard gate; watchlist was not padded."
@@ -170,7 +193,7 @@ async def scan_market(provider, symbols: list[str], config: ScanConfig, as_of=No
         provider=provider.name,
         symbols_scanned=len(symbols),
         symbols_qualified=len(qualified),
-        filters=filter_descriptions(config),
+        filters=filters,
         warnings=warnings,
         rejection_counts=dict(sorted(rejected.items())),
     )

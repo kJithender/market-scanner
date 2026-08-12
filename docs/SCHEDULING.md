@@ -26,15 +26,34 @@ Official references:
 - [GitHub workflow schedule syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule)
 - [Schedule event limitations](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
 
+## Choosing the scheduled provider
+
+The scheduled run reads the repository **variable** `SCAN_PROVIDER`
+(**Settings → Secrets and variables → Actions → Variables**). It defaults to
+`alpaca` when unset. Manual runs override it with the workflow-dispatch input.
+
+| `SCAN_PROVIDER` | Credentials | What the 06:00 run proves |
+| --- | --- | --- |
+| `alpaca` | required | every hard gate, including premarket RVOL and spread |
+| `yahoo` | none | all gates **except** spread and premarket RVOL, which Yahoo cannot supply |
+
+At 06:00 PT the market is premarket, and Yahoo publishes no extended-hours
+volume, so a `yahoo` schedule cannot confirm the volume surge the scanner
+exists to find. Prefer `alpaca` for the intended workflow; see the Yahoo feed
+notes in the README before relying on `yahoo`.
+
 ## Repository secrets
 
 In **Settings → Secrets and variables → Actions**, add:
 
 | Secret | Required | Purpose |
 | --- | --- | --- |
-| `APCA_API_KEY_ID` | Yes | Alpaca market-data API key ID |
-| `APCA_API_SECRET_KEY` | Yes | Alpaca market-data API secret |
+| `APCA_API_KEY_ID` | For `alpaca` | Alpaca market-data API key ID |
+| `APCA_API_SECRET_KEY` | For `alpaca` | Alpaca market-data API secret |
 | `FINNHUB_API_KEY` | No | Enriches catalyst/news data when supported |
+
+The scan fails with an explicit error when `SCAN_PROVIDER` is `alpaca` and
+either key is missing. It never silently falls back to another provider.
 
 The workflow does not grant write access to repository contents. It validates
 the two required Alpaca values without printing them, runs the complete test

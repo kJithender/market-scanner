@@ -82,6 +82,9 @@ class MarketSnapshot:
     catalysts: tuple[Catalyst, ...] = ()
     data_as_of: datetime | None = None
     rvol_method: str = "same-window premarket volume / prior-session mean"
+    #: Gate names the provider cannot supply evidence for. Such gates are left
+    #: unevaluated instead of being scored as a pass.
+    unverified_gates: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -90,11 +93,11 @@ class Candidate:
     price: float
     avg_volume: float
     current_volume: int
-    rvol: float
+    rvol: float | None
     rvol_method: str
     atr_percent: float
     beta: float
-    spread_percent: float
+    spread_percent: float | None
     gap_percent: float
     trend: str
     trend_score: float
