@@ -49,8 +49,26 @@ try {
         exit 0
     }
 
-    $age = (Get-Date) - (Get-Item $report).LastWriteTime
-    Write-Log ("Report updated {0:N0} minutes ago: {1}" -f $age.TotalMinutes, $report)
+    # GitHub's scheduler can lag by hours, so this task repeats through the
+    # morning. Identify the report by the commit that published it and act only
+    # when that changes, so repeat runs stay silent instead of reopening tabs.
+    $publishedSha = (git log -1 --format=%H -- reports).Trim()
+    $stateFile = Join-Path $logDir ".last-seen-report"
+    $lastSeen = if (Test-Path $stateFile) { (Get-Content $stateFile -Raw).Trim() } else { "" }
+
+    if ($publishedSha -eq $lastSeen) {
+        Write-Log "Report unchanged since last check ($($publishedSha.Substring(0,7))). Waiting."
+        exit 0
+    }
+
+    $publishedAt = [datetime](git log -1 --format=%cI -- reports).Trim()
+    $ageHours = ((Get-Date) - $publishedAt).TotalHours
+    Write-Log ("New report {0} published {1:N1} h ago." -f $publishedSha.Substring(0, 7), $ageHours)
+    Set-Content -Path $stateFile -Value $publishedSha -Encoding utf8
+
+    if ($ageHours -gt 18) {
+        Write-Log "WARNING: report is over 18 hours old; the scheduled scan may not have run."
+    }
 
     if (-not $NoOpen) {
         Start-Process $report
