@@ -11,18 +11,19 @@ def _workflow_text() -> str:
     return WORKFLOW.read_text(encoding="utf-8")
 
 
-def test_schedule_is_six_am_weekdays_in_california() -> None:
+def test_schedule_runs_every_four_hours_from_six_am_california() -> None:
     text = _workflow_text()
-    assert re.search(r"cron:\s*[\"']0 6 \* \* 1-5[\"']", text)
+    # 06:00 premarket and 10:00 intraday; 14:00 would fall after the close.
+    assert re.search(r"cron:\s*[\"']0 6,10 \* \* 1-5[\"']", text)
     assert re.search(r"timezone:\s*[\"']America/Los_Angeles[\"']", text)
 
 
-def test_half_hourly_schedule_runs_from_11am_pacific() -> None:
+def test_every_cron_entry_carries_a_timezone() -> None:
     text = _workflow_text()
-    assert re.search(r"cron:\s*[\"']0,30 11-23 \* \* \*[\"']", text)
-    # Both cron entries must carry the zone; a bare cron would be read as UTC.
-    crons = re.findall(r"- cron:.*\n\s*timezone:", text)
-    assert len(crons) == 2
+    # A bare cron would be silently interpreted as UTC, shifting every run.
+    assert len(re.findall(r"- cron:", text)) == len(
+        re.findall(r"- cron:.*\n\s*timezone:", text)
+    )
 
 
 def test_workflow_is_manually_dispatchable_and_least_privilege() -> None:

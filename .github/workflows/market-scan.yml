@@ -2,12 +2,11 @@ name: Market scan
 
 on:
   schedule:
-    # GitHub applies the IANA zone, so this remains 06:00 through PST/PDT changes.
-    - cron: "0 6 * * 1-5"
-      timezone: "America/Los_Angeles"
-    # Every 30 minutes from 11:00 through 23:30 Pacific. GitHub's scheduler is
-    # best-effort, so individual firings still drift or drop.
-    - cron: "0,30 11-23 * * *"
+    # Every 4 hours from 06:00 Pacific on trading days: 06:00 premarket and
+    # 10:00 intraday. The next 4-hour step (14:00) falls after the 13:00
+    # Pacific close, so the day stops at 10:00.
+    # GitHub applies the IANA zone, so these hold through PST/PDT changes.
+    - cron: "0 6,10 * * 1-5"
       timezone: "America/Los_Angeles"
   workflow_dispatch:
     inputs:
