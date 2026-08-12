@@ -17,6 +17,14 @@ def test_schedule_is_six_am_weekdays_in_california() -> None:
     assert re.search(r"timezone:\s*[\"']America/Los_Angeles[\"']", text)
 
 
+def test_half_hourly_schedule_runs_from_11am_pacific() -> None:
+    text = _workflow_text()
+    assert re.search(r"cron:\s*[\"']0,30 11-23 \* \* \*[\"']", text)
+    # Both cron entries must carry the zone; a bare cron would be read as UTC.
+    crons = re.findall(r"- cron:.*\n\s*timezone:", text)
+    assert len(crons) == 2
+
+
 def test_workflow_is_manually_dispatchable_and_least_privilege() -> None:
     text = _workflow_text()
     assert re.search(r"^\s{2}workflow_dispatch:\s*$", text, re.MULTILINE)
