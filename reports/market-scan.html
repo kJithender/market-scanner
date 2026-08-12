@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Morning Market Scanner</title>
+  <style>
+    :root{--bg:#07110f;--panel:#0d1b18;--panel2:#10231f;--line:#26443c;--text:#f3f7f4;--muted:#98aaa4;--lime:#c9ff63;--cyan:#67e8d2;--red:#ff7a86;--amber:#ffc766;--shadow:0 20px 60px rgba(0,0,0,.3)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 75% -10%,#153c33 0,transparent 34rem),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.055;background-image:linear-gradient(rgba(255,255,255,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.3) 1px,transparent 1px);background-size:40px 40px}
+    .shell{width:min(1520px,calc(100% - 32px));margin:auto;padding:36px 0 64px;position:relative}
+    .eyebrow{margin:0;color:var(--lime);font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase} h1{font-size:clamp(2rem,5vw,4.6rem);line-height:.98;letter-spacing:-.055em;margin:.45rem 0 1.1rem;max-width:850px} h2{font-size:1.05rem;margin:0;letter-spacing:-.01em} .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:end;margin-bottom:22px}
+    .meta{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));border:1px solid var(--line);border-radius:18px;background:rgba(13,27,24,.8);box-shadow:var(--shadow);overflow:hidden} .meta div{padding:14px 18px;border-bottom:1px solid var(--line)} .meta div:nth-child(odd){border-right:1px solid var(--line)} .meta div:nth-last-child(-n+2){border-bottom:0} .meta span,.section-head p,small,.muted-copy{display:block;color:var(--muted);font-size:.75rem} .meta strong{font-size:.88rem}
+    .disclaimer{display:flex;gap:12px;align-items:flex-start;padding:15px 18px;border:1px solid #4c4830;border-radius:14px;background:#201d12;color:#ffe8a9;margin:0 0 22px;font-size:.83rem} .disclaimer b{color:var(--amber);white-space:nowrap}
+    .filters{display:grid;grid-template-columns:repeat(3,1fr);padding:0;margin:0 0 28px;list-style:none;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(13,27,24,.86)} .filters li{padding:12px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)} .filters li:nth-child(3n){border-right:0} .filters li:nth-last-child(-n+3){border-bottom:0} .filters span{display:block;color:var(--muted);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase} .filters strong{font-size:.79rem}
+    section.block{margin-top:30px} .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:10px} .section-head p{margin:0} .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:rgba(13,27,24,.9);box-shadow:var(--shadow)} table{width:100%;border-collapse:collapse;min-width:1160px;font-variant-numeric:tabular-nums} th{padding:11px 12px;background:#10251f;color:var(--muted);font-size:.64rem;text-transform:uppercase;letter-spacing:.09em;text-align:left;position:sticky;top:0} td{padding:15px 12px;border-top:1px solid var(--line);font-size:.78rem;vertical-align:top} tbody tr:hover{background:rgba(103,232,210,.035)} .rank{display:inline-grid;place-items:center;width:29px;height:29px;border:1px solid #3d655a;border-radius:8px;color:var(--cyan);font-size:.69rem;font-weight:800} .ticker{display:block;color:var(--lime);font-size:.96rem;letter-spacing:.035em} .badges{display:flex;flex-wrap:wrap;gap:5px;max-width:220px} .badge{display:inline-block;padding:3px 7px;border:1px solid #40665b;border-radius:999px;background:#132b25;color:var(--cyan);font-size:.65rem;white-space:nowrap} .badge.muted{color:var(--muted)}
+    .trade-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px} .trade-card{border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,var(--panel2),var(--panel));overflow:hidden} .trade-card header{display:flex;gap:10px;align-items:center;padding:13px 15px;border-bottom:1px solid var(--line)} .trade-card header span{color:var(--cyan);font:700 .68rem ui-monospace,SFMono-Regular,monospace} .trade-card h3{margin:0;color:var(--lime);font-size:.92rem} dl{margin:0} dl div{display:grid;grid-template-columns:60px 1fr;gap:10px;padding:10px 15px;border-bottom:1px solid rgba(38,68,60,.55)} dl div:last-child{border:0} dt{color:var(--muted);font-size:.67rem;text-transform:uppercase;letter-spacing:.06em} dd{margin:0;font-size:.76rem}
+    .state{padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--panel);margin:12px 0} .state p{margin:.45rem 0 0;color:var(--muted)} .state.error{border-color:#6f3740;background:#231215} .state.error h2{color:var(--red)} .state.warning{border-color:#66542e} .empty{text-align:center;padding:50px 20px} .empty-icon{display:grid;place-items:center;width:48px;height:48px;margin:0 auto 14px;border:1px solid var(--line);border-radius:50%;color:var(--muted)} footer{margin-top:34px;padding-top:17px;border-top:1px solid var(--line);color:var(--muted);font-size:.7rem}
+    @media(max-width:1000px){.hero{grid-template-columns:1fr}.meta{width:100%}.trade-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:680px){.shell{width:min(100% - 20px,1520px);padding-top:24px}.filters{grid-template-columns:1fr 1fr}.filters li,.filters li:nth-child(3n){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.filters li:nth-child(2n){border-right:0}.filters li:nth-last-child(-n+2){border-bottom:0}.trade-grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column;gap:2px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{:root{--bg:#fff;--panel:#fff;--panel2:#fff;--line:#ccd5d2;--text:#101715;--muted:#53605c;--lime:#235f33;--cyan:#126657}body{background:#fff}body:before{display:none}.shell{width:100%;padding:0}.table-wrap,.meta{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div><p class="eyebrow">06:00 PT · Decision Brief</p><h1>Morning Market Scanner</h1></div>
+      <div class="meta">
+        <div><span>Generated</span><strong>2026-08-12T06:20:14.738920+00:00</strong></div>
+        <div><span>Data freshness</span><strong>Data timestamp not supplied — verify freshness</strong></div>
+        <div><span>Timezone</span><strong>America/Los_Angeles</strong></div>
+        <div><span>Watchlist</span><strong>0 / 10–15 target</strong></div>
+      </div>
+    </header>
+    <aside class="disclaimer"><b>RESEARCH ONLY</b><span>Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.</span></aside>
+    <section class="state warning"><h2>Warnings</h2><p>Alpaca IEX feed used; verify coverage and entitlement before trading.<br>Upcoming earnings unknown: FINNHUB_API_KEY is not configured.<br>Alpaca returned complete quote/history data for 20 of 30 requested symbols.<br>Stale market timestamps (&gt;15 minutes) detected for 20 symbols; verify market session/holiday status.<br>Only 0 symbols passed every hard gate; watchlist was not padded.</p></section>
+    <ul class="filters" aria-label="Applied scanner filters"><li><span>Price</span><strong>$5–$150</strong></li><li><span>Average Volume</span><strong>&gt;1,000,000 shares (20-session mean)</strong></li><li><span>Spread</span><strong>≤0.3% of quote midpoint</strong></li><li><span>Atr</span><strong>2–5% (14 sessions)</strong></li><li><span>Beta</span><strong>&gt;1 vs SPY (60 sessions)</strong></li><li><span>Rvol</span><strong>&gt;1.5, same premarket time-window</strong></li><li><span>Technical Structure</span><strong>clean MA trend + clear 20-session levels</strong></li><li><span>Catalyst</span><strong>news, upcoming earnings, or ≥2% gap (required)</strong></li><li><span>Watchlist Size</span><strong>up to 15; never padded</strong></li></ul>
+    <section class="block" aria-labelledby="watchlist-heading">
+      <header class="section-head"><h2 id="watchlist-heading">Ranked watchlist</h2><p>Maximum 15 · strongest qualifying setups first</p></header>
+      
+        <section class="state empty">
+          <div class="empty-icon">∅</div>
+          <h2>No qualifying setups</h2>
+          <p>No stocks met every active filter. Preserve capital; check again on the next scheduled run.</p>
+        </section>
+    </section>
+    <section class="block" aria-labelledby="checklist-heading">
+      <header class="section-head"><h2 id="checklist-heading">Pre-trade checklist</h2><p>Thesis · stop · target · defined risk</p></header>
+      <p class="muted-copy">Checklist unavailable until a qualifying setup appears.</p>
+    </section>
+    <footer>Generated by Market Scanner · Validate execution data independently · 0 qualifying securities</footer>
+  </main>
+</body>
+</html>
