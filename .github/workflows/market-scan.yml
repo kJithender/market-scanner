@@ -29,6 +29,10 @@ jobs:
     name: Test and scan
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    # Overrides the read-only default: the final step publishes the report to
+    # reports/ so it can be pulled locally. Nothing else in the job writes.
+    permissions:
+      contents: write
     env:
       MARKET_SCANNER_OUTPUT_DIR: artifacts
       PYTHONUNBUFFERED: "1"
@@ -98,3 +102,25 @@ jobs:
           path: artifacts/
           if-no-files-found: warn
           retention-days: 30
+
+      # Runs after the upload so a publishing failure can never cost the
+      # artifact. Demo output is synthetic and must never be published.
+      - name: Publish report to reports/ for local pulls
+        if: env.SCAN_PROVIDER != 'demo'
+        shell: bash
+        run: |
+          if ! compgen -G "$MARKET_SCANNER_OUTPUT_DIR/market-scan.*" > /dev/null; then
+            echo "No report to publish."
+            exit 0
+          fi
+          mkdir -p reports
+          cp "$MARKET_SCANNER_OUTPUT_DIR"/market-scan.* reports/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports
+          if git diff --staged --quiet; then
+            echo "Report unchanged; nothing to commit."
+          else
+            git commit -m "Publish market scan for $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

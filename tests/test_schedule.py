@@ -33,6 +33,17 @@ def test_scheduled_provider_is_configurable_without_editing_the_workflow() -> No
     assert "if: env.SCAN_PROVIDER == 'alpaca'" in text
 
 
+def test_report_publishing_is_write_scoped_and_never_publishes_demo_data() -> None:
+    text = _workflow_text()
+    # Top-level stays read-only; only the scanning job is granted write.
+    assert re.search(r"^permissions:\n  contents: read$", text, re.MULTILINE)
+    assert re.search(r"^    permissions:\n      contents: write$", text, re.MULTILINE)
+    assert "if: env.SCAN_PROVIDER != 'demo'" in text
+    # Publishing must come after the artifact upload so a push failure is never
+    # able to cost the run its report.
+    assert text.index("upload-artifact") < text.index("Publish report to reports/")
+
+
 def test_watchlist_is_published_to_the_run_summary() -> None:
     text = _workflow_text()
     assert 'cat "$watchlist" >> "$GITHUB_STEP_SUMMARY"' in text
