@@ -2,7 +2,7 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-08-12T06:20:14.738920+00:00`  
+Generated: `2026-08-12T14:20:00.041567+00:00`  
 Freshness: Data timestamp not supplied — verify freshness  
 Schedule timezone: `America/Los_Angeles`  
 Watchlist: **0 / 10–15 target**
@@ -27,6 +27,4 @@ No stocks met every filter. No trade is a valid outcome.
 
 - Alpaca IEX feed used; verify coverage and entitlement before trading.
 - Upcoming earnings unknown: FINNHUB_API_KEY is not configured.
-- Alpaca returned complete quote/history data for 20 of 30 requested symbols.
-- Stale market timestamps (>15 minutes) detected for 20 symbols; verify market session/holiday status.
 - Only 0 symbols passed every hard gate; watchlist was not padded.

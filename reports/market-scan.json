@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-12T06:20:14.738920+00:00",
+  "generated_at": "2026-08-12T14:20:00.041567+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -23,15 +23,21 @@
   "warnings": [
     "Alpaca IEX feed used; verify coverage and entitlement before trading.",
     "Upcoming earnings unknown: FINNHUB_API_KEY is not configured.",
-    "Alpaca returned complete quote/history data for 20 of 30 requested symbols.",
-    "Stale market timestamps (>15 minutes) detected for 20 symbols; verify market session/holiday status.",
     "Only 0 symbols passed every hard gate; watchlist was not padded."
   ],
   "provider": "alpaca",
   "symbols_scanned": 30,
   "symbols_qualified": 0,
   "rejection_counts": {
-    "invalid_or_insufficient_data": 20
+    "atr": 11,
+    "average_volume": 9,
+    "beta": 6,
+    "catalyst": 8,
+    "clean_trend": 22,
+    "invalid_or_insufficient_data": 2,
+    "price": 11,
+    "rvol": 27,
+    "tight_spread": 8
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
