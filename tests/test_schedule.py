@@ -11,11 +11,13 @@ def _workflow_text() -> str:
     return WORKFLOW.read_text(encoding="utf-8")
 
 
-def test_schedule_runs_every_four_hours_from_six_am_california() -> None:
+def test_schedule_is_six_am_weekdays_in_california() -> None:
     text = _workflow_text()
-    # 06:00 premarket and 10:00 intraday; 14:00 would fall after the close.
-    assert re.search(r"cron:\s*[\"']0 6,10 \* \* 1-5[\"']", text)
+    assert re.search(r"cron:\s*[\"']0 6 \* \* 1-5[\"']", text)
     assert re.search(r"timezone:\s*[\"']America/Los_Angeles[\"']", text)
+    # One scheduled scan per trading day; the premarket RVOL window closes at
+    # 09:29 ET, so extra runs re-report the same figure.
+    assert len(re.findall(r"- cron:", text)) == 1
 
 
 def test_every_cron_entry_carries_a_timezone() -> None:
