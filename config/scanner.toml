@@ -11,7 +11,8 @@ min_rvol = 1.5
 min_gap_pct = 2.0
 
 # Watchlist and calculation controls
-watchlist_size = 1000
+# Matches the 30-symbol universe: nothing beyond that can ever qualify.
+watchlist_size = 30
 minimum_watchlist_size = 10
 history_days = 90
 level_lookback_days = 20

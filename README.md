@@ -23,7 +23,7 @@ report with a complete pre-trade checklist.
 | Catalysts | Recent Alpaca news, upcoming earnings when configured, and/or a measurable gap |
 | Price | $1–$1,000, inclusive |
 | RVOL | Time-adjusted premarket relative volume strictly above 1.5 |
-| Watchlist | Ranked, never padded, capped at 1,000; fewer than 10 is reported honestly |
+| Watchlist | Ranked, never padded, capped at 30; fewer than 10 is reported honestly |
 | Checklist | Generated thesis, stop, target, and dollar/share risk for every result |
 
 All thresholds live in [`config/scanner.toml`](config/scanner.toml). A symbol
