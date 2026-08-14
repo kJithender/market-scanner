@@ -2,14 +2,14 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-08-13T18:00:57.320516+00:00`  
+Generated: `2026-08-14T14:17:01.227695+00:00`  
 Freshness: Data timestamp not supplied — verify freshness  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **0 / 10–15 target**
+Watchlist: **0 / 30 max**
 
 ## Applied filters
 
-- **Price:** $5–$150
+- **Price:** $1–$1000
 - **Average Volume:** >1,000,000 shares (20-session mean)
 - **Spread:** ≤0.3% of quote midpoint
 - **Atr:** 2–5% (14 sessions)
@@ -17,7 +17,7 @@ Watchlist: **0 / 10–15 target**
 - **Rvol:** >1.5, same premarket time-window
 - **Technical Structure:** clean MA trend + clear 20-session levels
 - **Catalyst:** news, upcoming earnings, or ≥2% gap (required)
-- **Watchlist Size:** up to 15; never padded
+- **Watchlist Size:** up to 30; never padded
 
 ## Ranked watchlist
 

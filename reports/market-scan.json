@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-13T18:00:57.320516+00:00",
+  "generated_at": "2026-08-14T14:17:01.227695+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
   "filters": {
-    "price": "$5–$150",
+    "price": "$1–$1000",
     "average_volume": ">1,000,000 shares (20-session mean)",
     "spread": "≤0.3% of quote midpoint",
     "atr": "2–5% (14 sessions)",
@@ -13,10 +13,10 @@
     "rvol": ">1.5, same premarket time-window",
     "technical_structure": "clean MA trend + clear 20-session levels",
     "catalyst": "news, upcoming earnings, or ≥2% gap (required)",
-    "watchlist_size": "up to 15; never padded"
+    "watchlist_size": "up to 30; never padded"
   },
   "candidate_count": 0,
-  "target_watchlist_size": "10–15",
+  "target_watchlist_size": "30",
   "status": "empty",
   "candidates": [],
   "errors": [],
@@ -32,13 +32,12 @@
     "atr": 11,
     "average_volume": 9,
     "beta": 6,
-    "catalyst": 5,
-    "clean_trend": 21,
+    "catalyst": 8,
+    "clean_trend": 20,
     "clear_levels": 1,
     "invalid_or_insufficient_data": 2,
-    "price": 12,
     "rvol": 27,
-    "tight_spread": 6
+    "tight_spread": 11
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
