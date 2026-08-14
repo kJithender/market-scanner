@@ -66,8 +66,10 @@ try {
     Write-Log ("New report {0} published {1:N1} h ago." -f $publishedSha.Substring(0, 7), $ageHours)
     Set-Content -Path $stateFile -Value $publishedSha -Encoding utf8
 
-    if ($ageHours -gt 18) {
-        Write-Log "WARNING: report is over 18 hours old; the scheduled scan may not have run."
+    # This runs once a day, so the newest report is normally from yesterday's
+    # last scan. Only a gap beyond a full day means a scan was actually missed.
+    if ($ageHours -gt 26) {
+        Write-Log "WARNING: report is over 26 hours old; a scheduled scan was missed."
     }
 
     # Reports now publish every half hour, so opening every new one would mean a
