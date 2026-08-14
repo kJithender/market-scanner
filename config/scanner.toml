@@ -1,7 +1,7 @@
 [scanner]
 # Hard eligibility gates
-min_price = 5.0
-max_price = 150.0
+min_price = 1.0
+max_price = 1000.0
 min_average_volume = 1000000
 max_spread_pct = 0.30
 min_atr_pct = 2.0
@@ -11,7 +11,7 @@ min_rvol = 1.5
 min_gap_pct = 2.0
 
 # Watchlist and calculation controls
-watchlist_size = 15
+watchlist_size = 1000
 minimum_watchlist_size = 10
 history_days = 90
 level_lookback_days = 20

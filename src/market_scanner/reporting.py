@@ -142,6 +142,17 @@ def _catalysts(value: Any, row: Mapping[str, Any]) -> list[str]:
     return [_text(value)]
 
 
+def _target_watchlist_size(filters: Mapping[str, Any]) -> str:
+    """Read the configured cap from the scanner's own filter description.
+
+    The cap is configurable, so it must not be hard-coded in the report.
+    """
+    digits = "".join(
+        character for character in _text(filters.get("watchlist_size")) if character.isdigit()
+    )
+    return digits or "10–15"
+
+
 def _candidate(value: Any, position: int) -> dict[str, Any]:
     row = _mapping(value)
     checklist = _mapping(_get(row, "pre_trade_checklist", "checklist", "trade_plan"))
@@ -256,7 +267,7 @@ def normalize_scan_result(result: Any) -> dict[str, Any]:
         "timezone": _text(_get(root, "timezone", "schedule_timezone"), "America/Los_Angeles"),
         "filters": filters,
         "candidate_count": len(candidates),
-        "target_watchlist_size": "10–15",
+        "target_watchlist_size": _target_watchlist_size(filters),
         "status": "error" if errors else ("empty" if not candidates else "ok"),
         "candidates": candidates,
         "errors": errors,
@@ -318,7 +329,7 @@ def render_markdown(result: Any) -> str:
         f"Generated: `{report['generated_at']}`  ",
         f"Freshness: {report['data_freshness']}  ",
         f"Schedule timezone: `{report['timezone']}`  ",
-        f"Watchlist: **{report['candidate_count']} / 10–15 target**",
+        f"Watchlist: **{report['candidate_count']} / {report['target_watchlist_size']} max**",
         "",
         "## Applied filters",
         "",
@@ -495,7 +506,7 @@ def render_html(result: Any, *, title: str = "Morning Market Scanner") -> str:
         <div><span>Generated</span><strong>{_h(report["generated_at"])}</strong></div>
         <div><span>Data freshness</span><strong>{_h(report["data_freshness"])}</strong></div>
         <div><span>Timezone</span><strong>{_h(report["timezone"])}</strong></div>
-        <div><span>Watchlist</span><strong>{report["candidate_count"]} / 10–15 target</strong></div>
+        <div><span>Watchlist</span><strong>{report["candidate_count"]} / {report["target_watchlist_size"]} max</strong></div>
       </div>
     </header>
     <aside class="disclaimer"><b>RESEARCH ONLY</b><span>{_h(report["disclaimer"])}</span></aside>

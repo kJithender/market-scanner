@@ -33,8 +33,8 @@ class ScanConfig:
             raise ValueError("min_atr_pct cannot exceed max_atr_pct")
         if self.min_gap_pct < 0:
             raise ValueError("min_gap_pct cannot be negative")
-        if not 1 <= self.watchlist_size <= 15:
-            raise ValueError("watchlist_size must be between 1 and 15")
+        if self.watchlist_size < 1:
+            raise ValueError("watchlist_size must be at least 1")
         if not 1 <= self.minimum_watchlist_size <= self.watchlist_size:
             raise ValueError("minimum_watchlist_size must be <= watchlist_size")
         if self.history_days < 60:

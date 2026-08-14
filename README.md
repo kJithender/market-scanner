@@ -21,9 +21,9 @@ report with a complete pre-trade checklist.
 | Clean trend | Objective moving-average alignment/slope and directional-efficiency score |
 | Clear levels | 20-session support/resistance exist with actionable room |
 | Catalysts | Recent Alpaca news, upcoming earnings when configured, and/or a measurable gap |
-| Price | $5–$150, inclusive |
+| Price | $1–$1,000, inclusive |
 | RVOL | Time-adjusted premarket relative volume strictly above 1.5 |
-| Watchlist | Ranked, never padded, capped at 15; fewer than 10 is reported honestly |
+| Watchlist | Ranked, never padded, capped at 1,000; fewer than 10 is reported honestly |
 | Checklist | Generated thesis, stop, target, and dollar/share risk for every result |
 
 All thresholds live in [`config/scanner.toml`](config/scanner.toml). A symbol
