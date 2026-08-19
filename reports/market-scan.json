@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-18T13:42:38.677684+00:00",
+  "generated_at": "2026-08-19T13:44:56.569985+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -30,14 +30,14 @@
   "symbols_qualified": 0,
   "rejection_counts": {
     "atr": 11,
-    "average_volume": 9,
+    "average_volume": 10,
     "beta": 6,
-    "catalyst": 7,
+    "catalyst": 8,
     "clean_trend": 20,
     "clear_levels": 2,
     "invalid_or_insufficient_data": 2,
     "rvol": 26,
-    "tight_spread": 8
+    "tight_spread": 10
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
