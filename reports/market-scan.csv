@@ -1,1 +1,1 @@
-rank,symbol,company,price,volume,current_volume,rvol,atr_percent,beta,spread_percent,gap_percent,trend,levels,catalysts,thesis,stop,target,risk
+rank,symbol,company,price,volume,current_volume,rvol,atr_percent,beta,spread_percent,gap_percent,momentum_percent,volume_spike,volume_confirmation,rsi,pe_ratio,trend,levels,catalysts,thesis,stop,target,risk,score,fundamental_score,revenue_growth_pct,revenue_ttm,net_margin_pct,eps_growth_pct,debt_to_equity,return_on_equity_pct,profitable,fiscal_period_end,fundamentals_coverage
