@@ -3,6 +3,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "market-scan.yml"
 
@@ -38,7 +40,7 @@ def test_workflow_is_manually_dispatchable_and_least_privilege() -> None:
 
 def test_scheduled_provider_is_configurable_without_editing_the_workflow() -> None:
     text = _workflow_text()
-    assert "SCAN_PROVIDER: ${{ inputs.provider || vars.SCAN_PROVIDER || 'alpaca' }}" in text
+    assert "SCAN_PROVIDER: ${{ inputs.provider || vars.SCAN_PROVIDER || 'yahoo' }}" in text
     assert 'market-scanner scan --provider "$SCAN_PROVIDER"' in text
     # Alpaca credentials must still be enforced when Alpaca is the provider.
     assert "if: env.SCAN_PROVIDER == 'alpaca'" in text
@@ -85,3 +87,44 @@ def test_launchd_installer_generates_weekdays_at_six() -> None:
     assert '"Minute": 0' in script
     assert "range(1, 6)" in script
     assert "StartCalendarInterval" in script
+
+
+def test_packaged_defaults_match_the_repository_config() -> None:
+    """The scheduled job reads config/, but a non-editable install (the Docker
+    image) resolves ROOT into site-packages and falls back to the bundled copy
+    under src/market_scanner/data/. When the two drift, the same command
+    produces different watchlists depending on how it was installed.
+    """
+    from market_scanner.config import PACKAGE_DATA, ROOT
+
+    for name in ("scanner.toml", "universe.txt"):
+        repository = (ROOT / "config" / name).read_text(encoding="utf-8")
+        packaged = (PACKAGE_DATA / name).read_text(encoding="utf-8")
+        assert repository == packaged, (
+            f"{name} differs between config/ and the packaged copy; "
+            "sync src/market_scanner/data/ or installed runs will use stale gates."
+        )
+
+
+TOML = """[scanner]
+watchlist_size = 7
+minimum_watchlist_size = 3
+"""
+
+
+def test_config_and_universe_honour_environment_overrides(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """The Docker image points both variables at /app/config."""
+    from market_scanner.config import load_config, load_symbols
+
+    universe = tmp_path / "universe.txt"
+    universe.write_text("# comment\nAAA\nBBB\n", encoding="utf-8")
+    config = tmp_path / "scanner.toml"
+    config.write_text(TOML, encoding="utf-8")
+
+    monkeypatch.setenv("MARKET_SCANNER_UNIVERSE", str(universe))
+    monkeypatch.setenv("MARKET_SCANNER_CONFIG", str(config))
+
+    assert load_symbols() == ["AAA", "BBB"]
+    assert load_config()[0].watchlist_size == 7

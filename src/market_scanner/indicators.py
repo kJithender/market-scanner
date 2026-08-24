@@ -90,6 +90,79 @@ def trend_structure(bars: Sequence[Bar]) -> tuple[bool, str, float]:
     return clean, direction, score
 
 
+def volume_spike(bars: Sequence[Bar], lookback: int = 20) -> float:
+    """Latest completed session's volume as a multiple of the prior average.
+
+    The prior ``lookback`` sessions are averaged **excluding** the session
+    being measured. Including it would put the spike inside its own baseline
+    and systematically understate it — a genuine 10x day would read closer to
+    7x once it had inflated the mean it is divided by.
+
+    This is distinct from RVOL. RVOL compares the session so far against the
+    same time of day in earlier sessions; this compares one finished session
+    against recent finished sessions, so it is never diluted by how much of
+    the trading day happens to have elapsed.
+    """
+    if lookback < 1:
+        raise ValueError("volume lookback must be at least 1 session")
+    if len(bars) < lookback + 1:
+        raise ValueError(f"volume spike requires at least {lookback + 1} bars")
+    baseline = fmean(bar.volume for bar in bars[-lookback - 1 : -1])
+    if baseline <= 0:
+        raise ValueError("volume baseline must be positive")
+    return bars[-1].volume / baseline
+
+
+def relative_strength_index(bars: Sequence[Bar], period: int = 14) -> float:
+    """Wilder's RSI over ``period`` sessions, 0–100.
+
+    Uses Wilder's smoothing (the original definition), not a simple mean of
+    gains and losses: the simple-average variant is a different indicator and
+    produces visibly different values on the same data.
+
+    A stretch with no losing session has no finite RS, which is reported as
+    100.0 rather than raising — that is the defined boundary of the measure,
+    not missing data.
+    """
+    if period < 2:
+        raise ValueError("RSI period must be at least 2")
+    if len(bars) < period + 1:
+        raise ValueError(f"RSI requires at least {period + 1} bars")
+    closes = [bar.close for bar in bars]
+    changes = [right - left for left, right in zip(closes[:-1], closes[1:], strict=True)]
+    gains = [max(change, 0.0) for change in changes]
+    losses = [max(-change, 0.0) for change in changes]
+
+    average_gain = fmean(gains[:period])
+    average_loss = fmean(losses[:period])
+    for gain, loss in zip(gains[period:], losses[period:], strict=True):
+        average_gain = (average_gain * (period - 1) + gain) / period
+        average_loss = (average_loss * (period - 1) + loss) / period
+
+    if average_loss == 0:
+        return 100.0 if average_gain > 0 else 50.0
+    relative_strength = average_gain / average_loss
+    return 100 - 100 / (1 + relative_strength)
+
+
+def momentum_percent(bars: Sequence[Bar], lookback: int) -> float:
+    """Price change over ``lookback`` completed sessions, in percent.
+
+    This is the only measure here that spans months rather than days. ATR,
+    RVOL and the gap all describe today; a stock can be up 20% over a quarter
+    while none of them register anything. Sustained relative strength is a
+    separate question from today's volatility, so it gets its own metric.
+    """
+    if lookback < 1:
+        raise ValueError("momentum lookback must be at least 1 session")
+    if len(bars) < lookback + 1:
+        raise ValueError(f"momentum requires at least {lookback + 1} bars")
+    start = bars[-lookback - 1].close
+    if start <= 0:
+        raise ValueError("momentum requires a positive starting close")
+    return (bars[-1].close / start - 1) * 100
+
+
 def key_levels(bars: Sequence[Bar], lookback: int = 20) -> tuple[bool, float, float]:
     if len(bars) < lookback + 1:
         raise ValueError("levels require more history")
@@ -99,3 +172,33 @@ def key_levels(bars: Sequence[Bar], lookback: int = 20) -> tuple[bool, float, fl
     price = bars[-1].close
     clear = support < price and resistance > support and (resistance - support) / price >= 0.04
     return clear, support, resistance
+
+
+def volume_trend_confirmation(bars: Sequence[Bar], lookback: int = 5) -> float:
+    """Recent mean volume as a multiple of the equally long window before it.
+
+    This is the volume half of a double confirmation: price says a move is
+    happening, and this says whether participation is expanding while it does.
+    A value above 1.0 means the recent window traded more than the window that
+    preceded it; below 1.0 means the move is running on thinning volume.
+
+    Distinct from both existing volume measures. ``relative_volume`` compares
+    today's partial session against the same time of day historically, and
+    ``volume_spike`` compares one finished session against a flat baseline.
+    Neither spans a window, so neither can say whether participation is
+    *trending*, which is the only form of the question a multi-session price
+    move can be confirmed against.
+
+    The two windows are adjacent and equally long so the ratio is not biased by
+    window length, and the measured window is excluded from its own baseline
+    for the same reason it is excluded in ``volume_spike``.
+    """
+    if lookback < 1:
+        raise ValueError("volume confirmation lookback must be at least 1 session")
+    if len(bars) < lookback * 2:
+        raise ValueError(f"volume confirmation requires at least {lookback * 2} bars")
+    recent = fmean(bar.volume for bar in bars[-lookback:])
+    baseline = fmean(bar.volume for bar in bars[-lookback * 2 : -lookback])
+    if baseline <= 0:
+        raise ValueError("volume confirmation baseline must be positive")
+    return recent / baseline

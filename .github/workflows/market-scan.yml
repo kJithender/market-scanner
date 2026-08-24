@@ -13,7 +13,7 @@ on:
       provider:
         description: "Market-data provider"
         required: true
-        default: "alpaca"
+        default: "yahoo"
         type: choice
         options:
           - alpaca
@@ -40,8 +40,8 @@ jobs:
       MARKET_SCANNER_OUTPUT_DIR: artifacts
       PYTHONUNBUFFERED: "1"
       # Manual runs use the chosen input. Scheduled runs use the repository
-      # variable SCAN_PROVIDER, falling back to alpaca when it is unset.
-      SCAN_PROVIDER: ${{ inputs.provider || vars.SCAN_PROVIDER || 'alpaca' }}
+      # variable SCAN_PROVIDER, falling back to yahoo when it is unset.
+      SCAN_PROVIDER: ${{ inputs.provider || vars.SCAN_PROVIDER || 'yahoo' }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v7.0.1

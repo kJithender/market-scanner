@@ -1,0 +1,11 @@
+# Operator float overrides for the BlowingStocksScreener.
+#
+# Anything listed here wins over the float reconstructed from SEC cover-page
+# filings, because a figure you read off a filing or a real float feed beats
+# anything derived. Everything else is left to float_data.py.
+#
+# symbol,float_shares,as_of,source
+# Blank or malformed rows are skipped; one bad line costs one symbol, never
+# the morning's run. as_of is compared against max_float_age_days, so an
+# override with no date is trusted indefinitely — date it when you can.
+symbol,float_shares,as_of,source

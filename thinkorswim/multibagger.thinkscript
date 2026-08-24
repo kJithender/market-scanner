@@ -1,0 +1,71 @@
+# ============================================================================
+# MULTIBAGGER SCAN  —  thinkScript port of `market-scanner multibagger`
+# ============================================================================
+# Finds names that have ALREADY multiplied. Every figure here is historical.
+# A stock qualifying below has had its move; that is not evidence of another.
+# The stillRising input exists because roughly a fifth of qualifying names are
+# currently BELOW where they traded a year ago.
+#
+# Use in: Scan tab -> Stock Hacker -> Add Study Filter -> (pencil) -> thinkScript
+# Set the scan aggregation period to DAILY.
+#
+# HISTORY REQUIREMENT: the 3-year horizon reads 756 daily bars back. thinkorswim
+# must have that much history loaded or the horizon silently evaluates to 0 and
+# the name is judged on shorter horizons only. If results look thin, drop
+# horizon3Years or confirm the symbols have 3+ years of listed history.
+# ============================================================================
+
+input minMultiple      = 2.0;      # 2.0 == has at least doubled
+input minAvgVolume     = 1000000;  # 20-session average volume floor
+input minPrice         = 1.00;
+input horizon1Years    = 1;
+input horizon2Years    = 2;
+input horizon3Years    = 3;
+input sessionsPerYear  = 252;
+input stillRisingOnly  = no;       # yes = exclude past winners now falling
+
+# --- horizons in sessions ---------------------------------------------------
+def bars1 = horizon1Years * sessionsPerYear;
+def bars2 = horizon2Years * sessionsPerYear;
+def bars3 = horizon3Years * sessionsPerYear;
+
+# --- price multiple per horizon --------------------------------------------
+# A horizon the listing is too young to cover yields 0 rather than a bogus
+# ratio, matching the Python report's rule that an unmeasurable horizon is
+# omitted instead of being scored.
+def past1 = GetValue(close, bars1);
+def past2 = GetValue(close, bars2);
+def past3 = GetValue(close, bars3);
+
+def mult1 = if !IsNaN(past1) and past1 > 0 then close / past1 else 0;
+def mult2 = if !IsNaN(past2) and past2 > 0 then close / past2 else 0;
+def mult3 = if !IsNaN(past3) and past3 > 0 then close / past3 else 0;
+
+def bestMultiple = Max(mult1, Max(mult2, mult3));
+
+# --- tradability floors -----------------------------------------------------
+def adv20     = Average(volume, 20);
+def liquid    = adv20 > minAvgVolume;
+def priceOk   = close >= minPrice;
+
+# --- "is it still working?" -------------------------------------------------
+# mult1 >= 1 means the stock is at or above its price one year ago.
+def stillRising = mult1 >= 1;
+
+plot scan = bestMultiple >= minMultiple
+        and liquid
+        and priceOk
+        and (!stillRisingOnly or stillRising);
+
+# ============================================================================
+# COLUMN VARIANT
+# ----------------------------------------------------------------------------
+# To show the multiple as a watchlist column instead of a filter, delete the
+# plot above and use one of these:
+#
+#   plot best1Y   = mult1;          # multiple over the past year
+#   plot best3Y   = mult3;          # multiple over three years
+#   plot bestAny  = bestMultiple;   # strongest measured horizon
+#
+# Add via: Watchlist -> Customize -> Custom -> scripted column.
+# ============================================================================

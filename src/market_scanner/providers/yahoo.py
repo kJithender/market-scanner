@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -143,6 +144,43 @@ class YahooProvider:
             )
         return snapshots, warnings
 
+    async def get_long_history(
+        self, symbols: list[str], years: int
+    ) -> tuple[dict[str, tuple[Bar, ...]], list[str]]:
+        """Multi-year adjusted daily bars, for horizon work the scanner cannot do.
+
+        The scan path truncates history to ``config.history_days`` and only
+        requests two years when that exceeds 200, so it cannot measure a
+        multi-year return. This is a separate, deliberately simple fetch.
+        """
+        return await asyncio.to_thread(self._long_history_sync, symbols, years)
+
+    def _long_history_sync(
+        self, symbols: list[str], years: int
+    ) -> tuple[dict[str, tuple[Bar, ...]], list[str]]:
+        clean = [symbol.upper() for symbol in dict.fromkeys(symbols) if symbol]
+        history, failures = self._gather(
+            clean,
+            lambda symbol: _daily_series(
+                self._chart(
+                    symbol,
+                    {
+                        "interval": "1d",
+                        "range": f"{max(1, years)}y",
+                        "includePrePost": "false",
+                        "events": "div,split",
+                    },
+                )
+            ),
+        )
+        warnings = [UNOFFICIAL_WARNING]
+        if failures:
+            warnings.append(
+                f"Yahoo request failed for {len(failures)} symbols: {', '.join(failures[:10])}"
+                + ("…" if len(failures) > 10 else "")
+            )
+        return {symbol: bars for symbol, bars in history.items() if bars}, warnings
+
     def _gather(
         self, symbols: Sequence[str], worker: Callable[[str], Any]
     ) -> tuple[dict[str, Any], list[str]]:
@@ -203,15 +241,12 @@ class YahooProvider:
         cutoff = as_of - timedelta(days=3)
         catalysts: list[Catalyst] = []
         for item in payload.get("news") or []:
-            related = item.get("relatedTickers")
-            if related and symbol not in related:
-                continue
             published = item.get("providerPublishTime")
             stamp = datetime.fromtimestamp(int(published), UTC) if published else None
             if stamp and stamp < cutoff:
                 continue
             title = str(item.get("title") or "").strip()
-            if not title:
+            if not title or not _mentions(symbol, item, title):
                 continue
             catalysts.append(Catalyst("news", title, stamp, item.get("link")))
             if len(catalysts) == 3:
@@ -249,6 +284,24 @@ class YahooProvider:
             raise ProviderError(
                 f"Yahoo request failed at {label}: {type(error).__name__}"
             ) from error
+
+
+def _mentions(symbol: str, item: dict, title: str) -> bool:
+    """True only when a headline is actually about this symbol.
+
+    Yahoo's search endpoint returns market-wide wire copy alongside
+    company news, and those items usually carry no ``relatedTickers``.
+    Accepting them made "Exchange-Traded Funds Higher, Equity Futures Mixed"
+    register as an NVDA catalyst, which is exactly the kind of unearned
+    evidence the catalyst gate exists to exclude. Require the item to name the
+    symbol in its related tickers or in the headline itself.
+    """
+    related = item.get("relatedTickers")
+    if related:
+        return symbol in related
+    # No related tickers: fall back to a word-boundary match on the headline so
+    # "S" does not match "Stocks" and "ON" does not match "Monday".
+    return re.search(rf"(?<![A-Za-z0-9]){re.escape(symbol)}(?![A-Za-z0-9])", title) is not None
 
 
 def _safe(worker: Callable[[str], Any]) -> Callable[[str], Any]:

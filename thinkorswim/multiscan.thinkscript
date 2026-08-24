@@ -1,0 +1,135 @@
+# ============================================================================
+# MULTI-SCAN  —  thinkScript port of `market-scanner scan`
+# ============================================================================
+# Ports the gates that thinkScript can actually express. It is a SUBSET of the
+# Python screener, not an equivalent. What cannot be reproduced here:
+#
+#   * Fundamentals (revenue growth, debt/equity, net margin, P/E). thinkScript
+#     has no access to SEC XBRL data. Add P/E via the Stock Hacker UI instead:
+#     Add Filter -> Stock -> P/E ratio. The others have no TOS equivalent.
+#   * Premarket RVOL. The Python gate compares cumulative premarket volume to
+#     the same clock time on prior days; a daily-aggregation scan cannot see
+#     inside the session. The two volume gates below are the reproducible part.
+#   * Bid/ask spread and news catalysts — unavailable to scan scripts.
+#
+# So this returns a LOOSER set than the Python scanner. Treat any name it
+# surfaces as needing the fundamental and volume checks the full scanner does.
+#
+# Use in: Scan tab -> Stock Hacker -> Add Study Filter -> (pencil) -> thinkScript
+# Set the scan aggregation period to DAILY.
+# ============================================================================
+
+# --- gates mirrored from config/scanner.toml --------------------------------
+input minPrice              = 1.00;
+input maxPrice              = 1000.00;
+input minAvgVolume          = 1000000;
+input minAtrPercent         = 2.0;
+input maxAtrPercent         = 8.0;
+input atrLength             = 14;
+input minBeta               = 0.0;
+input betaLength            = 60;
+input minMomentumPercent    = 15.0;
+input momentumLookback      = 63;
+input minVolumeConfirmation = 1.1;
+input volumeConfirmLookback = 5;
+input levelLookback         = 20;
+input minLevelRangePercent  = 4.0;
+input requireCleanTrend     = yes;
+input allowDowntrends       = no;   # yes = accept clean downtrends too
+
+# --- price and liquidity ----------------------------------------------------
+def adv20   = Average(volume, 20);
+def priceOk = close >= minPrice and close <= maxPrice;
+def liquid  = adv20 > minAvgVolume;
+
+# --- ATR as a percentage of price -------------------------------------------
+# One deliberate difference from the Python scanner: it builds ATR from
+# COMPLETED sessions only and divides by the live price, whereas a TOS daily
+# scan includes the forming bar in both. Intraday the two therefore disagree
+# slightly; after the close they converge. The formula itself is identical —
+# verified to match the Python indicator to 6 decimal places on shared bars.
+def atr        = Average(TrueRange(high, close, low), atrLength);
+def atrPercent = if close > 0 then atr / close * 100 else 0;
+def atrOk      = atrPercent >= minAtrPercent and atrPercent <= maxAtrPercent;
+
+# --- beta vs SPY over `betaLength` sessions ---------------------------------
+# Computed longhand: thinkScript has no beta function, and the sum form is
+# stable across TOS versions. Referencing a second symbol slows the scan.
+def spy      = close("SPY");
+def ret      = if close[1] > 0 then close / close[1] - 1 else 0;
+def spyRet   = if spy[1] > 0 then spy / spy[1] - 1 else 0;
+def n        = betaLength;
+def covar    = (Sum(ret * spyRet, n) - Sum(ret, n) * Sum(spyRet, n) / n) / n;
+def spyVar   = (Sum(spyRet * spyRet, n) - Sqr(Sum(spyRet, n)) / n) / n;
+def beta     = if spyVar != 0 then covar / spyVar else 0;
+def betaOk   = beta > minBeta;
+
+# --- sustained relative strength (the "made good progress" gate) ------------
+def pastClose  = GetValue(close, momentumLookback);
+def momentum   = if !IsNaN(pastClose) and pastClose > 0
+                 then (close / pastClose - 1) * 100
+                 else Double.NaN;
+def momentumOk = !IsNaN(momentum) and momentum >= minMomentumPercent;
+
+# --- volume trend confirmation ----------------------------------------------
+# Recent mean volume over the equally long window before it. Above 1.0 means
+# participation is expanding while price moves; below means it is thinning.
+def recentVol  = Average(volume, volumeConfirmLookback);
+def priorVol   = Average(GetValue(volume, volumeConfirmLookback), volumeConfirmLookback);
+def volumeConfirmation = if priorVol > 0 then recentVol / priorVol else 0;
+def volumeOk   = volumeConfirmation >= minVolumeConfirmation;
+
+# --- clean trend: MA alignment + slope + path efficiency --------------------
+def sma20 = Average(close, 20);
+def sma50 = Average(close, 50);
+
+# Slope of the last 5 closes against the 5 closes ending 15 bars back.
+def recentMean = Average(close, 5);
+def priorMean  = Average(GetValue(close, 15), 5);
+def slope      = if priorMean > 0 then (recentMean - priorMean) / priorMean else 0;
+
+# Directional efficiency: net travel over gross travel, 0..1. Filters out
+# names that arrived here by thrashing rather than trending.
+def netTravel   = AbsValue(close - GetValue(close, 19));
+def grossTravel = Sum(AbsValue(close - close[1]), 19);
+def efficiency  = if grossTravel > 0 then netTravel / grossTravel else 0;
+
+def upTrend   = close > sma20 and sma20 > sma50 and slope > 0.01;
+def downTrend = close < sma20 and sma20 < sma50 and slope < -0.01;
+def directional = upTrend or (allowDowntrends and downTrend);
+def cleanTrend  = directional and efficiency >= 0.25;
+def trendOk     = !requireCleanTrend or cleanTrend;
+
+# --- clear levels with room to work -----------------------------------------
+def support    = Lowest(low[1], levelLookback);
+def resistance = Highest(high[1], levelLookback);
+def levelsOk   = support < close
+             and resistance > support
+             and close > 0
+             and (resistance - support) / close >= minLevelRangePercent / 100;
+
+plot scan = priceOk
+        and liquid
+        and atrOk
+        and betaOk
+        and momentumOk
+        and volumeOk
+        and trendOk
+        and levelsOk;
+
+# ============================================================================
+# COLUMN VARIANTS
+# ----------------------------------------------------------------------------
+# Replace the plot above with ONE of these to use as a watchlist column:
+#
+#   plot atrPct   = atrPercent;                      # ATR %
+#   plot mom63    = momentum;                        # 63-session momentum %
+#   plot volConf  = volumeConfirmation;              # volume trend, 1.0 = flat
+#   plot volSpike = volume / Average(volume[1], 20); # session vs prior 20-day
+#   plot rsi14    = RSI(length = 14);                # Wilder RSI
+#   plot betaCol  = beta;                            # beta vs SPY
+#
+# NOTE on volSpike: the prior-20 average excludes the current session, matching
+# the Python indicator. Using Average(volume, 20) would put the spike inside
+# its own baseline and understate a 10x day as roughly 7x.
+# ============================================================================

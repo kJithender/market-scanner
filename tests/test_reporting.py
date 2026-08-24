@@ -8,11 +8,13 @@ from datetime import UTC, datetime
 
 from market_scanner.reporting import (
     CSV_FIELDS,
+    VOLATILITY_CSV_FIELDS,
     normalize_scan_result,
     render_csv,
     render_html,
     render_json,
     render_markdown,
+    render_volatility_csv,
     write_reports,
 )
 
@@ -85,7 +87,8 @@ def test_normalize_accepts_dataclasses_and_caps_ranked_watchlist() -> None:
 def test_machine_json_is_stable_and_valid() -> None:
     payload = json.loads(render_json(sample_result()))
 
-    assert payload["schema_version"] == "1.0"
+    # 1.1 added volatility_candidates and volatility_count to the schema.
+    assert payload["schema_version"] == "1.1"
     assert payload["timezone"] == "America/Los_Angeles"
     assert payload["candidate_count"] == 2
     assert payload["candidates"][0]["catalysts"] == ["Earnings tomorrow", "Gap +3%"]
@@ -170,3 +173,106 @@ def test_write_reports_creates_all_formats(tmp_path) -> None:
     assert set(paths) == {"json", "csv", "markdown", "html"}
     assert {path.suffix for path in paths.values()} == {".json", ".csv", ".md", ".html"}
     assert all(path.exists() and path.stat().st_size > 0 for path in paths.values())
+
+
+@dataclass
+class VolatileRow:
+    symbol: str
+    price: float
+    avg_volume: float
+    atr_percent: float
+    rvol: float | None
+    spread_percent: float | None
+    gap_percent: float
+    volume_confirmation: float | None
+    trend: str
+    volatility_score: float
+    on_watchlist: bool = False
+
+
+@dataclass
+class ResultWithVolatility:
+    generated_at: datetime
+    data_as_of: datetime
+    watchlist: list[Candidate]
+    warnings: list[str]
+    volatility_candidates: list[VolatileRow]
+
+
+def sample_with_volatility(volatile: int = 3, watchlist: int = 2) -> ResultWithVolatility:
+    base = sample_result(watchlist)
+    return ResultWithVolatility(
+        generated_at=base.generated_at,
+        data_as_of=base.data_as_of,
+        watchlist=base.watchlist,
+        warnings=base.warnings,
+        volatility_candidates=[
+            VolatileRow(
+                symbol=f"vol{index}",
+                price=12.0 + index,
+                avg_volume=3_000_000,
+                atr_percent=9.0 - index,
+                rvol=2.0,
+                spread_percent=0.12,
+                gap_percent=4.5,
+                volume_confirmation=1.4,
+                trend="uptrend",
+                volatility_score=80.0 - index,
+                on_watchlist=index == 1,
+            )
+            for index in range(1, volatile + 1)
+        ],
+    )
+
+
+def test_volatility_rows_are_normalized_separately_from_the_watchlist() -> None:
+    report = normalize_scan_result(sample_with_volatility())
+
+    assert report["candidate_count"] == 2
+    assert report["volatility_count"] == 3
+    assert [row["rank"] for row in report["volatility_candidates"]] == [1, 2, 3]
+    assert report["volatility_candidates"][0]["symbol"] == "VOL1"
+    # No trade plan is invented for a name that never passed the gates.
+    assert "thesis" not in report["volatility_candidates"][0]
+    assert report["volatility_candidates"][0]["on_watchlist"] is True
+    assert report["volatility_candidates"][1]["on_watchlist"] is False
+
+
+def test_volatility_csv_is_its_own_file_with_its_own_columns() -> None:
+    rows = list(csv.DictReader(io.StringIO(render_volatility_csv(sample_with_volatility()))))
+
+    assert tuple(rows[0]) == VOLATILITY_CSV_FIELDS
+    assert "thesis" not in rows[0]
+    assert len(rows) == 3
+    assert rows[0]["symbol"] == "VOL1"
+    # _number narrows integral floats, so 8.0 is written as 8.
+    assert rows[0]["atr_percent"] == "8"
+
+
+def test_reports_state_that_volatility_names_are_not_gated() -> None:
+    markdown = render_markdown(sample_with_volatility())
+    html = render_html(sample_with_volatility())
+
+    assert "## High-volatility list" in markdown
+    assert "have not passed the hard" in markdown
+    assert "High-volatility list" in html
+    assert "Not a watchlist" in html
+
+
+def test_volatility_section_is_omitted_when_the_list_is_empty() -> None:
+    markdown = render_markdown(sample_result())
+
+    assert "High-volatility list" not in markdown
+    assert normalize_scan_result(sample_result())["volatility_count"] == 0
+
+
+def test_volatility_csv_is_written_only_when_the_list_has_rows(tmp_path) -> None:
+    paths = write_reports(sample_with_volatility(), tmp_path)
+    volatility_path = paths["volatility_csv"]
+    assert volatility_path.name == "market-scan-volatility.csv"
+    assert "VOL1" in volatility_path.read_text(encoding="utf-8")
+
+    # A later empty run must not leave yesterday's file looking like today's.
+    paths = write_reports(sample_result(), tmp_path)
+    assert "volatility_csv" not in paths
+    assert not volatility_path.exists()

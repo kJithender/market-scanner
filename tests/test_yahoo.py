@@ -193,3 +193,50 @@ def test_news_filters_unrelated_and_stale_items(monkeypatch: pytest.MonkeyPatch)
     )
     catalysts = provider._news("TEST", as_of)
     assert [catalyst.description for catalyst in catalysts] == ["Relevant headline"]
+
+
+def test_news_rejects_marketwide_copy_that_never_names_the_symbol(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Wire copy carries no relatedTickers. Accepting it let headlines like
+    "Exchange-Traded Funds Higher, Equity Futures Mixed" satisfy the catalyst
+    gate for whichever symbol happened to be queried."""
+    provider = YahooProvider()
+    as_of = datetime(2026, 8, 11, 11, 0, tzinfo=EASTERN)
+    recent = int((as_of - timedelta(hours=2)).timestamp())
+    monkeypatch.setattr(
+        provider,
+        "_get_json",
+        lambda _url, _label: {
+            "news": [
+                {"title": "Exchange-Traded Funds Higher, Equity Futures Mixed",
+                 "providerPublishTime": recent},
+                {"title": "NVDA lifts full-year guidance", "providerPublishTime": recent},
+            ]
+        },
+    )
+    catalysts = provider._news("NVDA", as_of)
+    assert [catalyst.description for catalyst in catalysts] == [
+        "NVDA lifts full-year guidance"
+    ]
+
+
+def test_news_symbol_match_respects_word_boundaries(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Short tickers must not match inside ordinary words."""
+    provider = YahooProvider()
+    as_of = datetime(2026, 8, 11, 11, 0, tzinfo=EASTERN)
+    recent = int((as_of - timedelta(hours=2)).timestamp())
+    monkeypatch.setattr(
+        provider,
+        "_get_json",
+        lambda _url, _label: {
+            "news": [
+                {"title": "Stocks slip as Monday session opens", "providerPublishTime": recent},
+                {"title": "S reports record quarterly billings", "providerPublishTime": recent},
+            ]
+        },
+    )
+    catalysts = provider._news("S", as_of)
+    assert [catalyst.description for catalyst in catalysts] == [
+        "S reports record quarterly billings"
+    ]

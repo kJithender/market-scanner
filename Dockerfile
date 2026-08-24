@@ -1,8 +1,13 @@
 FROM python:3.12-slim AS runtime
 
+# The package resolves its repo config relative to the installed module, which
+# in a non-editable install points into site-packages, not /app. Without these
+# two variables the image silently ignores the config/ copied below.
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    MARKET_SCANNER_OUTPUT_DIR=/app/artifacts
+    MARKET_SCANNER_OUTPUT_DIR=/app/artifacts \
+    MARKET_SCANNER_CONFIG=/app/config/scanner.toml \
+    MARKET_SCANNER_UNIVERSE=/app/config/universe.txt
 
 RUN groupadd --system scanner \
     && useradd --system --gid scanner --create-home scanner

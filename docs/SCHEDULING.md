@@ -117,3 +117,74 @@ docker run --rm \
 
 The image runs as an unprivileged user. Docker does not provide scheduling by
 itself; schedule `docker run` with the host scheduler or use GitHub Actions.
+
+## BlowingStocksScreener: 06:33 daily
+
+`MarketScanner-BlowingStocks` runs `scripts/run_blowing_stocks.ps1` every day
+at **06:33** local time. Install or update it with:
+
+```powershell
+.\scripts\install_blowing_stocks_task.ps1
+```
+
+The time is not arbitrary. 06:33 Pacific is 09:33 Eastern, three minutes past
+the opening bell; with the default fifteen-minute delayed consolidated tape the
+measurement window closes near 09:18 ET. That is exactly what the screen wants:
+the completed premarket session — its gap, its high, its VWAP, its relative
+volume — read while the opening drive is still live.
+
+Unlike the 06:00 scan this task is **daily, not weekdays**. A closed-market run
+costs one batched request to establish there is no session to screen, and
+running every day means the holiday calendar never has to be maintained here.
+The report says plainly which it was:
+
+```
+"session_phase": "closed",
+"warnings": ["US market not open for business at 2026-08-22 09:18 EDT; the newest
+              session on the tape is 2026-08-21. Nothing was screened …"]
+```
+
+`StartWhenAvailable` is set, so a machine asleep at 06:33 runs the screen when
+it wakes. The task does not wake the machine.
+
+### Interaction with the other tasks
+
+| Task | Time | What it reads |
+| --- | --- | --- |
+| `MarketScanner-LocalScan` | 06:15 weekdays | curated 245-name universe, premarket |
+| `MarketScanner-Multibagger` | 06:25 daily | completed daily closes, multi-year |
+| `MarketScanner-PullReport` | 06:30 daily | syncs the cloud-published scan |
+| `MarketScanner-BlowingStocks` | 06:33 daily | whole listed market, premarket |
+
+They do not collide: the screener starts after the others have finished, and
+writes to its own `artifacts/blowing-stocks/` directory.
+
+### Retention
+
+Each run archives a dated copy of all four formats under
+`artifacts/blowing-stocks/history/` and deletes anything older than
+`history_retention_days` (default 7). Nothing else in that directory is
+touched — the prune matches only the exact `blowing-stocks-YYYY-MM-DD.<ext>`
+pattern and parses the date before removing a file.
+
+Override per run with `--retention-days N`, or permanently under
+`[blowing_stocks]` in `config/scanner.toml`.
+
+### Credentials
+
+Beyond the Alpaca keys the scan already needs, set `SEC_CONTACT_EMAIL` to your
+own address. SEC EDGAR asks callers to identify themselves in the User-Agent,
+and the float figures the low-float screen depends on come from there:
+
+```powershell
+[Environment]::SetEnvironmentVariable("SEC_CONTACT_EMAIL", "<you@example.com>", "User")
+```
+
+Without it the requests still work but identify themselves generically, which
+the SEC's access policy asks you not to rely on.
+
+### Removing the task
+
+```powershell
+Unregister-ScheduledTask -TaskName "MarketScanner-BlowingStocks" -Confirm:$false
+```

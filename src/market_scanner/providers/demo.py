@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 
 from market_scanner.models import Bar, Catalyst, MarketSnapshot, Quote, ScanConfig
@@ -20,7 +21,20 @@ class DemoProvider:
             base = 18 + index * 2.7
             if base > 140:
                 base = 25 + index
-            bars = _bars(symbol, as_of, 96, beta_factor=1.25 + (index % 4) * 0.12, base=base)
+            # Every fifth name trades a much wider range, so the demo produces
+            # a non-empty high-volatility list as well as a full watchlist.
+            # A fixture that only ever exercises one of the two output paths
+            # cannot validate the pipeline the README says it validates.
+            bars = _bars(
+                symbol,
+                as_of,
+                96,
+                beta_factor=1.25 + (index % 4) * 0.12,
+                base=base,
+                # Offset off index 0 so a single-symbol demo call still returns
+                # the ordinary, fully qualifying name that tests rely on.
+                range_factor=2.1 if index % 5 == 3 else 1.0,
+            )
             previous = bars[-1].close
             price = previous * (1.022 + (index % 3) * 0.003)
             spread = price * (0.0008 + (index % 3) * 0.0002)
@@ -59,6 +73,7 @@ def _bars(
     *,
     beta_factor: float,
     base: float,
+    range_factor: float = 1.0,
 ) -> list[Bar]:
     del symbol
     start = as_of.astimezone(UTC).date() - timedelta(days=count * 2)
@@ -73,9 +88,10 @@ def _bars(
             asset_return = 0.0035 + beta_factor * (market_return - 0.003)
             market_price *= 1 + market_return
             price *= 1 + asset_return
-            # Range ~3% while closes remain directionally efficient.
-            high = price * 1.016
-            low = price * 0.984
+            # Range ~3% while closes remain directionally efficient, widened
+            # by ``range_factor`` for the deliberately volatile names.
+            high = price * (1 + 0.016 * range_factor)
+            low = price * (1 - 0.016 * range_factor)
             bars.append(
                 Bar(
                     datetime.combine(day, datetime.min.time(), UTC),
@@ -88,4 +104,13 @@ def _bars(
             )
             index += 1
         day += timedelta(days=1)
+    # The newest sessions trade heavier than the ones before them. The base
+    # volume above is a 7-session sawtooth that mean-reverts, so any window
+    # ratio sits at ~1.0 and the fixture could never clear a volume
+    # confirmation threshold — not because the pipeline is wrong, but because
+    # synthetic volume that never trends has nothing to confirm.
+    expansion = 5
+    bars[-expansion:] = [
+        replace(bar, volume=int(bar.volume * 1.35)) for bar in bars[-expansion:]
+    ]
     return bars

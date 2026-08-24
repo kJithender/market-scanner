@@ -3,7 +3,7 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "california-market-scanner"
+name = "market-scanner"
 version = "0.1.0"
 description = "A 6am Pacific, evidence-first US equity watchlist scanner"
 readme = "README.md"

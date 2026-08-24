@@ -1,26 +1,192 @@
 [scanner]
+# Hard eligibility gates
 min_price = 1.0
 max_price = 1000.0
 min_average_volume = 1000000
 max_spread_pct = 0.30
 min_atr_pct = 2.0
-max_atr_pct = 5.0
-min_beta = 1.0
+# Raised from 5.0. PGY prints a 6.63% ATR, so the old cap rejected it outright:
+# the ceiling that keeps a day-trade stop sane also excludes the fastest movers.
+max_atr_pct = 8.0
+# Lowered from 1.0. Beta>1 admits only names more volatile than the index, which
+# excludes low-beta stocks in sustained uptrends. 0.0 still requires positive
+# correlation to SPY.
+min_beta = 0.0
 min_rvol = 1.5
 min_gap_pct = 2.0
-watchlist_size = 30
-minimum_watchlist_size = 10
+
+# Sustained relative strength, the "made good progress" criterion. Measures the
+# price change over roughly one quarter of trading, which is the horizon on
+# which ABBV (+20%) and PGY (+59%) actually moved; ATR, RVOL and the gap all
+# describe a single session and register none of it. Set to 0.0 to disable.
+min_momentum_pct = 15.0
+momentum_lookback_days = 63
+
+# Double confirmation: price structure alone is one signal, and momentum and
+# the MA trend are both derived from the same closes, so passing both is closer
+# to one confirmation than two. Volume is the independent second leg â€” it says
+# whether participation is expanding while price moves, or whether the move is
+# running on a thinning book.
+#
+# The lookback is 5 sessions, not 63, because the confirmation has to answer
+# the question at the horizon being traded. A quarter of volume history
+# confirms a swing thesis; a scalper needs to know about this week. Set
+# min_volume_confirmation = 0.0 to disable the gate and keep the measure as a
+# reported column.
+min_volume_confirmation = 1.1
+volume_confirmation_lookback_days = 5
+
+# Daily high-volatility list. Reported beside the watchlist and never inside
+# it: these names clear liquidity and ATR only, so folding them into the
+# ranked watchlist would break the guarantee that every name there passed
+# every hard gate. They carry no thesis, stop, or target for the same reason.
+#
+# The point of the list is the days when nothing qualifies. The hard gates
+# reject volatile names for reasons a scalper does not care about â€” no filed
+# revenue growth, no news catalyst, a trend that is not "clean" â€” and this
+# keeps those names visible without pretending they were vetted.
+volatility_list_enabled = true
+volatility_min_atr_pct = 5.0
+volatility_min_average_volume = 1000000
+# Looser than the watchlist's 0.30%. A 6% ATR name absorbs a wider spread than
+# a 2% one, and volatility_score charges the spread against the range it eats
+# rather than applying one flat cap to both.
+volatility_max_spread_pct = 0.50
+# Lower than the watchlist's 1.5. This list is not claiming a setup, so an
+# average-participation name with real range still belongs on it.
+volatility_min_rvol = 1.0
+volatility_list_size = 25
+
+# Watchlist and calculation controls
+# Uncapped in practice: the scanner returns every name that clears every gate.
+# It never pads, so this is a ceiling, not a target.
+watchlist_size = 200
+minimum_watchlist_size = 1
 history_days = 90
 level_lookback_days = 20
 risk_per_trade_dollars = 100.0
 reward_to_risk = 2.0
 require_catalyst = true
 
+# Fundamentals from SEC EDGAR XBRL filings (no API key; set SEC_CONTACT_EMAIL).
+# Enable with --fundamentals on the CLI or by flipping use_fundamentals here.
+# A metric the filings do not report leaves its gate unevaluated; it never
+# counts as a pass. Set require_fundamentals to reject unfiled names outright.
+use_fundamentals = true
+min_revenue_growth_pct = 10.0
+max_debt_to_equity = 3.0
+require_profitable = false
+require_fundamentals = false
+max_fundamentals_age_days = 200
+
 [provider]
-name = "alpaca"
+name = "yahoo"
 feed = "iex"
 request_timeout_seconds = 30
 
 [output]
 directory = "artifacts"
 formats = ["json", "csv", "md", "html"]
+
+# Historical multibagger report (market-scanner multibagger).
+# Separate from the scan on purpose: these are multi-year returns that have
+# already happened, not gated trade candidates. history_years must exceed the
+# deepest horizon because Yahoo returns slightly fewer sessions than a range
+# implies, which would otherwise leave the deepest horizon unmeasurable.
+[multibagger]
+min_multiple = 2.0
+min_average_volume = 1000000
+min_price = 1.0
+horizons_years = [1, 2, 3]
+history_years = 5
+max_results = 100
+
+# BlowingStocksScreener (market-scanner blowing-stocks).
+#
+# A different animal from the scan above. The scan reads a curated large/mid-cap
+# universe looking for a clean setup; this discovers every listed US common
+# stock and looks for the twenty that are actually exploding this morning â€”
+# small float, huge relative volume, a gap, and a headline behind it.
+#
+# The defining gate is float, which no free price feed publishes. It is rebuilt
+# from SEC cover-page filings (see float_data.py); a symbol whose float cannot
+# be proven is rejected rather than passed. Set require_float = false to keep
+# those names with the gate flagged unproven instead.
+[blowing_stocks]
+max_results = 50
+# "Keep the historical data for a week": every run archives a dated copy under
+# artifacts/blowing-stocks/history/ and deletes anything older than this.
+history_retention_days = 7
+require_float = true
+# Float moves on offerings and lockup expiries, so a cover page older than
+# roughly a fiscal year is not evidence about this morning's float.
+max_float_age_days = 400
+history_days = 90
+rvol_lookback_sessions = 10
+# Empty means discover the listed universe each run from the Nasdaq Trader
+# symbol directory. Point it at a file to screen a fixed list instead.
+universe_file = ""
+# Prefilter, applied to the whole market from batched snapshots before any
+# expensive per-symbol data is fetched. Looser than either screen on purpose:
+# whatever this drops is never measured properly, so it drops only what no
+# screen could want. A volume surge alone passes, because screen B gates on a
+# surge and asks for no gap at all.
+prefilter_gap_fraction = 0.5
+prefilter_min_volume = 20000
+prefilter_min_volume_ratio = 1.5
+max_deep_scan_symbols = 120
+float_overrides_file = "config/float_overrides.csv"
+float_cache_days = 7
+
+# Screen A â€” Low-Float Momentum Explosion.
+# min_/max_ values gate. best_ and parabolic_ gate nothing; they mark where a
+# name stops being merely qualified and becomes the setup this screen exists
+# to catch, and the report labels each row with the weakest tier it reached.
+[blowing_stocks.low_float]
+enabled = true
+min_price = 0.50
+max_price = 20.0
+max_float = 20000000
+best_float = 10000000
+parabolic_float = 5000000
+min_rvol = 5.0
+explosive_rvol = 10.0
+parabolic_rvol = 20.0
+min_gap_pct = 20.0
+best_gap_pct = 30.0
+min_volume = 500000
+# Applied instead of min_volume before 09:30 ET, where a full session's volume
+# cannot exist yet.
+min_premarket_volume = 200000
+require_news = true
+keywords = ["FDA", "Patent", "Reverse split", "AI", "Partnership", "Earnings beat"]
+# "Has News" is the gate; the keywords rank and label it. Set true to demand a
+# keyword match as well.
+require_keyword = false
+require_above_premarket_high = true
+require_above_vwap = true
+
+# Screen B â€” Catalyst + Volume Breakout (biotech, AI, earnings).
+[blowing_stocks.catalyst]
+enabled = true
+min_price = 1.0
+max_price = 50.0
+min_rvol = 3.0
+min_volume_multiple = 2.0
+volume_average_days = 20
+keywords = [
+  "FDA",
+  "Phase 2",
+  "Phase 3",
+  "Patent",
+  "AI",
+  "Partnership",
+  "Earnings beat",
+  "Guidance raise",
+]
+# Unlike screen A this one is defined by its catalyst, so news with no keyword
+# match is not the thing it is looking for.
+require_keyword = true
+require_above_previous_high = true
+require_above_sma = true
+sma_period = 50

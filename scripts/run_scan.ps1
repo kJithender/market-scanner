@@ -20,7 +20,7 @@
 [CmdletBinding()]
 param(
     [ValidateSet("alpaca", "yahoo", "demo")]
-    [string]$Provider = "alpaca",
+    [string]$Provider = "yahoo",
     [switch]$NoOpen
 )
 
@@ -42,8 +42,10 @@ function Write-Log([string]$message) {
 
 try {
     Set-Location $projectDir
-    $exe = Join-Path $projectDir ".venv\Scripts\market-scanner.exe"
-    if (-not (Test-Path $exe)) {
+    # Windows Application Control can block the generated console-script shim.
+    # The interpreter is trusted, so invoke the package as a module instead.
+    $python = Join-Path $projectDir ".venv\Scripts\python.exe"
+    if (-not (Test-Path $python)) {
         throw "market-scanner is not installed. Run: python -m venv .venv; .venv\Scripts\python.exe -m pip install -e ."
     }
 
@@ -58,7 +60,7 @@ try {
     }
 
     Write-Log "Scanning with provider '$Provider'"
-    $summary = & $exe scan --provider $Provider --output-dir $outputDir 2>&1
+    $summary = & $python -m market_scanner scan --provider $Provider --output-dir $outputDir 2>&1
     $code = $LASTEXITCODE
     if ($code -ne 0) {
         Write-Log "FAILED (exit $code): $($summary -join ' ')"
