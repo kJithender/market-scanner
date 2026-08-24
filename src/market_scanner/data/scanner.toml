@@ -85,7 +85,9 @@ feed = "iex"
 request_timeout_seconds = 30
 
 [output]
-directory = "artifacts"
+# Shared by all three screeners (scan, multibagger, blowing-stocks). Every
+# report file lands directly here, stamped with the run date.
+directory = "AllScreenersResults"
 formats = ["json", "csv", "md", "html"]
 
 # Historical multibagger report (market-scanner multibagger).
@@ -114,8 +116,8 @@ max_results = 100
 # those names with the gate flagged unproven instead.
 [blowing_stocks]
 max_results = 50
-# "Keep the historical data for a week": every run archives a dated copy under
-# artifacts/blowing-stocks/history/ and deletes anything older than this.
+# "Keep the historical data for a week": every run writes a dated report
+# directly under AllScreenersResults/ and deletes anything older than this.
 history_retention_days = 7
 require_float = true
 # Float moves on offerings and lockup expiries, so a cover page older than

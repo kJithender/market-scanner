@@ -3,10 +3,10 @@
 
 Separate from ``reporting`` because the columns are different — float, tier,
 premarket high, VWAP — and because this report keeps a rolling archive that
-the others do not. Every run writes today's report twice: once as the current
-file, and once under ``history/`` stamped with the run date. Anything in that
-archive older than the retention window is deleted on the next run, so the
-directory holds exactly the last week and never grows without bound.
+the others do not. Every run writes one report stamped ``blowing-stocks-
+DD-MM-YYYY.*`` directly into the output directory. Anything older than the
+retention window is deleted on the next run, so the directory holds exactly
+the last week and never grows without bound.
 
 Two rendering rules exist to stop the report from overstating itself. A tier
 is printed beside the measurement that earned it, and an unmeasured value is
@@ -21,19 +21,18 @@ import io
 import json
 import re
 from collections.abc import Sequence
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
 from market_scanner.blowing_stocks import DISCLAIMER, BlowingStocksResult
 
 BASENAME = "blowing-stocks"
-HISTORY_DIRECTORY = "history"
 
 #: Only files this module writes are ever considered for deletion. The pattern
 #: is anchored and the date is parsed before anything is removed, so a stray
-#: file in the archive directory is left alone rather than swept up.
-_ARCHIVED = re.compile(rf"^{re.escape(BASENAME)}-(\d{{4}}-\d{{2}}-\d{{2}})\.(json|csv|md|html)$")
+#: file in the report directory is left alone rather than swept up.
+_ARCHIVED = re.compile(rf"^{re.escape(BASENAME)}-(\d{{2}}-\d{{2}}-\d{{4}})\.(json|csv|md|html)$")
 
 _FORMATS = (("json", ".json"), ("csv", ".csv"), ("markdown", ".md"), ("html", ".html"))
 
@@ -411,9 +410,9 @@ footer{{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:
 def prune_history(
     directory: str | Path, run_date: date, retention_days: int
 ) -> list[Path]:
-    """Delete archived reports older than the retention window.
+    """Delete dated reports older than the retention window.
 
-    Only files matching the archive pattern this module writes are considered,
+    Only files matching the dated pattern this module writes are considered,
     and each one's date is parsed before it is removed, so nothing else that
     happens to live in the directory is ever touched.
     """
@@ -429,7 +428,7 @@ def prune_history(
         if not match:
             continue
         try:
-            stamped = date.fromisoformat(match.group(1))
+            stamped = datetime.strptime(match.group(1), "%d-%m-%Y").date()
         except ValueError:
             continue
         if stamped <= cutoff:
@@ -445,17 +444,18 @@ def write_reports(
     retention_days: int = 7,
     run_date: date | None = None,
 ) -> dict[str, Any]:
-    """Write the current report, archive a dated copy, and prune the archive.
+    """Write today's dated report and prune anything past the retention window.
 
-    The archive is stamped with the **run** date rather than the session date.
-    A Saturday run reports Friday's session, and stamping it Friday would
-    overwrite Friday's own report with a "market closed" page.
+    Stamped ``blowing-stocks-DD-MM-YYYY.*`` directly in ``directory`` — no
+    separate undated "latest" copy, so the same naming convention applies
+    whether this is the only report of the day or an intraday re-run replacing
+    it. The stamp is the **run** date rather than the session date: a Saturday
+    run reports Friday's session, and stamping it Friday would overwrite
+    Friday's own report with a "market closed" page.
     """
     stamp = run_date or date.today()
     destination = Path(directory)
     destination.mkdir(parents=True, exist_ok=True)
-    archive = destination / HISTORY_DIRECTORY
-    archive.mkdir(parents=True, exist_ok=True)
 
     rendered = {
         "json": render_json(result),
@@ -464,19 +464,14 @@ def write_reports(
         "html": render_html(result),
     }
     paths: dict[str, Path] = {}
-    archived: dict[str, Path] = {}
     for name, suffix in _FORMATS:
-        current = destination / f"{BASENAME}{suffix}"
-        current.write_text(rendered[name], encoding="utf-8")
-        paths[name] = current
-        dated = archive / f"{BASENAME}-{stamp.isoformat()}{suffix}"
+        dated = destination / f"{BASENAME}-{stamp:%d-%m-%Y}{suffix}"
         dated.write_text(rendered[name], encoding="utf-8")
-        archived[name] = dated
+        paths[name] = dated
 
-    pruned = prune_history(archive, stamp, retention_days)
+    pruned = prune_history(destination, stamp, retention_days)
     return {
-        "current": paths,
-        "archived": archived,
+        "paths": paths,
         "pruned": pruned,
         "retention_days": retention_days,
     }

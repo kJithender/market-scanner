@@ -13,3 +13,5 @@ work/
 outputs/
 artifacts/*
 !artifacts/.gitkeep
+AllScreenersResults/*
+!AllScreenersResults/.gitkeep

@@ -37,7 +37,7 @@ jobs:
     permissions:
       contents: write
     env:
-      MARKET_SCANNER_OUTPUT_DIR: artifacts
+      MARKET_SCANNER_OUTPUT_DIR: AllScreenersResults
       PYTHONUNBUFFERED: "1"
       # Manual runs use the chosen input. Scheduled runs use the repository
       # variable SCAN_PROVIDER, falling back to yahoo when it is unset.
@@ -85,13 +85,16 @@ jobs:
 
       # Renders the watchlist on the run page itself, so it is readable in a
       # browser or the GitHub mobile app without downloading the artifact.
+      # Every report is now stamped DD-MM-YYYY (see write_reports), so the
+      # exact filename is discovered rather than assumed.
       - name: Publish watchlist to the run summary
         if: always()
         shell: bash
         run: |
-          watchlist="$MARKET_SCANNER_OUTPUT_DIR/market-scan.md"
-          if [[ -f "$watchlist" ]]; then
-            cat "$watchlist" >> "$GITHUB_STEP_SUMMARY"
+          shopt -s nullglob
+          watchlist=("$MARKET_SCANNER_OUTPUT_DIR"/market-scan-[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9].md)
+          if [[ ${#watchlist[@]} -gt 0 ]]; then
+            cat "${watchlist[0]}" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "## No watchlist produced" >> "$GITHUB_STEP_SUMMARY"
             echo "The scan did not write a report. Check the scan step logs." >> "$GITHUB_STEP_SUMMARY"
@@ -102,22 +105,36 @@ jobs:
         uses: actions/upload-artifact@v7.0.1
         with:
           name: market-scan-${{ github.run_id }}
-          path: artifacts/
+          path: AllScreenersResults/
           if-no-files-found: warn
           retention-days: 30
 
       # Runs after the upload so a publishing failure can never cost the
       # artifact. Demo output is synthetic and must never be published.
+      #
+      # reports/ is a stable pull target (scripts/pull_report.ps1 and anyone
+      # else fetching this repo expect fixed names), so the dated source files
+      # are copied in under their original undated names rather than as-is.
       - name: Publish report to reports/ for local pulls
         if: env.SCAN_PROVIDER != 'demo'
         shell: bash
         run: |
-          if ! compgen -G "$MARKET_SCANNER_OUTPUT_DIR/market-scan.*" > /dev/null; then
+          shopt -s nullglob
+          # The directory is quoted for safety; the pattern is intentionally
+          # left unquoted so its [0-9] classes still glob-expand after
+          # substitution — quoting the whole interpolated string here would
+          # make bash treat the brackets as literal characters instead.
+          pattern='market-scan-[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]'
+          html=("$MARKET_SCANNER_OUTPUT_DIR"/$pattern.html)
+          if [[ ${#html[@]} -eq 0 ]]; then
             echo "No report to publish."
             exit 0
           fi
           mkdir -p reports
-          cp "$MARKET_SCANNER_OUTPUT_DIR"/market-scan.* reports/
+          for ext in json csv md html; do
+            src=("$MARKET_SCANNER_OUTPUT_DIR"/$pattern.$ext)
+            cp "${src[0]}" "reports/market-scan.$ext"
+          done
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reports

@@ -12,7 +12,7 @@ of record. The generated header repeats this where it will be read.
 
 Usage:
     python scripts/chart_wall.py
-    python scripts/chart_wall.py --csv artifacts/market-scan.csv --interval 15
+    python scripts/chart_wall.py --csv AllScreenersResults/market-scan-23-08-2026.csv --interval 15
 """
 
 from __future__ import annotations
@@ -204,12 +204,27 @@ def build(
 """
 
 
+def _newest_volatility_csv() -> Path | None:
+    """Most recently written dated volatility CSV, or None if none exist.
+
+    Every report is now stamped ``market-scan-volatility-DD-MM-YYYY.csv``
+    (see ``write_reports`` in ``reporting.py``), so there is no fixed filename
+    to point a default at; the newest by modification time is used instead.
+    """
+    directory = PROJECT_DIR / "AllScreenersResults"
+    candidates = sorted(
+        directory.glob("market-scan-volatility-*.csv"), key=lambda path: path.stat().st_mtime
+    )
+    return candidates[-1] if candidates else None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build a live chart wall from a scan CSV.")
     parser.add_argument(
         "--csv",
-        default=str(PROJECT_DIR / "artifacts" / "market-scan-volatility.csv"),
-        help="scanner result CSV to chart (default: the high-volatility list)",
+        default=None,
+        help="scanner result CSV to chart (default: the newest high-volatility "
+        "list in AllScreenersResults/)",
     )
     parser.add_argument("--output", help="destination HTML (default: beside the CSV)")
     parser.add_argument(
@@ -224,9 +239,18 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    csv_path = Path(args.csv).resolve()
-    if not csv_path.exists():
-        raise SystemExit(f"No such CSV: {csv_path}\nRun a scan first.")
+    if args.csv:
+        csv_path = Path(args.csv).resolve()
+        if not csv_path.exists():
+            raise SystemExit(f"No such CSV: {csv_path}\nRun a scan first.")
+    else:
+        newest = _newest_volatility_csv()
+        if newest is None:
+            raise SystemExit(
+                "No high-volatility CSV found in AllScreenersResults/.\n"
+                "Run a scan first, or pass --csv explicitly."
+            )
+        csv_path = newest
 
     rows = read_rows(csv_path)
     output = (

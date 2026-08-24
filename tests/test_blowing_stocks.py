@@ -680,46 +680,45 @@ def test_headlines_are_escaped_into_the_html(result) -> None:
 # ------------------------------------------------------------- retention
 
 
-def test_a_run_writes_the_current_report_and_a_dated_copy(result, tmp_path: Path) -> None:
+def test_a_run_writes_a_dated_report(result, tmp_path: Path) -> None:
     written = write_reports(result, tmp_path, retention_days=7, run_date=SESSION)
     for name in ("json", "csv", "markdown", "html"):
-        assert written["current"][name].exists()
-        assert written["archived"][name].exists()
-    assert written["archived"]["json"].name == f"{BASENAME}-2026-08-19.json"
-    assert written["archived"]["json"].parent.name == "history"
+        assert written["paths"][name].exists()
+        assert written["paths"][name].parent == tmp_path
+    assert written["paths"]["json"].name == f"{BASENAME}-19-08-2026.json"
 
 
 def test_the_archive_keeps_exactly_the_retention_window(tmp_path: Path) -> None:
     for offset in range(0, 12):
-        stamp = (SESSION - timedelta(days=offset)).isoformat()
+        stamp = (SESSION - timedelta(days=offset)).strftime("%d-%m-%Y")
         (tmp_path / f"{BASENAME}-{stamp}.json").write_text("{}", encoding="utf-8")
 
     removed = prune_history(tmp_path, SESSION, retention_days=7)
     kept = sorted(path.name for path in tmp_path.iterdir())
 
     assert len(kept) == 7
-    assert kept[0] == f"{BASENAME}-2026-08-13.json"
-    assert kept[-1] == f"{BASENAME}-2026-08-19.json"
+    assert kept[0] == f"{BASENAME}-13-08-2026.json"
+    assert kept[-1] == f"{BASENAME}-19-08-2026.json"
     assert len(removed) == 5
 
 
 def test_pruning_only_ever_touches_files_this_module_wrote(tmp_path: Path) -> None:
-    """The archive lives in the operator's artifacts directory. A pattern that
-    swept up anything else would delete their files, not ours."""
+    """The report directory is the operator's shared output directory. A
+    pattern that swept up anything else would delete their files, not ours."""
     keep = [
         "notes.txt",
         "blowing-stocks.json",
-        "blowing-stocks-2020-01-01.txt",
-        "other-2020-01-01.json",
+        "blowing-stocks-01-01-2020.txt",
+        "other-01-01-2020.json",
         "blowing-stocks-not-a-date.json",
     ]
     for name in keep:
         (tmp_path / name).write_text("x", encoding="utf-8")
-    (tmp_path / f"{BASENAME}-2020-01-01.json").write_text("{}", encoding="utf-8")
+    (tmp_path / f"{BASENAME}-01-01-2020.json").write_text("{}", encoding="utf-8")
 
     removed = prune_history(tmp_path, SESSION, retention_days=7)
 
-    assert [path.name for path in removed] == [f"{BASENAME}-2020-01-01.json"]
+    assert [path.name for path in removed] == [f"{BASENAME}-01-01-2020.json"]
     assert sorted(path.name for path in tmp_path.iterdir()) == sorted(keep)
 
 
@@ -732,11 +731,10 @@ def test_a_rerun_on_the_same_day_replaces_that_day_rather_than_accumulating(
 ) -> None:
     write_reports(result, tmp_path, retention_days=7, run_date=SESSION)
     write_reports(result, tmp_path, retention_days=7, run_date=SESSION)
-    archive = tmp_path / "history"
-    assert len(list(archive.glob(f"{BASENAME}-*.json"))) == 1
+    assert len(list(tmp_path.glob(f"{BASENAME}-*.json"))) == 1
 
 
-def test_the_archive_is_stamped_with_the_run_date_not_the_session_date(
+def test_the_report_is_stamped_with_the_run_date_not_the_session_date(
     tmp_path: Path,
 ) -> None:
     """A Saturday run reports Friday's session. Stamping it Friday would
@@ -745,5 +743,5 @@ def test_the_archive_is_stamped_with_the_run_date_not_the_session_date(
         [], provider="test", generated_at="now", session_date=SESSION, session_phase="closed"
     )
     write_reports(closed, tmp_path, retention_days=7, run_date=date(2026, 8, 22))
-    assert (tmp_path / "history" / f"{BASENAME}-2026-08-22.json").exists()
-    assert not (tmp_path / "history" / f"{BASENAME}-2026-08-19.json").exists()
+    assert (tmp_path / f"{BASENAME}-22-08-2026.json").exists()
+    assert not (tmp_path / f"{BASENAME}-19-08-2026.json").exists()

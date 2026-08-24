@@ -421,15 +421,22 @@ def normalize_scan_result(result: Any) -> dict[str, Any]:
     }
 
 
+#: Keys never surfaced in the market-scan report, in any format. The
+#: high-volatility list lives only in its own market-scan-volatility-*.csv;
+#: kept out of the main JSON too so a reader can't mistake an unscreened name
+#: for one that passed the hard gates just because it showed up here.
+_VOLATILITY_KEYS = ("volatility_candidates", "volatility_count")
+
+
 def render_json(result: Any, *, indent: int | None = 2) -> str:
     """Render normalized machine-readable JSON."""
 
-    return (
-        json.dumps(
-            normalize_scan_result(result), indent=indent, ensure_ascii=False, allow_nan=False
-        )
-        + "\n"
-    )
+    payload = {
+        key: value
+        for key, value in normalize_scan_result(result).items()
+        if key not in _VOLATILITY_KEYS
+    }
+    return json.dumps(payload, indent=indent, ensure_ascii=False, allow_nan=False) + "\n"
 
 
 def render_csv(result: Any) -> str:
@@ -453,6 +460,9 @@ def render_volatility_csv(result: Any) -> str:
 
     A separate file from the watchlist CSV, so a spreadsheet workflow cannot
     concatenate gated and ungated names into one sorted column by accident.
+    Used by ``volatility_reporting.py``, which owns the full High-volatility
+    report (json/csv/md/html); this stays here because it reads directly from
+    ``normalize_scan_result``, this module's own schema.
     """
 
     report = normalize_scan_result(result)
@@ -540,37 +550,9 @@ def render_markdown(result: Any) -> str:
                     "",
                 ]
             )
-    if report["volatility_candidates"]:
-        lines.extend(
-            [
-                "",
-                "## High-volatility list",
-                "",
-                "Screened on liquidity and ATR only. **These names have not passed the hard "
-                "gates** and carry no thesis, stop, or target. This is a starting point for "
-                "manual work, not a watchlist.",
-                "",
-                "| # | Symbol | Price | ATR | RVOL | Spread | Gap | Vol conf | Trend | Score | On watchlist |",
-                "|---:|:---|---:|---:|---:|---:|---:|---:|:---|---:|:---|",
-            ]
-        )
-        for row in report["volatility_candidates"]:
-            lines.append(
-                "| {rank} | **{symbol}** | {price} | {atr} | {rvol} | {spread} | {gap} | {conf} | {trend} | {score} | {flag} |".format(
-                    rank=row["rank"],
-                    symbol=_md(row["symbol"]),
-                    price=_display_number(row["price"], prefix="$"),
-                    atr=_display_number(row["atr_percent"], suffix="%"),
-                    rvol=_display_number(row["rvol"], suffix="×"),
-                    spread=_display_number(row["spread_percent"], suffix="%"),
-                    gap=_display_number(row["gap_percent"], suffix="%"),
-                    conf=_display_number(row["volume_confirmation"], suffix="×"),
-                    trend=_md(row["trend"]),
-                    score=_display_number(row["volatility_score"], decimals=1),
-                    flag="yes" if row["on_watchlist"] else "no",
-                )
-            )
-        lines.append("")
+    # The high-volatility list is never rendered here — it lives only in its
+    # own market-scan-volatility-*.csv, so this report only ever shows names
+    # that passed every hard gate.
     if report["warnings"]:
         lines.extend(
             ["## Warnings", ""] + [f"- {_md(value)}" for value in report["warnings"]] + [""]
@@ -701,46 +683,9 @@ def render_html(result: Any, *, title: str = "Morning Market Scanner") -> str:
             '<p class="muted-copy">Checklist unavailable until a qualifying setup appears.</p>'
         )
 
-    volatility_rows = []
-    for row in report["volatility_candidates"]:
-        flag = (
-            '<span class="badge">on watchlist</span>'
-            if row["on_watchlist"]
-            else '<span class="badge muted">screen only</span>'
-        )
-        volatility_rows.append(
-            f"""
-            <tr>
-              <td><span class="rank">{row["rank"]:02d}</span></td>
-              <td><strong class="ticker">{_h(row["symbol"])}</strong></td>
-              <td>{_metric(row["price"], prefix="$")}</td>
-              <td class="hot">{_metric(row["atr_percent"], suffix="%")}</td>
-              <td>{_metric(row["rvol"], suffix="×")}</td>
-              <td>{_metric(row["spread_percent"], suffix="%")}</td>
-              <td>{_metric(row["gap_percent"], suffix="%")}</td>
-              <td>{_metric(row["volume_confirmation"], suffix="×")}</td>
-              <td>{_h(row["trend"])}</td>
-              <td>{_metric(row["volatility_score"], decimals=1)}</td>
-              <td>{flag}</td>
-            </tr>"""
-        )
-    if volatility_rows:
-        volatility_section = f"""
-    <section class="block" aria-labelledby="volatility-heading">
-      <header class="section-head"><h2 id="volatility-heading">High-volatility list</h2><p>{report["volatility_count"]} names · widest tradable range first</p></header>
-      <section class="state warning">
-        <h2>Not a watchlist</h2>
-        <p>Screened on liquidity and ATR only. These names have <strong>not</strong> passed the hard gates and carry no thesis, stop, or target. Build the trade plan yourself before acting on anything here.</p>
-      </section>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>#</th><th>Stock</th><th>Price</th><th title="14-session average true range as a percent of price">ATR</th><th>RVOL</th><th>Spread</th><th>Gap</th><th title="Recent mean volume over the equally long window before it; above 1.00 means participation is expanding">Vol conf</th><th>Trend</th><th title="Volatility ranking only; not comparable to the watchlist score">Score</th><th></th></tr></thead>
-          <tbody>{"".join(volatility_rows)}</tbody>
-        </table>
-      </div>
-    </section>"""
-    else:
-        volatility_section = ""
+    # The high-volatility list is never rendered here — it lives only in its
+    # own market-scan-volatility-*.csv, so this dashboard only ever shows
+    # names that passed every hard gate.
 
     return f"""<!doctype html>
 <html lang="en">
@@ -789,7 +734,6 @@ def render_html(result: Any, *, title: str = "Morning Market Scanner") -> str:
       <header class="section-head"><h2 id="checklist-heading">Pre-trade checklist</h2><p>Thesis · stop · target · defined risk</p></header>
       {checklist_content}
     </section>
-    {volatility_section}
     <footer>Generated by Market Scanner · Validate execution data independently · {report["candidate_count"]} qualifying securities</footer>
   </main>
 </body>
@@ -798,10 +742,22 @@ def render_html(result: Any, *, title: str = "Morning Market Scanner") -> str:
 
 
 def write_reports(
-    result: Any, output_dir: str | Path, *, basename: str = "market-scan"
+    result: Any,
+    output_dir: str | Path,
+    *,
+    basename: str = "market-scan",
+    run_date: date | None = None,
 ) -> dict[str, Path]:
-    """Write all report formats and return paths keyed by format."""
+    """Write all report formats and return paths keyed by format.
 
+    Every filename carries the run date (``DD-MM-YYYY``) so a run never
+    overwrites a prior day's report; ``run_date`` defaults to today but is
+    exposed so a caller can stamp a report with the session date it actually
+    describes rather than the clock date it happened to run on.
+    """
+
+    stamp = run_date or date.today()
+    stamped = f"{basename}-{stamp:%d-%m-%Y}"
     destination = Path(output_dir)
     destination.mkdir(parents=True, exist_ok=True)
     renderers = {
@@ -813,19 +769,9 @@ def write_reports(
     suffixes = {"json": ".json", "csv": ".csv", "markdown": ".md", "html": ".html"}
     paths: dict[str, Path] = {}
     for format_name, renderer in renderers.items():
-        path = destination / f"{basename}{suffixes[format_name]}"
+        path = destination / f"{stamped}{suffixes[format_name]}"
         path.write_text(renderer(result), encoding="utf-8")
         paths[format_name] = path
-    # Written only when the list has rows. An empty file every morning trains
-    # the reader to ignore it, and a stale one from a previous run is worse, so
-    # any existing file is removed rather than left to look like today's.
-    volatility_path = destination / f"{basename}-volatility.csv"
-    volatility_csv = render_volatility_csv(result)
-    if normalize_scan_result(result)["volatility_candidates"]:
-        volatility_path.write_text(volatility_csv, encoding="utf-8")
-        paths["volatility_csv"] = volatility_path
-    elif volatility_path.exists():
-        volatility_path.unlink()
     return paths
 
 

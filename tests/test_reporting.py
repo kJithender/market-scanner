@@ -4,7 +4,7 @@ import csv
 import io
 import json
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 
 from market_scanner.reporting import (
     CSV_FIELDS,
@@ -175,6 +175,22 @@ def test_write_reports_creates_all_formats(tmp_path) -> None:
     assert all(path.exists() and path.stat().st_size > 0 for path in paths.values())
 
 
+def test_write_reports_suffixes_every_filename_with_the_run_date(tmp_path) -> None:
+    """Every report is stamped DD-MM-YYYY so a later run never silently
+    overwrites an earlier day's file."""
+    paths = write_reports(sample_result(), tmp_path, run_date=date(2026, 8, 23))
+
+    assert paths["json"].name == "market-scan-23-08-2026.json"
+    assert paths["csv"].name == "market-scan-23-08-2026.csv"
+    assert paths["markdown"].name == "market-scan-23-08-2026.md"
+    assert paths["html"].name == "market-scan-23-08-2026.html"
+
+
+def test_write_reports_defaults_the_stamp_to_today(tmp_path) -> None:
+    paths = write_reports(sample_result(), tmp_path)
+    assert paths["json"].name == f"market-scan-{date.today():%d-%m-%Y}.json"
+
+
 @dataclass
 class VolatileRow:
     symbol: str
@@ -249,30 +265,33 @@ def test_volatility_csv_is_its_own_file_with_its_own_columns() -> None:
     assert rows[0]["atr_percent"] == "8"
 
 
-def test_reports_state_that_volatility_names_are_not_gated() -> None:
-    markdown = render_markdown(sample_with_volatility())
-    html = render_html(sample_with_volatility())
+def test_volatility_names_never_appear_in_the_market_scan_report() -> None:
+    """The high-volatility list lives only in its own CSV. Showing it inside
+    market-scan's own json/md/html would let an unscreened name read as one
+    that passed the hard gates, so none of those three may mention it, with
+    rows present or not."""
+    with_rows = sample_with_volatility()
+    empty = sample_result()
 
-    assert "## High-volatility list" in markdown
-    assert "have not passed the hard" in markdown
-    assert "High-volatility list" in html
-    assert "Not a watchlist" in html
+    for result in (with_rows, empty):
+        markdown = render_markdown(result)
+        page = render_html(result)
+        payload = json.loads(render_json(result))
+
+        assert "High-volatility list" not in markdown
+        assert "High-volatility list" not in page
+        assert "volatility_candidates" not in payload
+        assert "volatility_count" not in payload
+
+    # The data is still computed internally — write_reports and the separate
+    # CSV renderer both depend on it — just never surfaced in these three.
+    assert normalize_scan_result(with_rows)["volatility_count"] == 3
+    assert normalize_scan_result(empty)["volatility_count"] == 0
 
 
-def test_volatility_section_is_omitted_when_the_list_is_empty() -> None:
-    markdown = render_markdown(sample_result())
-
-    assert "High-volatility list" not in markdown
-    assert normalize_scan_result(sample_result())["volatility_count"] == 0
-
-
-def test_volatility_csv_is_written_only_when_the_list_has_rows(tmp_path) -> None:
-    paths = write_reports(sample_with_volatility(), tmp_path)
-    volatility_path = paths["volatility_csv"]
-    assert volatility_path.name == "market-scan-volatility.csv"
-    assert "VOL1" in volatility_path.read_text(encoding="utf-8")
-
-    # A later empty run must not leave yesterday's file looking like today's.
-    paths = write_reports(sample_result(), tmp_path)
-    assert "volatility_csv" not in paths
-    assert not volatility_path.exists()
+def test_write_reports_never_writes_a_volatility_file(tmp_path) -> None:
+    """market-scan's own write_reports must stay clean of the volatility
+    list entirely — that report is owned by volatility_reporting.py now."""
+    paths = write_reports(sample_with_volatility(), tmp_path, run_date=date(2026, 8, 23))
+    assert set(paths) == {"json", "csv", "markdown", "html"}
+    assert not list(tmp_path.glob("*volatility*"))

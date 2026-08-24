@@ -5,7 +5,7 @@ FROM python:3.12-slim AS runtime
 # two variables the image silently ignores the config/ copied below.
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    MARKET_SCANNER_OUTPUT_DIR=/app/artifacts \
+    MARKET_SCANNER_OUTPUT_DIR=/app/AllScreenersResults \
     MARKET_SCANNER_CONFIG=/app/config/scanner.toml \
     MARKET_SCANNER_UNIVERSE=/app/config/universe.txt
 
@@ -20,8 +20,8 @@ COPY src/ ./src/
 RUN python -m pip install --no-cache-dir --upgrade pip \
     && python -m pip install --no-cache-dir .
 
-RUN mkdir -p /app/artifacts && chown scanner:scanner /app/artifacts
+RUN mkdir -p /app/AllScreenersResults && chown scanner:scanner /app/AllScreenersResults
 USER scanner
 
 ENTRYPOINT ["market-scanner"]
-CMD ["scan", "--provider", "alpaca", "--output-dir", "/app/artifacts"]
+CMD ["scan", "--provider", "alpaca", "--output-dir", "/app/AllScreenersResults"]

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import date
 from pathlib import Path
 
 from market_scanner.cli import main
@@ -11,7 +12,10 @@ def test_demo_cli_writes_all_reports(tmp_path: Path) -> None:
     code = main(["scan", "--provider", "demo", "--output-dir", str(tmp_path)])
     assert code == 0
     assert {path.suffix for path in tmp_path.iterdir()} == {".json", ".csv", ".md", ".html"}
-    report = json.loads((tmp_path / "market-scan.json").read_text(encoding="utf-8"))
+    # The CLI always stamps the filename with today's run date.
+    dated = tmp_path / f"market-scan-{date.today():%d-%m-%Y}.json"
+    assert dated.exists()
+    report = json.loads(dated.read_text(encoding="utf-8"))
     # The CLI reads config/scanner.toml, so compare against that same file
     # rather than the dataclass default.
     assert report["candidate_count"] == load_config()[0].watchlist_size
@@ -22,6 +26,30 @@ def test_demo_cli_writes_all_reports(tmp_path: Path) -> None:
     assert all(candidate["passed_filters"] for candidate in report["candidates"])
 
 
+def test_demo_cli_rebuilds_the_parent_index(tmp_path: Path) -> None:
+    """Every screener run must leave a link to its own report discoverable."""
+    code = main(["scan", "--provider", "demo", "--output-dir", str(tmp_path)])
+    assert code == 0
+    index = (tmp_path / "index.html").read_text(encoding="utf-8")
+    assert f"market-scan-{date.today():%d-%m-%Y}.html" in index
+    assert "Market Scan" in index
+    # The high-volatility report is its own separate, always-generated report.
+    assert f"High-volatility-{date.today():%d-%m-%Y}.html" in index
+    assert "High Volatility" in index
+
+
+def test_demo_cli_always_writes_the_high_volatility_report(tmp_path: Path) -> None:
+    code = main(["scan", "--provider", "demo", "--output-dir", str(tmp_path)])
+    assert code == 0
+    stamp = f"{date.today():%d-%m-%Y}"
+    dated = list(tmp_path.glob(f"High-volatility-{stamp}.*"))
+    assert {path.suffix for path in dated} == {".json", ".csv", ".md", ".html"}
+    # It must never appear inside the main market-scan report itself.
+    main_report = (tmp_path / f"market-scan-{stamp}.html").read_text(encoding="utf-8")
+    assert "High-volatility" not in main_report
+    assert "High-Volatility" not in main_report
+
+
 def test_live_cli_fails_closed_without_credentials(monkeypatch, tmp_path: Path) -> None:
     monkeypatch.delenv("APCA_API_KEY_ID", raising=False)
     monkeypatch.delenv("APCA_API_SECRET_KEY", raising=False)
@@ -29,7 +57,7 @@ def test_live_cli_fails_closed_without_credentials(monkeypatch, tmp_path: Path) 
     assert not list(tmp_path.iterdir())
 
 
-def test_blowing_stocks_cli_writes_reports_and_a_dated_archive(tmp_path: Path) -> None:
+def test_blowing_stocks_cli_writes_a_dated_report(tmp_path: Path) -> None:
     code = main(
         [
             "blowing-stocks",
@@ -42,17 +70,13 @@ def test_blowing_stocks_cli_writes_reports_and_a_dated_archive(tmp_path: Path) -
         ]
     )
     assert code == 0
-    written = {path.name for path in tmp_path.iterdir() if path.is_file()}
-    assert written == {
-        "blowing-stocks.json",
-        "blowing-stocks.csv",
-        "blowing-stocks.md",
-        "blowing-stocks.html",
-    }
-    archive = list((tmp_path / "history").glob("blowing-stocks-*.json"))
-    assert len(archive) == 1
+    dated = list(tmp_path.glob(f"blowing-stocks-{date.today():%d-%m-%Y}.*"))
+    assert {path.suffix for path in dated} == {".json", ".csv", ".md", ".html"}
+    index = (tmp_path / "index.html").read_text(encoding="utf-8")
+    assert f"blowing-stocks-{date.today():%d-%m-%Y}.html" in index
 
-    report = json.loads((tmp_path / "blowing-stocks.json").read_text(encoding="utf-8"))
+    report_path = next(path for path in dated if path.suffix == ".json")
+    report = json.loads(report_path.read_text(encoding="utf-8"))
     assert report["report"] == "blowing-stocks"
     assert report["screener"] == "BlowingStocksScreener"
     assert [row["symbol"] for row in report["low_float"]] == ["AAA", "BBB"]
@@ -82,8 +106,7 @@ def test_blowing_stocks_cli_fails_closed_without_credentials(monkeypatch, tmp_pa
 
 def test_blowing_stocks_cli_honours_the_retention_override(tmp_path: Path) -> None:
     """The archive window is an operator decision, so the flag has to reach it."""
-    stale = tmp_path / "history" / "blowing-stocks-2020-01-01.json"
-    stale.parent.mkdir(parents=True)
+    stale = tmp_path / "blowing-stocks-01-01-2020.json"
     stale.write_text("{}", encoding="utf-8")
     code = main(
         [

@@ -3,7 +3,7 @@ set -euo pipefail
 
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 VENV_DIR="${MARKET_SCANNER_VENV:-$PROJECT_DIR/.venv}"
-OUTPUT_DIR="${MARKET_SCANNER_OUTPUT_DIR:-$PROJECT_DIR/artifacts}"
+OUTPUT_DIR="${MARKET_SCANNER_OUTPUT_DIR:-$PROJECT_DIR/AllScreenersResults}"
 
 cd "$PROJECT_DIR"
 mkdir -p "$OUTPUT_DIR"

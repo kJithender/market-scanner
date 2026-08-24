@@ -7,7 +7,7 @@ import asyncio
 import json
 import sys
 from dataclasses import replace
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from pathlib import Path
 
 from market_scanner.blowing_reporting import write_reports as write_blowing_reports
@@ -26,6 +26,7 @@ from market_scanner.config import (
 )
 from market_scanner.float_data import FloatProvider
 from market_scanner.fundamentals import FundamentalsProvider
+from market_scanner.index_reporting import write_index
 from market_scanner.multibagger import build_result as build_multibagger_result
 from market_scanner.multibagger_reporting import (
     write_reports as write_multibagger_reports,
@@ -34,6 +35,7 @@ from market_scanner.providers import AlpacaProvider, DemoProvider, YahooProvider
 from market_scanner.providers.alpaca import ProviderError
 from market_scanner.reporting import write_reports
 from market_scanner.scanner import scan_market
+from market_scanner.volatility_reporting import write_reports as write_volatility_reports
 
 
 def parser() -> argparse.ArgumentParser:
@@ -142,8 +144,9 @@ async def _multibagger(args: argparse.Namespace) -> int:
         generated_at=datetime.now(UTC).isoformat(),
         warnings=warnings,
     )
-    output_dir = Path(args.output_dir or output_config.get("directory") or "artifacts")
-    paths = write_multibagger_reports(result, output_dir)
+    output_dir = Path(args.output_dir or output_config.get("directory") or "AllScreenersResults")
+    paths = write_multibagger_reports(result, output_dir, run_date=date.today())
+    index_path = write_index(output_dir)
     print(
         json.dumps(
             {
@@ -152,6 +155,7 @@ async def _multibagger(args: argparse.Namespace) -> int:
                 "scanned": result.symbols_scanned,
                 "qualified": result.symbols_qualified,
                 "outputs": {name: str(path) for name, path in paths.items()},
+                "index": str(index_path),
                 "warnings": result.warnings,
             },
             indent=2,
@@ -184,13 +188,11 @@ async def _blowing_stocks(args: argparse.Namespace) -> int:
     if args.require_float is not None:
         config = replace(config, require_float=args.require_float)
 
-    # An explicit --output-dir is used exactly as given; the default puts the
-    # screener in its own subdirectory so its rolling history/ archive never
-    # sits beside the scan's reports.
-    output_dir = (
-        Path(args.output_dir)
-        if args.output_dir
-        else Path(output_config.get("directory") or "artifacts") / "blowing-stocks"
+    # An explicit --output-dir is used exactly as given; the default matches
+    # the other two screeners so every report lands in one shared directory.
+    # Filenames are screener-prefixed and date-stamped, so nothing collides.
+    output_dir = Path(
+        args.output_dir or output_config.get("directory") or "AllScreenersResults"
     )
     warnings: list[str] = []
     symbols = _blowing_universe(args, config, warnings)
@@ -231,8 +233,9 @@ async def _blowing_stocks(args: argparse.Namespace) -> int:
         warnings=warnings,
     )
     written = write_blowing_reports(
-        result, output_dir, retention_days=config.history_retention_days
+        result, output_dir, retention_days=config.history_retention_days, run_date=date.today()
     )
+    index_path = write_index(output_dir)
     print(
         json.dumps(
             {
@@ -245,8 +248,8 @@ async def _blowing_stocks(args: argparse.Namespace) -> int:
                 "measured": examined,
                 "low_float": len(result.low_float),
                 "catalyst": len(result.catalyst),
-                "outputs": {name: str(path) for name, path in written["current"].items()},
-                "archived": str(written["archived"]["html"].parent),
+                "outputs": {name: str(path) for name, path in written["paths"].items()},
+                "index": str(index_path),
                 "pruned": [path.name for path in written["pruned"]],
                 "warnings": result.warnings,
             },
@@ -293,13 +296,20 @@ async def _scan(args: argparse.Namespace) -> int:
     result = await scan_market(
         provider, symbols, config, fundamentals_provider=fundamentals_provider
     )
-    output_dir = Path(args.output_dir or output_config.get("directory") or "artifacts")
-    paths = write_reports(result.to_dict(), output_dir)
+    output_dir = Path(args.output_dir or output_config.get("directory") or "AllScreenersResults")
+    run_date = date.today()
+    paths = write_reports(result.to_dict(), output_dir, run_date=run_date)
+    # Always written, gated names or not: a separate report from market-scan
+    # itself, so the high-volatility list never appears inside it.
+    volatility_paths = write_volatility_reports(result.to_dict(), output_dir, run_date=run_date)
+    index_path = write_index(output_dir)
     summary = {
         "provider": result.provider,
         "scanned": result.symbols_scanned,
         "qualified": result.symbols_qualified,
         "outputs": {name: str(path) for name, path in paths.items()},
+        "volatility_outputs": {name: str(path) for name, path in volatility_paths.items()},
+        "index": str(index_path),
         "warnings": result.warnings,
     }
     print(json.dumps(summary, indent=2))

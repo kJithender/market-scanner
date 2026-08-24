@@ -10,7 +10,9 @@
     The report is historical: every multiple in it has already happened. It is
     not a watchlist and not a forecast.
 
-    Output goes to artifacts\multibagger\, which is git-ignored.
+    Output goes to AllScreenersResults\, shared with the other two screeners
+    and git-ignored. Every report is stamped with today's date (DD-MM-YYYY),
+    so a run here never overwrites yesterday's file.
 #>
 [CmdletBinding()]
 param(
@@ -21,7 +23,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $projectDir = Split-Path -Parent $PSScriptRoot
-$outputDir = Join-Path $projectDir "artifacts\multibagger"
+$outputDir = Join-Path $projectDir "AllScreenersResults"
 $logDir = Join-Path $projectDir "artifacts\logs"
 foreach ($dir in @($outputDir, $logDir)) {
     if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
@@ -58,8 +60,10 @@ try {
     Write-Log ("Scanned {0}, qualified {1}." -f $parsed.scanned, $parsed.qualified)
     foreach ($warning in $parsed.warnings) { Write-Log "  warning: $warning" }
 
-    $report = Join-Path $outputDir "multibagger.html"
-    if ($Open -and (Test-Path $report)) {
+    # The filename is date-stamped by the CLI itself, so the exact path is
+    # read from its own summary rather than reconstructed here.
+    $report = $parsed.outputs.html
+    if ($Open -and $report -and (Test-Path $report)) {
         Start-Process $report
         Write-Log "Opened $report"
     }

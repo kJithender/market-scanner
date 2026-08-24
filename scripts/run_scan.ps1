@@ -14,8 +14,10 @@
         [Environment]::SetEnvironmentVariable("APCA_API_KEY_ID", "<id>", "User")
         [Environment]::SetEnvironmentVariable("APCA_API_SECRET_KEY", "<secret>", "User")
 
-    Output goes to artifacts\local\, which is git-ignored, so it never collides
-    with the reports\ directory synced from GitHub.
+    Output goes to AllScreenersResults\, shared with the other two screeners
+    and git-ignored, so it never collides with the reports\ directory synced
+    from GitHub. Every report is stamped with today's date (DD-MM-YYYY), so
+    a run here never overwrites yesterday's file.
 #>
 [CmdletBinding()]
 param(
@@ -27,7 +29,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $projectDir = Split-Path -Parent $PSScriptRoot
-$outputDir = Join-Path $projectDir "artifacts\local"
+$outputDir = Join-Path $projectDir "AllScreenersResults"
 $logDir = Join-Path $projectDir "artifacts\logs"
 foreach ($dir in @($outputDir, $logDir)) {
     if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
@@ -71,8 +73,10 @@ try {
     Write-Log ("Scanned {0}, qualified {1}." -f $parsed.scanned, $parsed.qualified)
     foreach ($warning in $parsed.warnings) { Write-Log "  warning: $warning" }
 
-    $report = Join-Path $outputDir "market-scan.html"
-    if (-not $NoOpen -and (Test-Path $report)) {
+    # The filename is date-stamped by the CLI itself, so the exact path is
+    # read from its own summary rather than reconstructed here.
+    $report = $parsed.outputs.html
+    if (-not $NoOpen -and $report -and (Test-Path $report)) {
         Start-Process $report
         Write-Log "Opened $report"
     }

@@ -13,6 +13,7 @@ import csv
 import html
 import io
 import json
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -204,7 +205,11 @@ footer{{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:
 """
 
 
-def write_reports(result: MultibaggerResult, directory: str | Path) -> dict[str, Path]:
+def write_reports(
+    result: MultibaggerResult, directory: str | Path, *, run_date: date | None = None
+) -> dict[str, Path]:
+    """Write all report formats, each stamped ``multibagger-DD-MM-YYYY.ext``."""
+    stamp = run_date or date.today()
     target = Path(directory)
     target.mkdir(parents=True, exist_ok=True)
     written: dict[str, Path] = {}
@@ -214,7 +219,7 @@ def write_reports(result: MultibaggerResult, directory: str | Path) -> dict[str,
         ("markdown", ".md", render_markdown(result)),
         ("html", ".html", render_html(result)),
     ):
-        path = target / f"multibagger{suffix}"
+        path = target / f"multibagger-{stamp:%d-%m-%Y}{suffix}"
         path.write_text(payload, encoding="utf-8")
         written[name] = path
     return written

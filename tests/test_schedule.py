@@ -59,7 +59,10 @@ def test_report_publishing_is_write_scoped_and_never_publishes_demo_data() -> No
 
 def test_watchlist_is_published_to_the_run_summary() -> None:
     text = _workflow_text()
-    assert 'cat "$watchlist" >> "$GITHUB_STEP_SUMMARY"' in text
+    # Every report is stamped DD-MM-YYYY, so the exact filename is discovered
+    # via glob rather than assumed; the discovered file is still concatenated
+    # into the run summary.
+    assert 'cat "${watchlist[0]}" >> "$GITHUB_STEP_SUMMARY"' in text
     # The summary must still say something when no report was written.
     assert "No watchlist produced" in text
 

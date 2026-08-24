@@ -26,9 +26,10 @@
 
         [Environment]::SetEnvironmentVariable("SEC_CONTACT_EMAIL", "<you@example.com>", "User")
 
-    Output goes to artifacts\blowing-stocks\, which is git-ignored. Today's
-    report sits at the top level; history\ holds one dated copy per run day and
-    anything older than the retention window is deleted on the next run.
+    Output goes to AllScreenersResults\, shared with the other two screeners
+    and git-ignored. Every run writes one report stamped with today's date
+    (DD-MM-YYYY); anything older than the retention window is deleted on the
+    next run.
 
     The screener runs every day, including weekends. On a day the market did
     not open it says so and screens nothing: the gap, RVOL and breakout gates
@@ -47,7 +48,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $projectDir = Split-Path -Parent $PSScriptRoot
-$outputDir = Join-Path $projectDir "artifacts\blowing-stocks"
+$outputDir = Join-Path $projectDir "AllScreenersResults"
 $logDir = Join-Path $projectDir "artifacts\logs"
 foreach ($dir in @($outputDir, $logDir)) {
     if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
@@ -98,8 +99,10 @@ try {
     if ($parsed.pruned) { Write-Log ("Pruned {0} expired archive files." -f $parsed.pruned.Count) }
     foreach ($warning in $parsed.warnings) { Write-Log "  warning: $warning" }
 
-    $report = Join-Path $outputDir "blowing-stocks.html"
-    if ($Open -and (Test-Path $report)) {
+    # The filename is date-stamped by the CLI itself, so the exact path is
+    # read from its own summary rather than reconstructed here.
+    $report = $parsed.outputs.html
+    if ($Open -and $report -and (Test-Path $report)) {
         Start-Process $report
         Write-Log "Opened $report"
     }
