@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-08-26T13:56:06.222113+00:00",
-  "data_as_of": null,
-  "data_freshness": "Data timestamp not supplied — verify freshness",
+  "generated_at": "2026-08-27T22:51:38.172281+00:00",
+  "data_as_of": "2026-08-27T18:50:40-04:00",
+  "data_freshness": "Market data as of 2026-08-27T18:50:40-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,40 +22,121 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 0,
+  "candidate_count": 1,
   "target_watchlist_size": "200",
-  "status": "empty",
-  "candidates": [],
+  "status": "ok",
+  "candidates": [
+    {
+      "rank": 1,
+      "symbol": "HPQ",
+      "company": "",
+      "price": 29.63,
+      "volume": 13831875,
+      "current_volume": 65038396,
+      "rvol": 5.775,
+      "atr_percent": 4.337,
+      "beta": 0.615,
+      "spread_percent": null,
+      "gap_percent": -2.916,
+      "momentum_percent": 21.19,
+      "volume_spike": 1.74,
+      "volume_confirmation": 1.11,
+      "rsi": 61.1,
+      "pe_ratio": 11.48,
+      "trend": "uptrend",
+      "levels": "support: 26.05; resistance: 32.19",
+      "catalysts": [
+        "Stock Market Today, Aug. 27: HP Slips 3% on Weak PC Shipments Despite Fiscal Q3 Beat",
+        "HP (HPQ) Stock May Be 31% Undervalued Despite Record Revenue Pressure",
+        "HP Stock Tumbles After PC Shipments Sink 16%",
+        "Premarket gap -2.92%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $26.05 with RVOL 5.78 and -2.92% gap.",
+      "stop": "28.35",
+      "target": "32.2",
+      "risk": "$1.28/share; 77 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 16:00 ET / prior-session mean (Yahoo)",
+      "score": 46.06,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "Stock Market Today, Aug. 27: HP Slips 3% on Weak PC Shipments Despite Fiscal Q3 Beat",
+          "timestamp": "2026-08-27T21:13:10+00:00",
+          "url": "https://finance.yahoo.com/m/a141dcf0-48e3-3508-8c61-80e093f5765f/stock-market-today%2C-aug.-27%3A.html"
+        },
+        {
+          "kind": "news",
+          "description": "HP (HPQ) Stock May Be 31% Undervalued Despite Record Revenue Pressure",
+          "timestamp": "2026-08-27T20:18:34+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/hp-hpq-stock-may-31-201834154.html"
+        },
+        {
+          "kind": "news",
+          "description": "HP Stock Tumbles After PC Shipments Sink 16%",
+          "timestamp": "2026-08-27T19:12:10+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/hp-stock-tumbles-pc-shipments-191210763.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -2.92%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 18.88,
+      "revenue_growth_pct": 12.53,
+      "revenue_ttm": 58455000000,
+      "net_margin_pct": 4.14,
+      "eps_growth_pct": -11.25,
+      "debt_to_equity": null,
+      "return_on_equity_pct": null,
+      "fiscal_period_end": "2026-07-31",
+      "profitable": true,
+      "fundamentals_coverage": 0.75
+    }
+  ],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 237 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
+    "Stale Yahoo timestamps (>30 minutes) for 44 symbols; verify market session/holiday status before acting.",
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: EA",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "Only 0 symbols passed every hard gate; watchlist was not padded.",
-    "The high-volatility list (5 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 0,
+  "symbols_qualified": 1,
   "rejection_counts": {
-    "atr": 53,
+    "atr": 52,
     "average_volume": 21,
-    "beta": 57,
-    "catalyst": 18,
-    "clean_trend": 167,
-    "clear_levels": 5,
+    "beta": 58,
+    "catalyst": 4,
+    "clean_trend": 161,
+    "clear_levels": 4,
     "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 167,
+    "momentum": 169,
     "price": 3,
     "revenue_growth": 99,
-    "rvol": 223,
-    "volume_confirmation": 130
+    "rvol": 139,
+    "volume_confirmation": 155
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }

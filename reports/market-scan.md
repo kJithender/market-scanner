@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-08-26T13:56:06.222113+00:00`  
-Freshness: Data timestamp not supplied — verify freshness  
+Generated: `2026-08-27T22:51:38.172281+00:00`  
+Freshness: Market data as of 2026-08-27T18:50:40-04:00  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **0 / 200 max**
+Watchlist: **1 / 200 max**
 
 ## Applied filters
 
@@ -28,7 +28,18 @@ Watchlist: **0 / 200 max**
 
 ## Ranked watchlist
 
-No stocks met every filter. No trade is a valid outcome.
+| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
+|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
+| 1 | **HPQ** | $29.63 | 13,831,875 | 5.78× | 4.34% | 0.61 | — | -2.92% | uptrend | support: 26.05; resistance: 32.19 | Stock Market Today, Aug. 27: HP Slips 3% on Weak PC Shipments Despite Fiscal Q3 Beat; HP (HPQ) Stock May Be 31% Undervalued Despite Record Revenue Pressure; HP Stock Tumbles After PC Shipments Sink 16%; Premarket gap -2.92% |
+
+## Pre-trade checklist
+
+### 1. HPQ
+
+- **Thesis:** Clean uptrend; watch hold above $26.05 with RVOL 5.78 and -2.92% gap.
+- **Stop:** 28.35
+- **Target:** 32.2
+- **Risk:** $1.28/share; 77 shares at $100 max planned risk
 
 ## Warnings
 
@@ -36,9 +47,8 @@ No stocks met every filter. No trade is a valid outcome.
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X
 - Yahoo returned complete price history for 237 of 245 requested symbols.
-- Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
+- Stale Yahoo timestamps (>30 minutes) for 44 symbols; verify market session/holiday status before acting.
 - No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: EA
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- Only 0 symbols passed every hard gate; watchlist was not padded.
-- The high-volatility list (5 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
