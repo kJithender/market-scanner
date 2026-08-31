@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-08-28T22:55:41.386830+00:00",
-  "data_as_of": "2026-08-28T18:53:37-04:00",
-  "data_freshness": "Market data as of 2026-08-28T18:53:37-04:00",
+  "generated_at": "2026-08-31T19:26:23.832549+00:00",
+  "data_as_of": "2026-08-31T15:25:14-04:00",
+  "data_freshness": "Market data as of 2026-08-31T15:25:14-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,7 +22,7 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 1,
+  "candidate_count": 2,
   "target_watchlist_size": "200",
   "status": "ok",
   "candidates": [
@@ -30,32 +30,32 @@
       "rank": 1,
       "symbol": "CRM",
       "company": "",
-      "price": 256.39,
-      "volume": 14061165,
-      "current_volume": 33873639,
-      "rvol": 2.922,
-      "atr_percent": 4.062,
-      "beta": 0.29,
+      "price": 259.48,
+      "volume": 15293725,
+      "current_volume": 31601081,
+      "rvol": 2.925,
+      "atr_percent": 4.189,
+      "beta": 0.196,
       "spread_percent": null,
-      "gap_percent": 1.722,
-      "momentum_percent": 43.44,
-      "volume_spike": 4.67,
-      "volume_confirmation": 1.5,
-      "rsi": 80,
-      "pe_ratio": 23.61,
+      "gap_percent": 1.359,
+      "momentum_percent": 34.31,
+      "volume_spike": 2.44,
+      "volume_confirmation": 1.84,
+      "rsi": 80.8,
+      "pe_ratio": 23.89,
       "trend": "uptrend",
-      "levels": "support: 175.9; resistance: 213.17",
+      "levels": "support: 177.03; resistance: 254.48",
       "catalysts": [
-        "Why ZM Stock Prints So Much Cash Right Now",
-        "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
-        "Is Adobe Stock’s AI Strategy Worth The Near-Term Risk?"
+        "Stock Market Today: Dow Skids As Oil, Bank Stocks Test Entries; Warsh Sees 'Secular Growth' Ahead (Live Coverage)",
+        "3 Earnings Winners Setting Up for Another Leg Higher",
+        "The Bill For Oracle's AI Build Arrived Before The Revenue"
       ],
-      "thesis": "Clean uptrend; watch hold above $175.90 with RVOL 2.92 and +1.72% gap.",
-      "stop": "245.97",
-      "target": "277.22",
-      "risk": "$10.42/share; 9 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 16:00 ET / prior-session mean (Yahoo)",
-      "score": 66.87,
+      "thesis": "Clean uptrend; watch hold above $177.03 with RVOL 2.92 and +1.36% gap.",
+      "stop": "248.61",
+      "target": "281.22",
+      "risk": "$10.87/share; 9 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:25 ET / prior-session mean (Yahoo)",
+      "score": 65.92,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -73,21 +73,21 @@
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Why ZM Stock Prints So Much Cash Right Now",
-          "timestamp": "2026-08-28T22:17:34+00:00",
-          "url": "https://finance.yahoo.com/m/a6549191-6d56-3803-8e74-8027382b5e42/why-zm-stock-prints-so-much.html"
+          "description": "Stock Market Today: Dow Skids As Oil, Bank Stocks Test Entries; Warsh Sees 'Secular Growth' Ahead (Live Coverage)",
+          "timestamp": "2026-08-31T19:17:24+00:00",
+          "url": "https://finance.yahoo.com/m/c57f0554-71e8-33dd-9dcc-a2cad75076ba/stock-market-today%3A-dow-skids.html"
         },
         {
           "kind": "news",
-          "description": "Has Microsoft Stock Run Ahead Of Its AI Payoff?",
-          "timestamp": "2026-08-28T22:10:55+00:00",
-          "url": "https://finance.yahoo.com/m/11d4481c-83e4-30ee-a739-187db6167960/has-microsoft-stock-run-ahead.html"
+          "description": "3 Earnings Winners Setting Up for Another Leg Higher",
+          "timestamp": "2026-08-31T19:11:00+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/3-earnings-winners-setting-another-191100778.html"
         },
         {
           "kind": "news",
-          "description": "Is Adobe Stock’s AI Strategy Worth The Near-Term Risk?",
-          "timestamp": "2026-08-28T21:59:58+00:00",
-          "url": "https://finance.yahoo.com/m/0723e892-2dfd-359a-8b60-8516ae0d72d7/is-adobe-stock%E2%80%99s-ai-strategy.html"
+          "description": "The Bill For Oracle's AI Build Arrived Before The Revenue",
+          "timestamp": "2026-08-31T18:51:18+00:00",
+          "url": "https://finance.yahoo.com/m/a15fe808-d5f5-334c-bb13-f486673e2acd/the-bill-for-oracle%27s-ai.html"
         }
       ],
       "fundamental_score": 65.05,
@@ -100,6 +100,87 @@
       "fiscal_period_end": "2026-07-31",
       "profitable": true,
       "fundamentals_coverage": 1
+    },
+    {
+      "rank": 2,
+      "symbol": "ZS",
+      "company": "",
+      "price": 189.21,
+      "volume": 2247035,
+      "current_volume": 2275185,
+      "rvol": 1.509,
+      "atr_percent": 4.818,
+      "beta": 1.061,
+      "spread_percent": null,
+      "gap_percent": 2.703,
+      "momentum_percent": 31.85,
+      "volume_spike": 0.85,
+      "volume_confirmation": 1.13,
+      "rsi": 60.4,
+      "pe_ratio": null,
+      "trend": "uptrend",
+      "levels": "support: 145.11; resistance: 190.97",
+      "catalysts": [
+        "PANW Stock Moves With The Market, But It Moves Harder",
+        "CrowdStrike Rallies 4% as Fal.Con Puts Falcon on Google Cloud and Arms Partners With AI Agents",
+        "Zscaler to Report Q4 Earnings: Should You Buy, Hold or Sell the Stock?",
+        "Premarket gap +2.70%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $145.11 with RVOL 1.51 and +2.70% gap.",
+      "stop": "180.09",
+      "target": "207.44",
+      "risk": "$9.12/share; 10 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:25 ET / prior-session mean (Yahoo)",
+      "score": 38.46,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "PANW Stock Moves With The Market, But It Moves Harder",
+          "timestamp": "2026-08-31T17:33:31+00:00",
+          "url": "https://finance.yahoo.com/m/3fc3bb0b-b89e-34dd-903b-3a009922e786/panw-stock-moves-with-the.html"
+        },
+        {
+          "kind": "news",
+          "description": "CrowdStrike Rallies 4% as Fal.Con Puts Falcon on Google Cloud and Arms Partners With AI Agents",
+          "timestamp": "2026-08-31T14:02:54+00:00",
+          "url": "https://finance.yahoo.com/m/0017d0a1-a3c2-381a-83a2-5a34cc5eb4e3/crowdstrike-rallies-4%25-as.html"
+        },
+        {
+          "kind": "news",
+          "description": "Zscaler to Report Q4 Earnings: Should You Buy, Hold or Sell the Stock?",
+          "timestamp": "2026-08-31T13:49:00+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/zscaler-report-q4-earnings-buy-134900865.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap +2.70%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 31.79,
+      "revenue_growth_pct": 25.43,
+      "revenue_ttm": 3132372000,
+      "net_margin_pct": -2.04,
+      "eps_growth_pct": null,
+      "debt_to_equity": null,
+      "return_on_equity_pct": -2.7,
+      "fiscal_period_end": "2026-04-30",
+      "profitable": false,
+      "fundamentals_coverage": 0.75
     }
   ],
   "errors": [],
@@ -108,29 +189,29 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 237 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 62 symbols; verify market session/holiday status before acting.",
+    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: EA",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (20 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (11 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 1,
+  "symbols_qualified": 2,
   "rejection_counts": {
-    "atr": 55,
-    "average_volume": 21,
+    "atr": 57,
+    "average_volume": 22,
     "beta": 59,
-    "catalyst": 10,
-    "clean_trend": 166,
-    "clear_levels": 9,
+    "catalyst": 25,
+    "clean_trend": 162,
+    "clear_levels": 15,
     "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 171,
+    "momentum": 177,
     "price": 3,
     "revenue_growth": 99,
-    "rvol": 153,
-    "volume_confirmation": 171
+    "rvol": 178,
+    "volume_confirmation": 189
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
