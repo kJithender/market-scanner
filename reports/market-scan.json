@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-09-01T17:12:29.566245+00:00",
+  "generated_at": "2026-09-02T17:03:31.450572+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -30,32 +30,32 @@
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
-    "Yahoo request failed for 9 symbols: BITF, DFS, EXAS, LC, MRO, MS, PLYA, SQ, X",
-    "Yahoo returned complete price history for 236 of 245 requested symbols.",
+    "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
+    "Yahoo returned complete price history for 237 of 245 requested symbols.",
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: EA",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
     "Only 0 symbols passed every hard gate; watchlist was not padded.",
-    "The high-volatility list (10 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (11 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
   "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 54,
-    "average_volume": 21,
-    "beta": 56,
-    "catalyst": 17,
-    "clean_trend": 164,
-    "clear_levels": 35,
-    "debt_to_equity": 20,
+    "atr": 51,
+    "average_volume": 24,
+    "beta": 54,
+    "catalyst": 4,
+    "clean_trend": 152,
+    "clear_levels": 56,
+    "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 178,
-    "price": 3,
+    "momentum": 180,
+    "price": 2,
     "revenue_growth": 99,
-    "rvol": 217,
-    "volume_confirmation": 170
+    "rvol": 213,
+    "volume_confirmation": 165
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
