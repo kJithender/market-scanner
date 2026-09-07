@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-09-04T16:47:02.133438+00:00",
-  "data_as_of": null,
-  "data_freshness": "Data timestamp not supplied — verify freshness",
+  "generated_at": "2026-09-07T18:08:57.860647+00:00",
+  "data_as_of": "2026-09-04T19:58:39-04:00",
+  "data_freshness": "Market data as of 2026-09-04T19:58:39-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,40 +22,184 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 0,
+  "candidate_count": 2,
   "target_watchlist_size": "200",
-  "status": "empty",
-  "candidates": [],
+  "status": "ok",
+  "candidates": [
+    {
+      "rank": 1,
+      "symbol": "HOOD",
+      "company": "",
+      "price": 122.0993,
+      "volume": 20779075,
+      "current_volume": 0,
+      "rvol": null,
+      "atr_percent": 6.045,
+      "beta": 2.48,
+      "spread_percent": null,
+      "gap_percent": -0.009,
+      "momentum_percent": 48.07,
+      "volume_spike": 1.16,
+      "volume_confirmation": 1.45,
+      "rsi": 66,
+      "pe_ratio": 60.15,
+      "trend": "uptrend",
+      "levels": "support: 91.44; resistance: 124.88",
+      "catalysts": [
+        "Robinhood Markets, Inc. (HOOD) Is Up 17.12% in One Week: What You Should Know",
+        "Cathie Wood buys $3.5 million of surging tech stock",
+        "Robinhood’s CEO Says States Are Fighting Prediction Markets to Protect Their Own Gambling Tax Money, ‘There’s a Huge Financial Incentive’"
+      ],
+      "thesis": "Clean uptrend; watch hold above $91.44 with RVOL unverified and -0.01% gap.",
+      "stop": "114.72",
+      "target": "136.86",
+      "risk": "$7.38/share; 13 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 14:08 ET / prior-session mean (Yahoo)",
+      "score": 51.86,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "Robinhood Markets, Inc. (HOOD) Is Up 17.12% in One Week: What You Should Know",
+          "timestamp": "2026-09-07T16:00:04+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/robinhood-markets-inc-hood-17-160004989.html"
+        },
+        {
+          "kind": "news",
+          "description": "Cathie Wood buys $3.5 million of surging tech stock",
+          "timestamp": "2026-09-07T14:17:00+00:00",
+          "url": "https://finance.yahoo.com/m/1fe9dc92-fb03-3c2f-a09a-9a786f01e07f/cathie-wood-buys-%243.5-million.html"
+        },
+        {
+          "kind": "news",
+          "description": "Robinhood’s CEO Says States Are Fighting Prediction Markets to Protect Their Own Gambling Tax Money, ‘There’s a Huge Financial Incentive’",
+          "timestamp": "2026-09-06T17:00:03+00:00",
+          "url": "https://finance.yahoo.com/m/ecc2012f-82fc-3b47-930d-3239f621e0a9/robinhood%E2%80%99s-ceo-says-states.html"
+        }
+      ],
+      "fundamental_score": 87.49,
+      "revenue_growth_pct": 32.25,
+      "revenue_ttm": 4638000000,
+      "net_margin_pct": 39.95,
+      "eps_growth_pct": 47.62,
+      "debt_to_equity": null,
+      "return_on_equity_pct": 19.42,
+      "fiscal_period_end": "2026-06-30",
+      "profitable": true,
+      "fundamentals_coverage": 0.875
+    },
+    {
+      "rank": 2,
+      "symbol": "CEG",
+      "company": "",
+      "price": 298.7,
+      "volume": 2451485,
+      "current_volume": 0,
+      "rvol": null,
+      "atr_percent": 3.216,
+      "beta": 0.635,
+      "spread_percent": null,
+      "gap_percent": -0.087,
+      "momentum_percent": 17.5,
+      "volume_spike": 1.19,
+      "volume_confirmation": 1.31,
+      "rsi": 66.9,
+      "pe_ratio": 25.86,
+      "trend": "uptrend",
+      "levels": "support: 260.97; resistance: 296.62",
+      "catalysts": [
+        "These 2 AI Power Stocks Jumped While the S&P 500 Fell",
+        "XLU’s AI Power Story Crumbles as Texas Freezes Data-Center Demand",
+        "Nuclear Stock Face-Off: Is Constellation Energy or Vistra the Better Buy Right Now?"
+      ],
+      "thesis": "Clean uptrend; watch hold above $260.97 with RVOL unverified and -0.09% gap.",
+      "stop": "289.09",
+      "target": "317.91",
+      "risk": "$9.61/share; 10 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 14:08 ET / prior-session mean (Yahoo)",
+      "score": 36,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true,
+        "debt_to_equity": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "These 2 AI Power Stocks Jumped While the S&P 500 Fell",
+          "timestamp": "2026-09-07T15:01:20+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/2-ai-power-stocks-jumped-150120214.html"
+        },
+        {
+          "kind": "news",
+          "description": "XLU’s AI Power Story Crumbles as Texas Freezes Data-Center Demand",
+          "timestamp": "2026-09-07T14:22:05+00:00",
+          "url": "https://finance.yahoo.com/m/987f3c2d-d98c-30b8-a8d0-f0a1c9d2686b/xlu%E2%80%99s-ai-power-story-crumbles.html"
+        },
+        {
+          "kind": "news",
+          "description": "Nuclear Stock Face-Off: Is Constellation Energy or Vistra the Better Buy Right Now?",
+          "timestamp": "2026-09-07T02:22:00+00:00",
+          "url": "https://finance.yahoo.com/m/07e43370-0710-32a5-a67d-c3749bff5914/nuclear-stock-face-off%3A-is.html"
+        }
+      ],
+      "fundamental_score": 43.54,
+      "revenue_growth_pct": 23,
+      "revenue_ttm": 31297000000,
+      "net_margin_pct": 12.37,
+      "eps_growth_pct": -46.82,
+      "debt_to_equity": 0.598,
+      "return_on_equity_pct": 12.11,
+      "fiscal_period_end": "2026-06-30",
+      "profitable": true,
+      "fundamentals_coverage": 1
+    }
+  ],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
-    "Yahoo returned complete price history for 237 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
-    "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: EA",
+    "Yahoo returned complete price history for 236 of 245 requested symbols.",
+    "Stale Yahoo timestamps (>30 minutes) for 236 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "Only 0 symbols passed every hard gate; watchlist was not padded.",
-    "The high-volatility list (11 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 0,
+  "symbols_qualified": 2,
   "rejection_counts": {
-    "atr": 42,
+    "atr": 46,
     "average_volume": 25,
-    "beta": 52,
-    "catalyst": 12,
-    "clean_trend": 159,
-    "clear_levels": 3,
+    "beta": 51,
+    "catalyst": 51,
+    "clean_trend": 179,
+    "clear_levels": 13,
     "debt_to_equity": 21,
-    "insufficient_history": 1,
-    "momentum": 167,
+    "momentum": 166,
     "price": 4,
     "revenue_growth": 99,
-    "rvol": 217,
-    "volume_confirmation": 141
+    "volume_confirmation": 130
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
