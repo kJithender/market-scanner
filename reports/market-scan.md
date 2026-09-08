@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-09-07T18:08:57.860647+00:00`  
-Freshness: Market data as of 2026-09-04T19:58:39-04:00  
+Generated: `2026-09-08T17:07:02.432295+00:00`  
+Freshness: Market data as of 2026-09-08T13:06:24-04:00  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **2 / 200 max**
+Watchlist: **1 / 200 max**
 
 ## Applied filters
 
@@ -14,7 +14,7 @@ Watchlist: **2 / 200 max**
 - **Spread:** ≤0.3% of quote midpoint — NOT VERIFIED: provider published no data
 - **Atr:** 2–8% (14 sessions)
 - **Beta:** >0 vs SPY (60 sessions)
-- **Rvol:** >1.5, same premarket time-window — NOT VERIFIED: provider published no data
+- **Rvol:** >1.5, same premarket time-window
 - **Technical Structure:** clean MA trend + clear 20-session levels
 - **Catalyst:** news, upcoming earnings, or ≥2% gap (required)
 - **Watchlist Size:** up to 200; never padded
@@ -30,24 +30,16 @@ Watchlist: **2 / 200 max**
 
 | # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
 |---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **HOOD** | $122.10 | 20,779,075 | — | 6.04% | 2.48 | — | -0.01% | uptrend | support: 91.44; resistance: 124.88 | Robinhood Markets, Inc. (HOOD) Is Up 17.12% in One Week: What You Should Know; Cathie Wood buys $3.5 million of surging tech stock; Robinhood’s CEO Says States Are Fighting Prediction Markets to Protect Their Own Gambling Tax Money, ‘There’s a Huge Financial Incentive’ |
-| 2 | **CEG** | $298.70 | 2,451,485 | — | 3.22% | 0.64 | — | -0.09% | uptrend | support: 260.97; resistance: 296.62 | These 2 AI Power Stocks Jumped While the S&P 500 Fell; XLU’s AI Power Story Crumbles as Texas Freezes Data-Center Demand; Nuclear Stock Face-Off: Is Constellation Energy or Vistra the Better Buy Right Now? |
+| 1 | **RELY** | $24.89 | 3,327,035 | 1.71× | 4.50% | 1.27 | — | -4.87% | uptrend | support: 22.75; resistance: 27.48 | Premarket gap -4.87% |
 
 ## Pre-trade checklist
 
-### 1. HOOD
+### 1. RELY
 
-- **Thesis:** Clean uptrend; watch hold above $91.44 with RVOL unverified and -0.01% gap.
-- **Stop:** 114.72
-- **Target:** 136.86
-- **Risk:** $7.38/share; 13 shares at $100 max planned risk
-
-### 2. CEG
-
-- **Thesis:** Clean uptrend; watch hold above $260.97 with RVOL unverified and -0.09% gap.
-- **Stop:** 289.09
-- **Target:** 317.91
-- **Risk:** $9.61/share; 10 shares at $100 max planned risk
+- **Thesis:** Clean uptrend; watch hold above $22.75 with RVOL 1.71 and -4.87% gap.
+- **Stop:** 23.78
+- **Target:** 27.13
+- **Risk:** $1.12/share; 89 shares at $100 max planned risk
 
 ## Warnings
 
@@ -55,7 +47,7 @@ Watchlist: **2 / 200 max**
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X
 - Yahoo returned complete price history for 236 of 245 requested symbols.
-- Stale Yahoo timestamps (>30 minutes) for 236 symbols; verify market session/holiday status before acting.
+- Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
-- Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.
+- The high-volatility list (15 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
