@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-09-08T17:07:02.432295+00:00`  
-Freshness: Market data as of 2026-09-08T13:06:24-04:00  
+Generated: `2026-09-09T17:04:14.536631+00:00`  
+Freshness: Data timestamp not supplied — verify freshness  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **1 / 200 max**
+Watchlist: **0 / 200 max**
 
 ## Applied filters
 
@@ -28,18 +28,7 @@ Watchlist: **1 / 200 max**
 
 ## Ranked watchlist
 
-| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
-|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **RELY** | $24.89 | 3,327,035 | 1.71× | 4.50% | 1.27 | — | -4.87% | uptrend | support: 22.75; resistance: 27.48 | Premarket gap -4.87% |
-
-## Pre-trade checklist
-
-### 1. RELY
-
-- **Thesis:** Clean uptrend; watch hold above $22.75 with RVOL 1.71 and -4.87% gap.
-- **Stop:** 23.78
-- **Target:** 27.13
-- **Risk:** $1.12/share; 89 shares at $100 max planned risk
+No stocks met every filter. No trade is a valid outcome.
 
 ## Warnings
 
@@ -50,4 +39,5 @@ Watchlist: **1 / 200 max**
 - Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.
-- The high-volatility list (15 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- Only 0 symbols passed every hard gate; watchlist was not padded.
+- The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.

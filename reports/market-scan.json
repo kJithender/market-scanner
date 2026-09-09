@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-09-08T17:07:02.432295+00:00",
-  "data_as_of": "2026-09-08T13:06:24-04:00",
-  "data_freshness": "Market data as of 2026-09-08T13:06:24-04:00",
+  "generated_at": "2026-09-09T17:04:14.536631+00:00",
+  "data_as_of": null,
+  "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,72 +22,10 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 1,
+  "candidate_count": 0,
   "target_watchlist_size": "200",
-  "status": "ok",
-  "candidates": [
-    {
-      "rank": 1,
-      "symbol": "RELY",
-      "company": "",
-      "price": 24.895,
-      "volume": 3327035,
-      "current_volume": 2059819,
-      "rvol": 1.714,
-      "atr_percent": 4.495,
-      "beta": 1.267,
-      "spread_percent": null,
-      "gap_percent": -4.872,
-      "momentum_percent": 39.42,
-      "volume_spike": 0.62,
-      "volume_confirmation": 1.11,
-      "rsi": 54.5,
-      "pe_ratio": 20.24,
-      "trend": "uptrend",
-      "levels": "support: 22.75; resistance: 27.48",
-      "catalysts": [
-        "Premarket gap -4.87%"
-      ],
-      "thesis": "Clean uptrend; watch hold above $22.75 with RVOL 1.71 and -4.87% gap.",
-      "stop": "23.78",
-      "target": "27.13",
-      "risk": "$1.12/share; 89 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 13:06 ET / prior-session mean (Yahoo)",
-      "score": 54.1,
-      "passed_filters": {
-        "price": true,
-        "average_volume": true,
-        "atr": true,
-        "beta": true,
-        "rvol": true,
-        "momentum": true,
-        "volume_confirmation": true,
-        "clean_trend": true,
-        "clear_levels": true,
-        "catalyst": true,
-        "revenue_growth": true,
-        "debt_to_equity": true
-      },
-      "catalyst_details": [
-        {
-          "kind": "gap",
-          "description": "Premarket gap -4.87%",
-          "timestamp": null,
-          "url": null
-        }
-      ],
-      "fundamental_score": 70.89,
-      "revenue_growth_pct": 20.23,
-      "revenue_ttm": 1779304000,
-      "net_margin_pct": 15.19,
-      "eps_growth_pct": 3000,
-      "debt_to_equity": 0,
-      "return_on_equity_pct": 23.99,
-      "fiscal_period_end": "2026-06-30",
-      "profitable": true,
-      "fundamentals_coverage": 1
-    }
-  ],
+  "status": "empty",
+  "candidates": [],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
@@ -97,24 +35,25 @@
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (15 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "Only 0 symbols passed every hard gate; watchlist was not padded.",
+    "The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 1,
+  "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 43,
-    "average_volume": 25,
-    "beta": 51,
-    "catalyst": 25,
+    "atr": 39,
+    "average_volume": 24,
+    "beta": 54,
+    "catalyst": 17,
     "clean_trend": 179,
-    "clear_levels": 13,
+    "clear_levels": 34,
     "debt_to_equity": 21,
-    "momentum": 166,
+    "momentum": 173,
     "price": 4,
     "revenue_growth": 99,
-    "rvol": 207,
-    "volume_confirmation": 130
+    "rvol": 205,
+    "volume_confirmation": 153
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
