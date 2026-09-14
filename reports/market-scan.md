@@ -2,7 +2,7 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-09-11T16:56:55.003952+00:00`  
+Generated: `2026-09-14T18:24:20.815955+00:00`  
 Freshness: Data timestamp not supplied — verify freshness  
 Schedule timezone: `America/Los_Angeles`  
 Watchlist: **0 / 200 max**
@@ -34,10 +34,9 @@ No stocks met every filter. No trade is a valid outcome.
 
 - Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
-- Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X
-- Yahoo returned complete price history for 236 of 245 requested symbols.
-- Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
+- Yahoo request failed for 12 symbols: AFRM, AXP, BITF, DFS, EXAS, INTC, LC, MRO, NET, PLYA…
+- Yahoo returned complete price history for 232 of 245 requested symbols.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.
 - Only 0 symbols passed every hard gate; watchlist was not padded.
-- The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (19 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
