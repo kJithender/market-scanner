@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-09-21T18:31:19.302089+00:00`  
-Freshness: Data timestamp not supplied — verify freshness  
+Generated: `2026-09-22T17:34:05.721990+00:00`  
+Freshness: Market data as of 2026-09-22T13:32:53-04:00  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **0 / 200 max**
+Watchlist: **1 / 200 max**
 
 ## Applied filters
 
@@ -28,7 +28,18 @@ Watchlist: **0 / 200 max**
 
 ## Ranked watchlist
 
-No stocks met every filter. No trade is a valid outcome.
+| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
+|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
+| 1 | **META** | $742.98 | 20,414,695 | 1.72× | 3.68% | 1.32 | — | 0.23% | uptrend | support: 542.8; resistance: 689.61 | Why Shopify Stock Rocketed Higher Today; Meta has 'enormous advantage' in rally sparked by new Muse AI; Stock Market Midday, Sept. 22: Means Markets Muted Despite Tech Gains as Geopolitics Dominates |
+
+## Pre-trade checklist
+
+### 1. META
+
+- **Thesis:** Clean uptrend; watch hold above $542.80 with RVOL 1.72 and +0.23% gap.
+- **Stop:** 715.62
+- **Target:** 797.7
+- **Risk:** $27.36/share; 3 shares at $100 max planned risk
 
 ## Warnings
 
@@ -38,5 +49,4 @@ No stocks met every filter. No trade is a valid outcome.
 - Yahoo returned complete price history for 236 of 245 requested symbols.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.
-- Only 0 symbols passed every hard gate; watchlist was not padded.
-- The high-volatility list (19 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
