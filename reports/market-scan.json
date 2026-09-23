@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-09-22T17:34:05.721990+00:00",
-  "data_as_of": "2026-09-22T13:32:53-04:00",
-  "data_freshness": "Market data as of 2026-09-22T13:32:53-04:00",
+  "generated_at": "2026-09-23T17:45:28.907353+00:00",
+  "data_as_of": "2026-09-23T13:44:42-04:00",
+  "data_freshness": "Market data as of 2026-09-23T13:44:42-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -30,32 +30,32 @@
       "rank": 1,
       "symbol": "META",
       "company": "",
-      "price": 742.982,
-      "volume": 20414695,
-      "current_volume": 19858003,
-      "rvol": 1.717,
-      "atr_percent": 3.682,
+      "price": 750.995,
+      "volume": 20422080,
+      "current_volume": 21322608,
+      "rvol": 1.71,
+      "atr_percent": 3.643,
       "beta": 1.318,
       "spread_percent": null,
-      "gap_percent": 0.234,
+      "gap_percent": 1.315,
       "momentum_percent": 31.57,
-      "volume_spike": 2.6,
-      "volume_confirmation": 1.14,
+      "volume_spike": 2.61,
+      "volume_confirmation": 1.15,
       "rsi": 77.9,
-      "pe_ratio": 29.95,
+      "pe_ratio": 30.27,
       "trend": "uptrend",
       "levels": "support: 542.8; resistance: 689.61",
       "catalysts": [
-        "Why Shopify Stock Rocketed Higher Today",
-        "Meta has 'enormous advantage' in rally sparked by new Muse AI",
-        "Stock Market Midday, Sept. 22: Means Markets Muted Despite Tech Gains as Geopolitics Dominates"
+        "Meta's Muse is an impressively capable AI agent, despite some hiccups",
+        "What Will $5,000 Invested in Alphabet Stock Be Worth in 5 Years?",
+        "Meta Gains 1.8% as Jefferies Reprices the Muse Opportunity"
       ],
-      "thesis": "Clean uptrend; watch hold above $542.80 with RVOL 1.72 and +0.23% gap.",
-      "stop": "715.62",
-      "target": "797.7",
+      "thesis": "Clean uptrend; watch hold above $542.80 with RVOL 1.71 and +1.31% gap.",
+      "stop": "723.63",
+      "target": "805.72",
       "risk": "$27.36/share; 3 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 13:32 ET / prior-session mean (Yahoo)",
-      "score": 63.8,
+      "rvol_method": "regular-session volume through 13:44 ET / prior-session mean (Yahoo)",
+      "score": 64.72,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -73,21 +73,21 @@
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Why Shopify Stock Rocketed Higher Today",
-          "timestamp": "2026-09-22T17:25:29+00:00",
-          "url": "https://finance.yahoo.com/m/c77c8581-0cf4-38ce-8514-d57a0a2cffba/why-shopify-stock-rocketed.html"
+          "description": "Meta's Muse is an impressively capable AI agent, despite some hiccups",
+          "timestamp": "2026-09-23T17:33:10+00:00",
+          "url": "https://finance.yahoo.com/technology/article/metas-muse-is-an-impressively-capable-ai-agent-despite-some-hiccups-173310662.html"
         },
         {
           "kind": "news",
-          "description": "Meta has 'enormous advantage' in rally sparked by new Muse AI",
-          "timestamp": "2026-09-22T17:04:02+00:00",
-          "url": "https://finance.yahoo.com/video/meta-enormous-advantage-rally-sparked-170402510.html"
+          "description": "What Will $5,000 Invested in Alphabet Stock Be Worth in 5 Years?",
+          "timestamp": "2026-09-23T17:30:18+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/5-000-invested-alphabet-stock-173018548.html"
         },
         {
           "kind": "news",
-          "description": "Stock Market Midday, Sept. 22: Means Markets Muted Despite Tech Gains as Geopolitics Dominates",
-          "timestamp": "2026-09-22T16:58:00+00:00",
-          "url": "https://finance.yahoo.com/m/82882594-ea0d-3672-9e97-2e0699b02428/stock-market-midday%2C-sept..html"
+          "description": "Meta Gains 1.8% as Jefferies Reprices the Muse Opportunity",
+          "timestamp": "2026-09-23T17:09:40+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/meta-gains-1-8-jefferies-170940627.html"
         }
       ],
       "fundamental_score": 65.99,
@@ -108,26 +108,27 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 236 of 245 requested symbols.",
+    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
   "symbols_qualified": 1,
   "rejection_counts": {
-    "atr": 25,
+    "atr": 26,
     "average_volume": 24,
     "beta": 55,
-    "catalyst": 10,
+    "catalyst": 6,
     "clean_trend": 161,
     "clear_levels": 18,
     "debt_to_equity": 21,
     "momentum": 178,
     "price": 4,
     "revenue_growth": 99,
-    "rvol": 180,
-    "volume_confirmation": 71
+    "rvol": 196,
+    "volume_confirmation": 70
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
