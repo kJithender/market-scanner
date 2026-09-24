@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-09-23T17:45:28.907353+00:00",
-  "data_as_of": "2026-09-23T13:44:42-04:00",
-  "data_freshness": "Market data as of 2026-09-23T13:44:42-04:00",
+  "generated_at": "2026-09-24T17:47:00.321882+00:00",
+  "data_as_of": "2026-09-24T13:46:21-04:00",
+  "data_freshness": "Market data as of 2026-09-24T13:46:21-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -30,32 +30,33 @@
       "rank": 1,
       "symbol": "META",
       "company": "",
-      "price": 750.995,
-      "volume": 20422080,
-      "current_volume": 21322608,
-      "rvol": 1.71,
-      "atr_percent": 3.643,
-      "beta": 1.318,
+      "price": 769.44,
+      "volume": 22207500,
+      "current_volume": 24458262,
+      "rvol": 1.817,
+      "atr_percent": 3.578,
+      "beta": 1.35,
       "spread_percent": null,
-      "gap_percent": 1.315,
-      "momentum_percent": 31.57,
-      "volume_spike": 2.61,
-      "volume_confirmation": 1.15,
-      "rsi": 77.9,
-      "pe_ratio": 30.27,
+      "gap_percent": 3.405,
+      "momentum_percent": 33.54,
+      "volume_spike": 1.43,
+      "volume_confirmation": 1.59,
+      "rsi": 77,
+      "pe_ratio": 31.01,
       "trend": "uptrend",
-      "levels": "support: 542.8; resistance: 689.61",
+      "levels": "support: 555.66; resistance: 757.27",
       "catalysts": [
-        "Meta's Muse is an impressively capable AI agent, despite some hiccups",
-        "What Will $5,000 Invested in Alphabet Stock Be Worth in 5 Years?",
-        "Meta Gains 1.8% as Jefferies Reprices the Muse Opportunity"
+        "Intel Shares Rise as Agentic AI Keeps CPUs in the Loop",
+        "Mark Zuckerberg says Meta found a way to make more money",
+        "Meta Rises 3% as Its Month-Long Run Extends on Muse Buzz; Reddit Nudges Higher",
+        "Premarket gap +3.41%"
       ],
-      "thesis": "Clean uptrend; watch hold above $542.80 with RVOL 1.71 and +1.31% gap.",
-      "stop": "723.63",
-      "target": "805.72",
-      "risk": "$27.36/share; 3 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 13:44 ET / prior-session mean (Yahoo)",
-      "score": 64.72,
+      "thesis": "Clean uptrend; watch hold above $555.66 with RVOL 1.82 and +3.41% gap.",
+      "stop": "741.91",
+      "target": "824.5",
+      "risk": "$27.53/share; 3 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 13:46 ET / prior-session mean (Yahoo)",
+      "score": 66.79,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -73,21 +74,27 @@
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Meta's Muse is an impressively capable AI agent, despite some hiccups",
-          "timestamp": "2026-09-23T17:33:10+00:00",
-          "url": "https://finance.yahoo.com/technology/article/metas-muse-is-an-impressively-capable-ai-agent-despite-some-hiccups-173310662.html"
+          "description": "Intel Shares Rise as Agentic AI Keeps CPUs in the Loop",
+          "timestamp": "2026-09-24T17:34:52+00:00",
+          "url": "https://finance.yahoo.com/technology/ai/articles/intel-shares-rise-agentic-ai-173452687.html"
         },
         {
           "kind": "news",
-          "description": "What Will $5,000 Invested in Alphabet Stock Be Worth in 5 Years?",
-          "timestamp": "2026-09-23T17:30:18+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/5-000-invested-alphabet-stock-173018548.html"
+          "description": "Mark Zuckerberg says Meta found a way to make more money",
+          "timestamp": "2026-09-24T17:07:00+00:00",
+          "url": "https://finance.yahoo.com/technology/ai/articles/mark-zuckerberg-says-meta-found-170700747.html"
         },
         {
           "kind": "news",
-          "description": "Meta Gains 1.8% as Jefferies Reprices the Muse Opportunity",
-          "timestamp": "2026-09-23T17:09:40+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/meta-gains-1-8-jefferies-170940627.html"
+          "description": "Meta Rises 3% as Its Month-Long Run Extends on Muse Buzz; Reddit Nudges Higher",
+          "timestamp": "2026-09-24T16:53:06+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/meta-rises-3-month-long-165306461.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap +3.41%",
+          "timestamp": null,
+          "url": null
         }
       ],
       "fundamental_score": 65.99,
@@ -108,27 +115,26 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 236 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
-    "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
+    "SEC filings yielded no usable fundamentals for 168 symbols: SPOT, T, VZ, TMUS, TSLA, RIVN, LCID, F, GM, NIO…",
     "Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (12 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
   "symbols_qualified": 1,
   "rejection_counts": {
-    "atr": 26,
-    "average_volume": 24,
-    "beta": 55,
-    "catalyst": 6,
-    "clean_trend": 161,
-    "clear_levels": 18,
-    "debt_to_equity": 21,
-    "momentum": 178,
+    "atr": 24,
+    "average_volume": 23,
+    "beta": 46,
+    "catalyst": 10,
+    "clean_trend": 142,
+    "clear_levels": 54,
+    "debt_to_equity": 1,
+    "momentum": 181,
     "price": 4,
-    "revenue_growth": 99,
-    "rvol": 196,
-    "volume_confirmation": 70
+    "revenue_growth": 12,
+    "rvol": 201,
+    "volume_confirmation": 57
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }

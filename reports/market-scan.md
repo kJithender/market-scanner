@@ -2,8 +2,8 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-09-23T17:45:28.907353+00:00`  
-Freshness: Market data as of 2026-09-23T13:44:42-04:00  
+Generated: `2026-09-24T17:47:00.321882+00:00`  
+Freshness: Market data as of 2026-09-24T13:46:21-04:00  
 Schedule timezone: `America/Los_Angeles`  
 Watchlist: **1 / 200 max**
 
@@ -30,16 +30,16 @@ Watchlist: **1 / 200 max**
 
 | # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
 |---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **META** | $751.00 | 20,422,080 | 1.71× | 3.64% | 1.32 | — | 1.31% | uptrend | support: 542.8; resistance: 689.61 | Meta's Muse is an impressively capable AI agent, despite some hiccups; What Will $5,000 Invested in Alphabet Stock Be Worth in 5 Years?; Meta Gains 1.8% as Jefferies Reprices the Muse Opportunity |
+| 1 | **META** | $769.44 | 22,207,500 | 1.82× | 3.58% | 1.35 | — | 3.40% | uptrend | support: 555.66; resistance: 757.27 | Intel Shares Rise as Agentic AI Keeps CPUs in the Loop; Mark Zuckerberg says Meta found a way to make more money; Meta Rises 3% as Its Month-Long Run Extends on Muse Buzz; Reddit Nudges Higher; Premarket gap +3.41% |
 
 ## Pre-trade checklist
 
 ### 1. META
 
-- **Thesis:** Clean uptrend; watch hold above $542.80 with RVOL 1.71 and +1.31% gap.
-- **Stop:** 723.63
-- **Target:** 805.72
-- **Risk:** $27.36/share; 3 shares at $100 max planned risk
+- **Thesis:** Clean uptrend; watch hold above $555.66 with RVOL 1.82 and +3.41% gap.
+- **Stop:** 741.91
+- **Target:** 824.5
+- **Risk:** $27.53/share; 3 shares at $100 max planned risk
 
 ## Warnings
 
@@ -47,7 +47,6 @@ Watchlist: **1 / 200 max**
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X
 - Yahoo returned complete price history for 236 of 245 requested symbols.
-- Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
-- SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
+- SEC filings yielded no usable fundamentals for 168 symbols: SPOT, T, VZ, TMUS, TSLA, RIVN, LCID, F, GM, NIO…
 - Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.
-- The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (12 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
