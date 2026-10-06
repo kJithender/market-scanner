@@ -2,7 +2,7 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-10-02T18:14:55.900182+00:00`  
+Generated: `2026-10-06T18:50:05.050091+00:00`  
 Freshness: Data timestamp not supplied — verify freshness  
 Schedule timezone: `America/Los_Angeles`  
 Watchlist: **0 / 200 max**
@@ -14,7 +14,7 @@ Watchlist: **0 / 200 max**
 - **Spread:** ≤0.3% of quote midpoint — NOT VERIFIED: provider published no data
 - **Atr:** 2–8% (14 sessions)
 - **Beta:** >0 vs SPY (60 sessions)
-- **Rvol:** >1.5, same premarket time-window
+- **Rvol:** >1.5, same premarket time-window — NOT VERIFIED: provider published no data
 - **Technical Structure:** clean MA trend + clear 20-session levels
 - **Catalyst:** news, upcoming earnings, or ≥2% gap (required)
 - **Watchlist Size:** up to 200; never padded
@@ -36,7 +36,8 @@ No stocks met every filter. No trade is a valid outcome.
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X
 - Yahoo returned complete price history for 236 of 245 requested symbols.
+- Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
-- Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.
+- Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
 - Only 0 symbols passed every hard gate; watchlist was not padded.
-- The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (5 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.

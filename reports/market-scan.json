@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-02T18:14:55.900182+00:00",
+  "generated_at": "2026-10-06T18:50:05.050091+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -10,7 +10,7 @@
     "spread": "≤0.3% of quote midpoint — NOT VERIFIED: provider published no data",
     "atr": "2–8% (14 sessions)",
     "beta": ">0 vs SPY (60 sessions)",
-    "rvol": ">1.5, same premarket time-window",
+    "rvol": ">1.5, same premarket time-window — NOT VERIFIED: provider published no data",
     "technical_structure": "clean MA trend + clear 20-session levels",
     "catalyst": "news, upcoming earnings, or ≥2% gap (required)",
     "watchlist_size": "up to 200; never padded",
@@ -32,27 +32,28 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 236 of 245 requested symbols.",
+    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
-    "Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.",
+    "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
     "Only 0 symbols passed every hard gate; watchlist was not padded.",
-    "The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (5 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
   "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 26,
+    "atr": 37,
     "average_volume": 20,
-    "beta": 35,
-    "catalyst": 16,
-    "clean_trend": 125,
-    "clear_levels": 28,
+    "beta": 37,
+    "catalyst": 17,
+    "clean_trend": 128,
+    "clear_levels": 7,
     "debt_to_equity": 21,
-    "momentum": 195,
+    "momentum": 192,
     "price": 4,
     "revenue_growth": 99,
-    "rvol": 216,
-    "volume_confirmation": 214
+    "rvol": 220,
+    "volume_confirmation": 164
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
