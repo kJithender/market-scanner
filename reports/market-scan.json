@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-06T18:50:05.050091+00:00",
-  "data_as_of": null,
-  "data_freshness": "Data timestamp not supplied — verify freshness",
+  "generated_at": "2026-10-08T19:11:31.397016+00:00",
+  "data_as_of": "2026-10-08T15:10:12-04:00",
+  "data_freshness": "Market data as of 2026-10-08T15:10:12-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,10 +22,174 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 0,
+  "candidate_count": 2,
   "target_watchlist_size": "200",
-  "status": "empty",
-  "candidates": [],
+  "status": "ok",
+  "candidates": [
+    {
+      "rank": 1,
+      "symbol": "ANET",
+      "company": "",
+      "price": 210.665,
+      "volume": 4928305,
+      "current_volume": 7270341,
+      "rvol": 2.517,
+      "atr_percent": 2.857,
+      "beta": 2.05,
+      "spread_percent": null,
+      "gap_percent": -2.393,
+      "momentum_percent": 16.86,
+      "volume_spike": 1.03,
+      "volume_confirmation": 1.14,
+      "rsi": 67.1,
+      "pe_ratio": 67.52,
+      "trend": "uptrend",
+      "levels": "support: 186.11; resistance: 216.07",
+      "catalysts": [
+        "Arista Stock Rises 64.7% YTD: Is There More Upside Ahead?",
+        "Can Arista's New Rack-Scale Ethernet Solutions for AI Stoke Growth?",
+        "Arista Networks (ANET) Could Be a Key Winner From the AI Infrastructure Boom",
+        "Premarket gap -2.39%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $186.11 with RVOL 2.52 and -2.39% gap.",
+      "stop": "204.65",
+      "target": "222.7",
+      "risk": "$6.02/share; 16 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:10 ET / prior-session mean (Yahoo)",
+      "score": 75.57,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "Arista Stock Rises 64.7% YTD: Is There More Upside Ahead?",
+          "timestamp": "2026-10-08T15:08:00+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/arista-stock-rises-64-7-150800602.html"
+        },
+        {
+          "kind": "news",
+          "description": "Can Arista's New Rack-Scale Ethernet Solutions for AI Stoke Growth?",
+          "timestamp": "2026-10-08T14:58:00+00:00",
+          "url": "https://finance.yahoo.com/technology/ai/articles/aristas-rack-scale-ethernet-solutions-145800179.html"
+        },
+        {
+          "kind": "news",
+          "description": "Arista Networks (ANET) Could Be a Key Winner From the AI Infrastructure Boom",
+          "timestamp": "2026-10-08T14:00:32+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-anet-could-key-140032511.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -2.39%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 90.25,
+      "revenue_growth_pct": 37.69,
+      "revenue_ttm": 10257800000,
+      "net_margin_pct": 38.78,
+      "eps_growth_pct": 35.71,
+      "debt_to_equity": null,
+      "return_on_equity_pct": 26.88,
+      "fiscal_period_end": "2026-06-30",
+      "profitable": true,
+      "fundamentals_coverage": 0.875
+    },
+    {
+      "rank": 2,
+      "symbol": "MRVL",
+      "company": "",
+      "price": 272.07,
+      "volume": 18974130,
+      "current_volume": 30365641,
+      "rvol": 2.294,
+      "atr_percent": 4.776,
+      "beta": 3.255,
+      "spread_percent": null,
+      "gap_percent": -4.43,
+      "momentum_percent": 17.05,
+      "volume_spike": 1.26,
+      "volume_confirmation": 1.71,
+      "rsi": 68.1,
+      "pe_ratio": 97.52,
+      "trend": "uptrend",
+      "levels": "support: 213.63; resistance: 301.27",
+      "catalysts": [
+        "Amazon stock is trading at its lowest trailing P/E ratio in years despite AI boom",
+        "Is Marvell Stock Priced Right Against Its Peers?",
+        "AI compute needs are 'going to be insane': Box CEO Aaron Levie",
+        "Premarket gap -4.43%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $213.63 with RVOL 2.29 and -4.43% gap.",
+      "stop": "259.08",
+      "target": "298.06",
+      "risk": "$12.99/share; 7 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:10 ET / prior-session mean (Yahoo)",
+      "score": 73.62,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true,
+        "debt_to_equity": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "Amazon stock is trading at its lowest trailing P/E ratio in years despite AI boom",
+          "timestamp": "2026-10-08T18:21:21+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/article/amazon-stock-is-trading-at-its-lowest-trailing-pe-ratio-in-years-despite-ai-boom-000819389.html"
+        },
+        {
+          "kind": "news",
+          "description": "Is Marvell Stock Priced Right Against Its Peers?",
+          "timestamp": "2026-10-08T17:58:39+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-stock-priced-against-peers-175839482.html"
+        },
+        {
+          "kind": "news",
+          "description": "AI compute needs are 'going to be insane': Box CEO Aaron Levie",
+          "timestamp": "2026-10-08T17:56:14+00:00",
+          "url": "https://finance.yahoo.com/markets/article/ai-compute-needs-are-going-to-be-insane-box-ceo-aaron-levie-175614294.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -4.43%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 90.03,
+      "revenue_growth_pct": 36.55,
+      "revenue_ttm": 9237700000,
+      "net_margin_pct": 26.4,
+      "eps_growth_pct": 50,
+      "debt_to_equity": 0.268,
+      "return_on_equity_pct": 13.16,
+      "fiscal_period_end": "2026-08-01",
+      "profitable": true,
+      "fundamentals_coverage": 1
+    }
+  ],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
@@ -35,25 +199,25 @@
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "Only 0 symbols passed every hard gate; watchlist was not padded.",
-    "The high-volatility list (5 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 0,
+  "symbols_qualified": 2,
   "rejection_counts": {
-    "atr": 37,
+    "atr": 47,
     "average_volume": 20,
-    "beta": 37,
-    "catalyst": 17,
-    "clean_trend": 128,
-    "clear_levels": 7,
+    "beta": 30,
+    "catalyst": 8,
+    "clean_trend": 142,
+    "clear_levels": 18,
     "debt_to_equity": 21,
-    "momentum": 192,
+    "insufficient_history": 1,
+    "momentum": 193,
     "price": 4,
-    "revenue_growth": 99,
-    "rvol": 220,
-    "volume_confirmation": 164
+    "revenue_growth": 98,
+    "rvol": 168,
+    "volume_confirmation": 170
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
