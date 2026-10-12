@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-09T18:41:37.449433+00:00",
-  "data_as_of": "2026-10-09T14:40:53-04:00",
-  "data_freshness": "Market data as of 2026-10-09T14:40:53-04:00",
+  "generated_at": "2026-10-12T21:37:22.649937+00:00",
+  "data_as_of": "2026-10-12T17:27:33-04:00",
+  "data_freshness": "Market data as of 2026-10-12T17:27:33-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,7 +22,7 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 1,
+  "candidate_count": 2,
   "target_watchlist_size": "200",
   "status": "ok",
   "candidates": [
@@ -30,33 +30,32 @@
       "rank": 1,
       "symbol": "PLTR",
       "company": "",
-      "price": 206.2,
-      "volume": 22966410,
-      "current_volume": 41007784,
-      "rvol": 2.784,
-      "atr_percent": 2.827,
-      "beta": 2.958,
+      "price": 208.69,
+      "volume": 24073015,
+      "current_volume": 45494283,
+      "rvol": 2.342,
+      "atr_percent": 2.952,
+      "beta": 3.041,
       "spread_percent": null,
-      "gap_percent": 3.733,
-      "momentum_percent": 56.78,
-      "volume_spike": 1.91,
-      "volume_confirmation": 1.28,
-      "rsi": 69.9,
-      "pe_ratio": 194.53,
+      "gap_percent": -0.172,
+      "momentum_percent": 60.76,
+      "volume_spike": 1.63,
+      "volume_confirmation": 1.5,
+      "rsi": 76.3,
+      "pe_ratio": 196.88,
       "trend": "uptrend",
-      "levels": "support: 164.55; resistance: 194.78",
+      "levels": "support: 165.4; resistance: 204.44",
       "catalysts": [
-        "Palantir Stocks Rise 2.4% as Goldman Backs Sovereign AI",
-        "Palantir Stock Jumps as Barclays Turns Bullish on Software Giant",
-        "Better High-Growth AI Stock: CrowdStrike vs. Palantir Technologies",
-        "Premarket gap +3.73%"
+        "Palantir’s Pentagon role reveals a surprising edge",
+        "Palantir Announces Date of Third Quarter 2026 Earnings Release and Webcast",
+        "Palantir Stocks Slip Despite Barclays' $265 AI Target"
       ],
-      "thesis": "Clean uptrend; watch hold above $164.55 with RVOL 2.78 and +3.73% gap.",
-      "stop": "200.37",
-      "target": "217.86",
-      "risk": "$5.83/share; 17 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 14:40 ET / prior-session mean (Yahoo)",
-      "score": 86.28,
+      "thesis": "Clean uptrend; watch hold above $165.40 with RVOL 2.34 and -0.17% gap.",
+      "stop": "202.53",
+      "target": "221.01",
+      "risk": "$6.16/share; 16 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 16:00 ET / prior-session mean (Yahoo)",
+      "score": 82.26,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -73,27 +72,21 @@
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Palantir Stocks Rise 2.4% as Goldman Backs Sovereign AI",
-          "timestamp": "2026-10-09T18:14:45+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stocks-rise-2-4-181445068.html"
+          "description": "Palantir’s Pentagon role reveals a surprising edge",
+          "timestamp": "2026-10-12T21:03:00+00:00",
+          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-pentagon-role-reveals-surprising-210300239.html"
         },
         {
           "kind": "news",
-          "description": "Palantir Stock Jumps as Barclays Turns Bullish on Software Giant",
-          "timestamp": "2026-10-09T18:08:24+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stock-jumps-barclays-turns-180824518.html"
+          "description": "Palantir Announces Date of Third Quarter 2026 Earnings Release and Webcast",
+          "timestamp": "2026-10-12T20:05:00+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-announces-date-third-quarter-200500055.html"
         },
         {
           "kind": "news",
-          "description": "Better High-Growth AI Stock: CrowdStrike vs. Palantir Technologies",
-          "timestamp": "2026-10-09T17:44:33+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/better-high-growth-ai-stock-174433710.html"
-        },
-        {
-          "kind": "gap",
-          "description": "Premarket gap +3.73%",
-          "timestamp": null,
-          "url": null
+          "description": "Palantir Stocks Slip Despite Barclays' $265 AI Target",
+          "timestamp": "2026-10-12T19:10:24+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stocks-slip-despite-barclays-191024775.html"
         }
       ],
       "fundamental_score": 99.25,
@@ -106,6 +99,87 @@
       "fiscal_period_end": "2026-06-30",
       "profitable": true,
       "fundamentals_coverage": 0.875
+    },
+    {
+      "rank": 2,
+      "symbol": "SHOP",
+      "company": "",
+      "price": 178.75,
+      "volume": 9524600,
+      "current_volume": 20157656,
+      "rvol": 2.412,
+      "atr_percent": 3.965,
+      "beta": 1.673,
+      "spread_percent": null,
+      "gap_percent": 4.624,
+      "momentum_percent": 36.96,
+      "volume_spike": 0.69,
+      "volume_confirmation": 1.13,
+      "rsi": 72.8,
+      "pe_ratio": 111.72,
+      "trend": "uptrend",
+      "levels": "support: 126.39; resistance: 167.94",
+      "catalysts": [
+        "Shopify Can Win Big With AI Agents. Why It May Take Time.",
+        "Shopify (SHOP): Building the Underlying Rails for the Era of Agentic Commerce",
+        "Salesforce Just Turned the Agent Allowlist Into a CRM Product",
+        "Premarket gap +4.62%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $126.39 with RVOL 2.41 and +4.62% gap.",
+      "stop": "171.66",
+      "target": "192.93",
+      "risk": "$7.09/share; 14 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 16:00 ET / prior-session mean (Yahoo)",
+      "score": 73.85,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "Shopify Can Win Big With AI Agents. Why It May Take Time.",
+          "timestamp": "2026-10-12T18:20:00+00:00",
+          "url": "https://finance.yahoo.com/m/0e94f999-b6fc-3b41-9108-3657031de979/shopify-can-win-big-with-ai.html"
+        },
+        {
+          "kind": "news",
+          "description": "Shopify (SHOP): Building the Underlying Rails for the Era of Agentic Commerce",
+          "timestamp": "2026-10-12T14:10:52+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/shopify-shop-building-underlying-rails-141052574.html"
+        },
+        {
+          "kind": "news",
+          "description": "Salesforce Just Turned the Agent Allowlist Into a CRM Product",
+          "timestamp": "2026-10-12T11:33:30+00:00",
+          "url": "https://finance.yahoo.com/technology/ai/articles/salesforce-just-turned-agent-allowlist-113330929.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap +4.62%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 80.01,
+      "revenue_growth_pct": 33.69,
+      "revenue_ttm": 12277000000,
+      "net_margin_pct": 17.03,
+      "eps_growth_pct": 68.12,
+      "debt_to_equity": null,
+      "return_on_equity_pct": 16.49,
+      "fiscal_period_end": "2026-06-30",
+      "profitable": true,
+      "fundamentals_coverage": 0.875
     }
   ],
   "errors": [],
@@ -114,28 +188,28 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 236 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
+    "Stale Yahoo timestamps (>30 minutes) for 105 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (6 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (10 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 1,
+  "symbols_qualified": 2,
   "rejection_counts": {
-    "atr": 39,
+    "atr": 40,
     "average_volume": 19,
-    "beta": 33,
-    "catalyst": 7,
-    "clean_trend": 157,
-    "clear_levels": 10,
+    "beta": 30,
+    "catalyst": 25,
+    "clean_trend": 136,
+    "clear_levels": 13,
     "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 193,
-    "price": 4,
+    "momentum": 190,
+    "price": 3,
     "revenue_growth": 98,
-    "rvol": 187,
-    "volume_confirmation": 167
+    "rvol": 182,
+    "volume_confirmation": 186
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
