@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-12T21:37:22.649937+00:00",
-  "data_as_of": "2026-10-12T17:27:33-04:00",
-  "data_freshness": "Market data as of 2026-10-12T17:27:33-04:00",
+  "generated_at": "2026-10-13T19:47:29.646871+00:00",
+  "data_as_of": "2026-10-13T15:46:20-04:00",
+  "data_freshness": "Market data as of 2026-10-13T15:46:20-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -28,34 +28,35 @@
   "candidates": [
     {
       "rank": 1,
-      "symbol": "PLTR",
+      "symbol": "ANET",
       "company": "",
-      "price": 208.69,
-      "volume": 24073015,
-      "current_volume": 45494283,
-      "rvol": 2.342,
-      "atr_percent": 2.952,
-      "beta": 3.041,
+      "price": 205.12,
+      "volume": 4902900,
+      "current_volume": 15967264,
+      "rvol": 4.874,
+      "atr_percent": 3.058,
+      "beta": 2.244,
       "spread_percent": null,
-      "gap_percent": -0.172,
-      "momentum_percent": 60.76,
-      "volume_spike": 1.63,
-      "volume_confirmation": 1.5,
-      "rsi": 76.3,
-      "pe_ratio": 196.88,
+      "gap_percent": -2.731,
+      "momentum_percent": 15.51,
+      "volume_spike": 0.68,
+      "volume_confirmation": 1.16,
+      "rsi": 57.3,
+      "pe_ratio": 65.74,
       "trend": "uptrend",
-      "levels": "support: 165.4; resistance: 204.44",
+      "levels": "support: 186.11; resistance: 217.41",
       "catalysts": [
-        "Palantir’s Pentagon role reveals a surprising edge",
-        "Palantir Announces Date of Third Quarter 2026 Earnings Release and Webcast",
-        "Palantir Stocks Slip Despite Barclays' $265 AI Target"
+        "Arista Networks vs. International Business Machines: Which Technology Stock Is a Better Buy in 2026?",
+        "Should You Buy, Sell, or Hold Cisco Stock After a 68% Rise in a Year?",
+        "Did The Market Read Super Micro Computer Stock Right?",
+        "Premarket gap -2.73%"
       ],
-      "thesis": "Clean uptrend; watch hold above $165.40 with RVOL 2.34 and -0.17% gap.",
-      "stop": "202.53",
-      "target": "221.01",
-      "risk": "$6.16/share; 16 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 16:00 ET / prior-session mean (Yahoo)",
-      "score": 82.26,
+      "thesis": "Clean uptrend; watch hold above $186.11 with RVOL 4.87 and -2.73% gap.",
+      "stop": "198.85",
+      "target": "217.67",
+      "risk": "$6.27/share; 15 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:46 ET / prior-session mean (Yahoo)",
+      "score": 80.05,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -72,65 +73,70 @@
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Palantir’s Pentagon role reveals a surprising edge",
-          "timestamp": "2026-10-12T21:03:00+00:00",
-          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-pentagon-role-reveals-surprising-210300239.html"
+          "description": "Arista Networks vs. International Business Machines: Which Technology Stock Is a Better Buy in 2026?",
+          "timestamp": "2026-10-13T16:35:01+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-vs-international-business-163501557.html"
         },
         {
           "kind": "news",
-          "description": "Palantir Announces Date of Third Quarter 2026 Earnings Release and Webcast",
-          "timestamp": "2026-10-12T20:05:00+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-announces-date-third-quarter-200500055.html"
+          "description": "Should You Buy, Sell, or Hold Cisco Stock After a 68% Rise in a Year?",
+          "timestamp": "2026-10-13T14:35:00+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-cisco-stock-143500067.html"
         },
         {
           "kind": "news",
-          "description": "Palantir Stocks Slip Despite Barclays' $265 AI Target",
-          "timestamp": "2026-10-12T19:10:24+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stocks-slip-despite-barclays-191024775.html"
+          "description": "Did The Market Read Super Micro Computer Stock Right?",
+          "timestamp": "2026-10-12T23:09:49+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/did-market-read-super-micro-230949119.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -2.73%",
+          "timestamp": null,
+          "url": null
         }
       ],
-      "fundamental_score": 99.25,
-      "revenue_growth_pct": 92.83,
-      "revenue_ttm": 5752836000,
-      "net_margin_pct": 47.54,
-      "eps_growth_pct": 215.38,
+      "fundamental_score": 90.25,
+      "revenue_growth_pct": 37.69,
+      "revenue_ttm": 10257800000,
+      "net_margin_pct": 38.78,
+      "eps_growth_pct": 35.71,
       "debt_to_equity": null,
-      "return_on_equity_pct": 27.98,
+      "return_on_equity_pct": 26.88,
       "fiscal_period_end": "2026-06-30",
       "profitable": true,
       "fundamentals_coverage": 0.875
     },
     {
       "rank": 2,
-      "symbol": "SHOP",
+      "symbol": "MRVL",
       "company": "",
-      "price": 178.75,
-      "volume": 9524600,
-      "current_volume": 20157656,
-      "rvol": 2.412,
-      "atr_percent": 3.965,
-      "beta": 1.673,
+      "price": 267.375,
+      "volume": 19348740,
+      "current_volume": 23599924,
+      "rvol": 1.592,
+      "atr_percent": 5.253,
+      "beta": 3.337,
       "spread_percent": null,
-      "gap_percent": 4.624,
-      "momentum_percent": 36.96,
-      "volume_spike": 0.69,
-      "volume_confirmation": 1.13,
-      "rsi": 72.8,
-      "pe_ratio": 111.72,
+      "gap_percent": 0.57,
+      "momentum_percent": 19.55,
+      "volume_spike": 0.98,
+      "volume_confirmation": 1.8,
+      "rsi": 55.3,
+      "pe_ratio": 95.83,
       "trend": "uptrend",
-      "levels": "support: 126.39; resistance: 167.94",
+      "levels": "support: 213.58; resistance: 301.2",
       "catalysts": [
-        "Shopify Can Win Big With AI Agents. Why It May Take Time.",
-        "Shopify (SHOP): Building the Underlying Rails for the Era of Agentic Commerce",
-        "Salesforce Just Turned the Agent Allowlist Into a CRM Product",
-        "Premarket gap +4.62%"
+        "Marvell Is Up 214% in 2026 While Broadcom Is Only Up 3%: Take Profits on MRVL Stock, or Hold On for the Ride?",
+        "CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026",
+        "CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026"
       ],
-      "thesis": "Clean uptrend; watch hold above $126.39 with RVOL 2.41 and +4.62% gap.",
-      "stop": "171.66",
-      "target": "192.93",
-      "risk": "$7.09/share; 14 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 16:00 ET / prior-session mean (Yahoo)",
-      "score": 73.85,
+      "thesis": "Clean uptrend; watch hold above $213.58 with RVOL 1.59 and +0.57% gap.",
+      "stop": "253.33",
+      "target": "295.47",
+      "risk": "$14.05/share; 7 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:46 ET / prior-session mean (Yahoo)",
+      "score": 64.05,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -142,44 +148,39 @@
         "clean_trend": true,
         "clear_levels": true,
         "catalyst": true,
-        "revenue_growth": true
+        "revenue_growth": true,
+        "debt_to_equity": true
       },
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Shopify Can Win Big With AI Agents. Why It May Take Time.",
-          "timestamp": "2026-10-12T18:20:00+00:00",
-          "url": "https://finance.yahoo.com/m/0e94f999-b6fc-3b41-9108-3657031de979/shopify-can-win-big-with-ai.html"
+          "description": "Marvell Is Up 214% in 2026 While Broadcom Is Only Up 3%: Take Profits on MRVL Stock, or Hold On for the Ride?",
+          "timestamp": "2026-10-13T19:00:11+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-214-2026-while-broadcom-190011776.html"
         },
         {
           "kind": "news",
-          "description": "Shopify (SHOP): Building the Underlying Rails for the Era of Agentic Commerce",
-          "timestamp": "2026-10-12T14:10:52+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/shopify-shop-building-underlying-rails-141052574.html"
+          "description": "CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026",
+          "timestamp": "2026-10-13T19:00:00+00:00",
+          "url": "https://finance.yahoo.com/technology/articles/cybertan-unveils-pallas-series-liquid-190000490.html"
         },
         {
           "kind": "news",
-          "description": "Salesforce Just Turned the Agent Allowlist Into a CRM Product",
-          "timestamp": "2026-10-12T11:33:30+00:00",
-          "url": "https://finance.yahoo.com/technology/ai/articles/salesforce-just-turned-agent-allowlist-113330929.html"
-        },
-        {
-          "kind": "gap",
-          "description": "Premarket gap +4.62%",
-          "timestamp": null,
-          "url": null
+          "description": "CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026",
+          "timestamp": "2026-10-13T19:00:00+00:00",
+          "url": "https://finance.yahoo.com/technology/articles/cybertan-unveils-pallas-series-liquid-190000864.html"
         }
       ],
-      "fundamental_score": 80.01,
-      "revenue_growth_pct": 33.69,
-      "revenue_ttm": 12277000000,
-      "net_margin_pct": 17.03,
-      "eps_growth_pct": 68.12,
-      "debt_to_equity": null,
-      "return_on_equity_pct": 16.49,
-      "fiscal_period_end": "2026-06-30",
+      "fundamental_score": 90.03,
+      "revenue_growth_pct": 36.55,
+      "revenue_ttm": 9237700000,
+      "net_margin_pct": 26.4,
+      "eps_growth_pct": 50,
+      "debt_to_equity": 0.268,
+      "return_on_equity_pct": 13.16,
+      "fiscal_period_end": "2026-08-01",
       "profitable": true,
-      "fundamentals_coverage": 0.875
+      "fundamentals_coverage": 1
     }
   ],
   "errors": [],
@@ -188,28 +189,28 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 236 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 105 symbols; verify market session/holiday status before acting.",
+    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (10 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
   "symbols_qualified": 2,
   "rejection_counts": {
-    "atr": 40,
-    "average_volume": 19,
-    "beta": 30,
-    "catalyst": 25,
-    "clean_trend": 136,
-    "clear_levels": 13,
+    "atr": 43,
+    "average_volume": 18,
+    "beta": 35,
+    "catalyst": 12,
+    "clean_trend": 149,
+    "clear_levels": 11,
     "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 190,
+    "momentum": 187,
     "price": 3,
     "revenue_growth": 98,
-    "rvol": 182,
-    "volume_confirmation": 186
+    "rvol": 171,
+    "volume_confirmation": 185
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
