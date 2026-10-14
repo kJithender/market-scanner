@@ -2,8 +2,8 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-10-13T19:47:29.646871+00:00`  
-Freshness: Market data as of 2026-10-13T15:46:20-04:00  
+Generated: `2026-10-14T17:50:24.313683+00:00`  
+Freshness: Market data as of 2026-10-14T13:49:02-04:00  
 Schedule timezone: `America/Los_Angeles`  
 Watchlist: **2 / 200 max**
 
@@ -30,24 +30,24 @@ Watchlist: **2 / 200 max**
 
 | # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
 |---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **ANET** | $205.12 | 4,902,900 | 4.87× | 3.06% | 2.24 | — | -2.73% | uptrend | support: 186.11; resistance: 217.41 | Arista Networks vs. International Business Machines: Which Technology Stock Is a Better Buy in 2026?; Should You Buy, Sell, or Hold Cisco Stock After a 68% Rise in a Year?; Did The Market Read Super Micro Computer Stock Right?; Premarket gap -2.73% |
-| 2 | **MRVL** | $267.38 | 19,348,740 | 1.59× | 5.25% | 3.34 | — | 0.57% | uptrend | support: 213.58; resistance: 301.2 | Marvell Is Up 214% in 2026 While Broadcom Is Only Up 3%: Take Profits on MRVL Stock, or Hold On for the Ride?; CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026; CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026 |
+| 1 | **PLTR** | $201.85 | 23,200,515 | 2.17× | 2.96% | 3.09 | — | -3.27% | uptrend | support: 168.96; resistance: 212.94 | Sector Update: Tech Stocks Fall Wednesday Afternoon; Salesforce vs. Palantir Technologies: Which Technology Stock Is a Better Buy in 2026?; Ondas Retreats 6% Despite Regna AI Launch With Palantir; AeroVironment Drops 3%, Kratos Slips; Premarket gap -3.27% |
+| 2 | **ZS** | $222.98 | 3,089,995 | 1.57× | 4.62% | 1.28 | — | -2.48% | uptrend | support: 187.45; resistance: 237.22 | Cybersecurity Stocks Fall Amid Report Of OpenAI Acquisition; Zscaler Insider Sold Shares Worth $5,646,826, According to a Recent SEC Filing; What Was Cloudflare Telling You Before Its Stock Ran?; Premarket gap -2.48% |
 
 ## Pre-trade checklist
 
-### 1. ANET
+### 1. PLTR
 
-- **Thesis:** Clean uptrend; watch hold above $186.11 with RVOL 4.87 and -2.73% gap.
-- **Stop:** 198.85
-- **Target:** 217.67
-- **Risk:** $6.27/share; 15 shares at $100 max planned risk
+- **Thesis:** Clean uptrend; watch hold above $168.96 with RVOL 2.17 and -3.27% gap.
+- **Stop:** 195.88
+- **Target:** 213.81
+- **Risk:** $5.98/share; 16 shares at $100 max planned risk
 
-### 2. MRVL
+### 2. ZS
 
-- **Thesis:** Clean uptrend; watch hold above $213.58 with RVOL 1.59 and +0.57% gap.
-- **Stop:** 253.33
-- **Target:** 295.47
-- **Risk:** $14.05/share; 7 shares at $100 max planned risk
+- **Thesis:** Clean uptrend; watch hold above $187.45 with RVOL 1.57 and -2.48% gap.
+- **Stop:** 212.68
+- **Target:** 243.58
+- **Risk:** $10.30/share; 9 shares at $100 max planned risk
 
 ## Warnings
 
@@ -58,4 +58,4 @@ Watchlist: **2 / 200 max**
 - Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-13T19:47:29.646871+00:00",
-  "data_as_of": "2026-10-13T15:46:20-04:00",
-  "data_freshness": "Market data as of 2026-10-13T15:46:20-04:00",
+  "generated_at": "2026-10-14T17:50:24.313683+00:00",
+  "data_as_of": "2026-10-14T13:49:02-04:00",
+  "data_freshness": "Market data as of 2026-10-14T13:49:02-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -28,35 +28,35 @@
   "candidates": [
     {
       "rank": 1,
-      "symbol": "ANET",
+      "symbol": "PLTR",
       "company": "",
-      "price": 205.12,
-      "volume": 4902900,
-      "current_volume": 15967264,
-      "rvol": 4.874,
-      "atr_percent": 3.058,
-      "beta": 2.244,
+      "price": 201.855,
+      "volume": 23200515,
+      "current_volume": 29721303,
+      "rvol": 2.175,
+      "atr_percent": 2.962,
+      "beta": 3.094,
       "spread_percent": null,
-      "gap_percent": -2.731,
-      "momentum_percent": 15.51,
-      "volume_spike": 0.68,
-      "volume_confirmation": 1.16,
-      "rsi": 57.3,
-      "pe_ratio": 65.74,
+      "gap_percent": -3.266,
+      "momentum_percent": 56,
+      "volume_spike": 0.78,
+      "volume_confirmation": 1.55,
+      "rsi": 75.6,
+      "pe_ratio": 190.43,
       "trend": "uptrend",
-      "levels": "support: 186.11; resistance: 217.41",
+      "levels": "support: 168.96; resistance: 212.94",
       "catalysts": [
-        "Arista Networks vs. International Business Machines: Which Technology Stock Is a Better Buy in 2026?",
-        "Should You Buy, Sell, or Hold Cisco Stock After a 68% Rise in a Year?",
-        "Did The Market Read Super Micro Computer Stock Right?",
-        "Premarket gap -2.73%"
+        "Sector Update: Tech Stocks Fall Wednesday Afternoon",
+        "Salesforce vs. Palantir Technologies: Which Technology Stock Is a Better Buy in 2026?",
+        "Ondas Retreats 6% Despite Regna AI Launch With Palantir; AeroVironment Drops 3%, Kratos Slips",
+        "Premarket gap -3.27%"
       ],
-      "thesis": "Clean uptrend; watch hold above $186.11 with RVOL 4.87 and -2.73% gap.",
-      "stop": "198.85",
-      "target": "217.67",
-      "risk": "$6.27/share; 15 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 15:46 ET / prior-session mean (Yahoo)",
-      "score": 80.05,
+      "thesis": "Clean uptrend; watch hold above $168.96 with RVOL 2.17 and -3.27% gap.",
+      "stop": "195.88",
+      "target": "213.81",
+      "risk": "$5.98/share; 16 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 13:49 ET / prior-session mean (Yahoo)",
+      "score": 83.25,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -73,70 +73,71 @@
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Arista Networks vs. International Business Machines: Which Technology Stock Is a Better Buy in 2026?",
-          "timestamp": "2026-10-13T16:35:01+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-vs-international-business-163501557.html"
+          "description": "Sector Update: Tech Stocks Fall Wednesday Afternoon",
+          "timestamp": "2026-10-14T17:38:40+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-wednesday-173840979.html"
         },
         {
           "kind": "news",
-          "description": "Should You Buy, Sell, or Hold Cisco Stock After a 68% Rise in a Year?",
-          "timestamp": "2026-10-13T14:35:00+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-cisco-stock-143500067.html"
+          "description": "Salesforce vs. Palantir Technologies: Which Technology Stock Is a Better Buy in 2026?",
+          "timestamp": "2026-10-14T17:30:57+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/salesforce-vs-palantir-technologies-technology-173057626.html"
         },
         {
           "kind": "news",
-          "description": "Did The Market Read Super Micro Computer Stock Right?",
-          "timestamp": "2026-10-12T23:09:49+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/did-market-read-super-micro-230949119.html"
+          "description": "Ondas Retreats 6% Despite Regna AI Launch With Palantir; AeroVironment Drops 3%, Kratos Slips",
+          "timestamp": "2026-10-14T16:41:32+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-retreats-6-despite-regna-164132147.html"
         },
         {
           "kind": "gap",
-          "description": "Premarket gap -2.73%",
+          "description": "Premarket gap -3.27%",
           "timestamp": null,
           "url": null
         }
       ],
-      "fundamental_score": 90.25,
-      "revenue_growth_pct": 37.69,
-      "revenue_ttm": 10257800000,
-      "net_margin_pct": 38.78,
-      "eps_growth_pct": 35.71,
+      "fundamental_score": 99.25,
+      "revenue_growth_pct": 92.83,
+      "revenue_ttm": 5752836000,
+      "net_margin_pct": 47.54,
+      "eps_growth_pct": 215.38,
       "debt_to_equity": null,
-      "return_on_equity_pct": 26.88,
+      "return_on_equity_pct": 27.98,
       "fiscal_period_end": "2026-06-30",
       "profitable": true,
       "fundamentals_coverage": 0.875
     },
     {
       "rank": 2,
-      "symbol": "MRVL",
+      "symbol": "ZS",
       "company": "",
-      "price": 267.375,
-      "volume": 19348740,
-      "current_volume": 23599924,
-      "rvol": 1.592,
-      "atr_percent": 5.253,
-      "beta": 3.337,
+      "price": 222.98,
+      "volume": 3089995,
+      "current_volume": 2601047,
+      "rvol": 1.567,
+      "atr_percent": 4.618,
+      "beta": 1.281,
       "spread_percent": null,
-      "gap_percent": 0.57,
-      "momentum_percent": 19.55,
-      "volume_spike": 0.98,
-      "volume_confirmation": 1.8,
-      "rsi": 55.3,
-      "pe_ratio": 95.83,
+      "gap_percent": -2.484,
+      "momentum_percent": 54.3,
+      "volume_spike": 0.96,
+      "volume_confirmation": 1.32,
+      "rsi": 67.3,
+      "pe_ratio": null,
       "trend": "uptrend",
-      "levels": "support: 213.58; resistance: 301.2",
+      "levels": "support: 187.45; resistance: 237.22",
       "catalysts": [
-        "Marvell Is Up 214% in 2026 While Broadcom Is Only Up 3%: Take Profits on MRVL Stock, or Hold On for the Ride?",
-        "CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026",
-        "CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026"
+        "Cybersecurity Stocks Fall Amid Report Of OpenAI Acquisition",
+        "Zscaler Insider Sold Shares Worth $5,646,826, According to a Recent SEC Filing",
+        "What Was Cloudflare Telling You Before Its Stock Ran?",
+        "Premarket gap -2.48%"
       ],
-      "thesis": "Clean uptrend; watch hold above $213.58 with RVOL 1.59 and +0.57% gap.",
-      "stop": "253.33",
-      "target": "295.47",
-      "risk": "$14.05/share; 7 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 15:46 ET / prior-session mean (Yahoo)",
-      "score": 64.05,
+      "thesis": "Clean uptrend; watch hold above $187.45 with RVOL 1.57 and -2.48% gap.",
+      "stop": "212.68",
+      "target": "243.58",
+      "risk": "$10.30/share; 9 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 13:49 ET / prior-session mean (Yahoo)",
+      "score": 43.51,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -148,39 +149,44 @@
         "clean_trend": true,
         "clear_levels": true,
         "catalyst": true,
-        "revenue_growth": true,
-        "debt_to_equity": true
+        "revenue_growth": true
       },
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Marvell Is Up 214% in 2026 While Broadcom Is Only Up 3%: Take Profits on MRVL Stock, or Hold On for the Ride?",
-          "timestamp": "2026-10-13T19:00:11+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-214-2026-while-broadcom-190011776.html"
+          "description": "Cybersecurity Stocks Fall Amid Report Of OpenAI Acquisition",
+          "timestamp": "2026-10-14T14:21:08+00:00",
+          "url": "https://finance.yahoo.com/m/4c9830f8-b93d-39d1-b3a1-f70e3374329f/cybersecurity-stocks-fall.html"
         },
         {
           "kind": "news",
-          "description": "CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026",
-          "timestamp": "2026-10-13T19:00:00+00:00",
-          "url": "https://finance.yahoo.com/technology/articles/cybertan-unveils-pallas-series-liquid-190000490.html"
+          "description": "Zscaler Insider Sold Shares Worth $5,646,826, According to a Recent SEC Filing",
+          "timestamp": "2026-10-13T20:54:17+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/zscaler-insider-sold-shares-worth-205417453.html"
         },
         {
           "kind": "news",
-          "description": "CyberTAN Unveils Pallas Series Liquid-Cooled 102.4 Tbps Ethernet Switch Platform Blueprint at OCP Global Summit 2026",
-          "timestamp": "2026-10-13T19:00:00+00:00",
-          "url": "https://finance.yahoo.com/technology/articles/cybertan-unveils-pallas-series-liquid-190000864.html"
+          "description": "What Was Cloudflare Telling You Before Its Stock Ran?",
+          "timestamp": "2026-10-13T20:48:24+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/cloudflare-telling-stock-ran-204824765.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -2.48%",
+          "timestamp": null,
+          "url": null
         }
       ],
-      "fundamental_score": 90.03,
-      "revenue_growth_pct": 36.55,
-      "revenue_ttm": 9237700000,
-      "net_margin_pct": 26.4,
-      "eps_growth_pct": 50,
-      "debt_to_equity": 0.268,
-      "return_on_equity_pct": 13.16,
-      "fiscal_period_end": "2026-08-01",
-      "profitable": true,
-      "fundamentals_coverage": 1
+      "fundamental_score": 37.09,
+      "revenue_growth_pct": 25.43,
+      "revenue_ttm": 3132372000,
+      "net_margin_pct": -2.04,
+      "eps_growth_pct": null,
+      "debt_to_equity": null,
+      "return_on_equity_pct": null,
+      "fiscal_period_end": "2026-04-30",
+      "profitable": false,
+      "fundamentals_coverage": 0.625
     }
   ],
   "errors": [],
@@ -192,25 +198,25 @@
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (13 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
   "symbols_qualified": 2,
   "rejection_counts": {
-    "atr": 43,
+    "atr": 48,
     "average_volume": 18,
-    "beta": 35,
-    "catalyst": 12,
-    "clean_trend": 149,
-    "clear_levels": 11,
+    "beta": 36,
+    "catalyst": 6,
+    "clean_trend": 148,
+    "clear_levels": 15,
     "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 187,
+    "momentum": 190,
     "price": 3,
     "revenue_growth": 98,
-    "rvol": 171,
-    "volume_confirmation": 185
+    "rvol": 157,
+    "volume_confirmation": 177
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
