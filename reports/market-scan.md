@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-10-16T17:12:42.787733+00:00`  
-Freshness: Market data as of 2026-10-16T13:11:41-04:00  
+Generated: `2026-10-19T19:05:58.312036+00:00`  
+Freshness: Data timestamp not supplied — verify freshness  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **1 / 200 max**
+Watchlist: **0 / 200 max**
 
 ## Applied filters
 
@@ -28,18 +28,7 @@ Watchlist: **1 / 200 max**
 
 ## Ranked watchlist
 
-| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
-|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **NOW** | $140.63 | 10,966,415 | 1.64× | 4.24% | 0.76 | — | -5.34% | uptrend | support: 126.75; resistance: 148.14 | How Deep System Roots Protect ServiceNow (NOW) in AI Era; 3 US AI Stocks With Real Enterprise Spending Behind The Story; ServiceNow Stocks Surge 5.33% as AI Passport Adds a New Enterprise Control Layer; Premarket gap -5.34% |
-
-## Pre-trade checklist
-
-### 1. NOW
-
-- **Thesis:** Clean uptrend; watch hold above $126.75 with RVOL 1.64 and -5.34% gap.
-- **Stop:** 134.68
-- **Target:** 152.55
-- **Risk:** $5.96/share; 16 shares at $100 max planned risk
+No stocks met every filter. No trade is a valid outcome.
 
 ## Warnings
 
@@ -50,4 +39,5 @@ Watchlist: **1 / 200 max**
 - Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- The high-volatility list (20 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- Only 0 symbols passed every hard gate; watchlist was not padded.
+- The high-volatility list (12 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.

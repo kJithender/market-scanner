@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-16T17:12:42.787733+00:00",
-  "data_as_of": "2026-10-16T13:11:41-04:00",
-  "data_freshness": "Market data as of 2026-10-16T13:11:41-04:00",
+  "generated_at": "2026-10-19T19:05:58.312036+00:00",
+  "data_as_of": null,
+  "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,93 +22,10 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 1,
+  "candidate_count": 0,
   "target_watchlist_size": "200",
-  "status": "ok",
-  "candidates": [
-    {
-      "rank": 1,
-      "symbol": "NOW",
-      "company": "",
-      "price": 140.635,
-      "volume": 10966415,
-      "current_volume": 9228172,
-      "rvol": 1.644,
-      "atr_percent": 4.237,
-      "beta": 0.761,
-      "spread_percent": null,
-      "gap_percent": -5.341,
-      "momentum_percent": 43.91,
-      "volume_spike": 1.66,
-      "volume_confirmation": 1.31,
-      "rsi": 65.4,
-      "pe_ratio": 40.07,
-      "trend": "uptrend",
-      "levels": "support: 126.75; resistance: 148.14",
-      "catalysts": [
-        "How Deep System Roots Protect ServiceNow (NOW) in AI Era",
-        "3 US AI Stocks With Real Enterprise Spending Behind The Story",
-        "ServiceNow Stocks Surge 5.33% as AI Passport Adds a New Enterprise Control Layer",
-        "Premarket gap -5.34%"
-      ],
-      "thesis": "Clean uptrend; watch hold above $126.75 with RVOL 1.64 and -5.34% gap.",
-      "stop": "134.68",
-      "target": "152.55",
-      "risk": "$5.96/share; 16 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 13:11 ET / prior-session mean (Yahoo)",
-      "score": 46.49,
-      "passed_filters": {
-        "price": true,
-        "average_volume": true,
-        "atr": true,
-        "beta": true,
-        "rvol": true,
-        "momentum": true,
-        "volume_confirmation": true,
-        "clean_trend": true,
-        "clear_levels": true,
-        "catalyst": true,
-        "revenue_growth": true,
-        "debt_to_equity": true
-      },
-      "catalyst_details": [
-        {
-          "kind": "news",
-          "description": "How Deep System Roots Protect ServiceNow (NOW) in AI Era",
-          "timestamp": "2026-10-16T15:12:58+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/deep-system-roots-protect-servicenow-151258260.html"
-        },
-        {
-          "kind": "news",
-          "description": "3 US AI Stocks With Real Enterprise Spending Behind The Story",
-          "timestamp": "2026-10-16T15:09:39+00:00",
-          "url": "https://finance.yahoo.com/technology/ai/articles/3-us-ai-stocks-real-150939384.html"
-        },
-        {
-          "kind": "news",
-          "description": "ServiceNow Stocks Surge 5.33% as AI Passport Adds a New Enterprise Control Layer",
-          "timestamp": "2026-10-16T12:38:52+00:00",
-          "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-stocks-surge-5-33-123852886.html"
-        },
-        {
-          "kind": "gap",
-          "description": "Premarket gap -5.34%",
-          "timestamp": null,
-          "url": null
-        }
-      ],
-      "fundamental_score": 44.75,
-      "revenue_growth_pct": 24.01,
-      "revenue_ttm": 14379000000,
-      "net_margin_pct": 11.5,
-      "eps_growth_pct": -21.62,
-      "debt_to_equity": 0.434,
-      "return_on_equity_pct": 13.22,
-      "fiscal_period_end": "2026-06-30",
-      "profitable": true,
-      "fundamentals_coverage": 1
-    }
-  ],
+  "status": "empty",
+  "candidates": [],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
@@ -118,25 +35,26 @@
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (20 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "Only 0 symbols passed every hard gate; watchlist was not padded.",
+    "The high-volatility list (12 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 1,
+  "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 47,
-    "average_volume": 17,
-    "beta": 34,
-    "catalyst": 6,
-    "clean_trend": 174,
-    "clear_levels": 10,
+    "atr": 43,
+    "average_volume": 18,
+    "beta": 35,
+    "catalyst": 14,
+    "clean_trend": 168,
+    "clear_levels": 25,
     "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 191,
+    "momentum": 192,
     "price": 3,
     "revenue_growth": 98,
-    "rvol": 155,
-    "volume_confirmation": 153
+    "rvol": 183,
+    "volume_confirmation": 120
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
