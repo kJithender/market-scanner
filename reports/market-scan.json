@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-19T19:05:58.312036+00:00",
+  "generated_at": "2026-10-20T17:49:48.883076+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -36,25 +36,25 @@
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
     "Only 0 symbols passed every hard gate; watchlist was not padded.",
-    "The high-volatility list (12 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (9 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
   "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 43,
+    "atr": 41,
     "average_volume": 18,
     "beta": 35,
-    "catalyst": 14,
-    "clean_trend": 168,
-    "clear_levels": 25,
+    "catalyst": 8,
+    "clean_trend": 163,
+    "clear_levels": 11,
     "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 192,
+    "momentum": 194,
     "price": 3,
     "revenue_growth": 98,
-    "rvol": 183,
-    "volume_confirmation": 120
+    "rvol": 180,
+    "volume_confirmation": 97
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
