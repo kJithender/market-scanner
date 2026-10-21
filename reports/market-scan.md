@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-10-20T17:49:48.883076+00:00`  
-Freshness: Data timestamp not supplied — verify freshness  
+Generated: `2026-10-21T17:56:39.351442+00:00`  
+Freshness: Market data as of 2026-10-21T13:55:50-04:00  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **0 / 200 max**
+Watchlist: **1 / 200 max**
 
 ## Applied filters
 
@@ -28,7 +28,18 @@ Watchlist: **0 / 200 max**
 
 ## Ranked watchlist
 
-No stocks met every filter. No trade is a valid outcome.
+| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
+|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
+| 1 | **ISRG** | $427.47 | 2,029,400 | 3.41× | 2.58% | 0.82 | — | -2.40% | uptrend | support: 389.11; resistance: 434.89 | Intuitive Surgical Drops as $450 Million Charge Overshadows Beat; Intuitive Surgical Hammered As Elevated Buy-Side Views Outshine Solid Numbers; Intuitive Surgical to Face Potential Risks in 2027 Procedure Momentum From Pricing Actions, RBC Says; Premarket gap -2.40% |
+
+## Pre-trade checklist
+
+### 1. ISRG
+
+- **Thesis:** Clean uptrend; watch hold above $389.11 with RVOL 3.41 and -2.40% gap.
+- **Stop:** 416.42
+- **Target:** 449.57
+- **Risk:** $11.05/share; 9 shares at $100 max planned risk
 
 ## Warnings
 
@@ -36,8 +47,7 @@ No stocks met every filter. No trade is a valid outcome.
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X
 - Yahoo returned complete price history for 236 of 245 requested symbols.
-- Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
+- Stale Yahoo timestamps (>30 minutes) for 3 symbols; verify market session/holiday status before acting.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- Only 0 symbols passed every hard gate; watchlist was not padded.
-- The high-volatility list (9 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (18 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.

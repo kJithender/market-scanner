@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-20T17:49:48.883076+00:00",
-  "data_as_of": null,
-  "data_freshness": "Data timestamp not supplied — verify freshness",
+  "generated_at": "2026-10-21T17:56:39.351442+00:00",
+  "data_as_of": "2026-10-21T13:55:50-04:00",
+  "data_freshness": "Market data as of 2026-10-21T13:55:50-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,39 +22,120 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 0,
+  "candidate_count": 1,
   "target_watchlist_size": "200",
-  "status": "empty",
-  "candidates": [],
+  "status": "ok",
+  "candidates": [
+    {
+      "rank": 1,
+      "symbol": "ISRG",
+      "company": "",
+      "price": 427.47,
+      "volume": 2029400,
+      "current_volume": 3199628,
+      "rvol": 3.406,
+      "atr_percent": 2.585,
+      "beta": 0.818,
+      "spread_percent": null,
+      "gap_percent": -2.404,
+      "momentum_percent": 28.56,
+      "volume_spike": 1.75,
+      "volume_confirmation": 1.31,
+      "rsi": 69.7,
+      "pe_ratio": 51.32,
+      "trend": "uptrend",
+      "levels": "support: 389.11; resistance: 434.89",
+      "catalysts": [
+        "Intuitive Surgical Drops as $450 Million Charge Overshadows Beat",
+        "Intuitive Surgical Hammered As Elevated Buy-Side Views Outshine Solid Numbers",
+        "Intuitive Surgical to Face Potential Risks in 2027 Procedure Momentum From Pricing Actions, RBC Says",
+        "Premarket gap -2.40%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $389.11 with RVOL 3.41 and -2.40% gap.",
+      "stop": "416.42",
+      "target": "449.57",
+      "risk": "$11.05/share; 9 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 13:55 ET / prior-session mean (Yahoo)",
+      "score": 62.25,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "Intuitive Surgical Drops as $450 Million Charge Overshadows Beat",
+          "timestamp": "2026-10-21T17:47:01+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intuitive-surgical-drops-450-million-174701587.html"
+        },
+        {
+          "kind": "news",
+          "description": "Intuitive Surgical Hammered As Elevated Buy-Side Views Outshine Solid Numbers",
+          "timestamp": "2026-10-21T16:55:25+00:00",
+          "url": "https://finance.yahoo.com/m/018747d7-dd5f-361a-892b-5ff3c8134fae/intuitive-surgical-hammered.html"
+        },
+        {
+          "kind": "news",
+          "description": "Intuitive Surgical to Face Potential Risks in 2027 Procedure Momentum From Pricing Actions, RBC Says",
+          "timestamp": "2026-10-21T16:00:41+00:00",
+          "url": "https://finance.yahoo.com/healthcare/articles/intuitive-surgical-face-potential-risks-160041492.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -2.40%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 63.71,
+      "revenue_growth_pct": 18.54,
+      "revenue_ttm": 10608200000,
+      "net_margin_pct": 28.3,
+      "eps_growth_pct": 26.52,
+      "debt_to_equity": null,
+      "return_on_equity_pct": 16.53,
+      "fiscal_period_end": "2026-06-30",
+      "profitable": true,
+      "fundamentals_coverage": 0.875
+    }
+  ],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 236 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
+    "Stale Yahoo timestamps (>30 minutes) for 3 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "Only 0 symbols passed every hard gate; watchlist was not padded.",
-    "The high-volatility list (9 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (18 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 0,
+  "symbols_qualified": 1,
   "rejection_counts": {
-    "atr": 41,
+    "atr": 37,
     "average_volume": 18,
     "beta": 35,
-    "catalyst": 8,
+    "catalyst": 5,
     "clean_trend": 163,
-    "clear_levels": 11,
+    "clear_levels": 5,
     "debt_to_equity": 21,
     "insufficient_history": 1,
-    "momentum": 194,
+    "momentum": 184,
     "price": 3,
-    "revenue_growth": 98,
-    "rvol": 180,
-    "volume_confirmation": 97
+    "revenue_growth": 97,
+    "rvol": 179,
+    "volume_confirmation": 104
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
