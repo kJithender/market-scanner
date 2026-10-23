@@ -2,8 +2,8 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-10-22T17:53:23.093359+00:00`  
-Freshness: Market data as of 2026-10-22T13:52:28-04:00  
+Generated: `2026-10-23T17:45:55.893130+00:00`  
+Freshness: Market data as of 2026-10-23T13:45:00-04:00  
 Schedule timezone: `America/Los_Angeles`  
 Watchlist: **1 / 200 max**
 
@@ -30,16 +30,16 @@ Watchlist: **1 / 200 max**
 
 | # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
 |---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **NOW** | $157.23 | 10,709,420 | 1.84× | 3.93% | 0.82 | — | 2.68% | uptrend | support: 126.75; resistance: 154.2 | Palantir Just Gained 7% in a Month: Take Profits, or Buy More?; AI TRiSM Market Surges to $11.61 billion at a CAGR 30.3% by 2031 \| Report by MarketsandMarkets™; Polen Focus Growth Strategy Highlights ServiceNow, Inc. (NOW) on AI Revenue Growth; Premarket gap +2.68% |
+| 1 | **ISRG** | $456.12 | 2,246,750 | 1.78× | 2.88% | 0.48 | — | 2.76% | uptrend | support: 389.11; resistance: 440.4 | Intuitive Surgical Sinks 6% as U.S. da Vinci Growth Slows to “Lowest We’ve Seen Since COVID”; Gemini Latest Stock Portfolio: Top 4 Stock Picks; FMS Launches multiFiltratePRO System for U.S. Patients With Acute AKI; Premarket gap +2.76% |
 
 ## Pre-trade checklist
 
-### 1. NOW
+### 1. ISRG
 
-- **Thesis:** Clean uptrend; watch hold above $126.75 with RVOL 1.84 and +2.68% gap.
-- **Stop:** 151.05
-- **Target:** 169.59
-- **Risk:** $6.18/share; 16 shares at $100 max planned risk
+- **Thesis:** Clean uptrend; watch hold above $389.11 with RVOL 1.78 and +2.76% gap.
+- **Stop:** 442.97
+- **Target:** 482.42
+- **Risk:** $13.15/share; 7 shares at $100 max planned risk
 
 ## Warnings
 
@@ -47,7 +47,8 @@ Watchlist: **1 / 200 max**
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X
 - Yahoo returned complete price history for 236 of 245 requested symbols.
-- Stale Yahoo timestamps (>30 minutes) for 2 symbols; verify market session/holiday status before acting.
+- Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
+- No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (12 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
