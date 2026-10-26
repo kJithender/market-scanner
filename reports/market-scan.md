@@ -2,8 +2,8 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-10-23T17:45:55.893130+00:00`  
-Freshness: Market data as of 2026-10-23T13:45:00-04:00  
+Generated: `2026-10-26T19:04:44.261585+00:00`  
+Freshness: Market data as of 2026-10-26T15:03:55-04:00  
 Schedule timezone: `America/Los_Angeles`  
 Watchlist: **1 / 200 max**
 
@@ -30,25 +30,25 @@ Watchlist: **1 / 200 max**
 
 | # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
 |---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **ISRG** | $456.12 | 2,246,750 | 1.78× | 2.88% | 0.48 | — | 2.76% | uptrend | support: 389.11; resistance: 440.4 | Intuitive Surgical Sinks 6% as U.S. da Vinci Growth Slows to “Lowest We’ve Seen Since COVID”; Gemini Latest Stock Portfolio: Top 4 Stock Picks; FMS Launches multiFiltratePRO System for U.S. Patients With Acute AKI; Premarket gap +2.76% |
+| 1 | **PAGS** | $8.47 | 4,801,110 | 5.36× | 5.09% | 1.34 | — | -25.92% | uptrend | support: 8.66; resistance: 11.76 | Why PagSeguro Stock Crashed Today; StoneCo Sinks 29%, Inter & Co Down 36%, PagSeguro Down 25% on Lula’s Unexpected Election Win; Top Premarket Decliners; Premarket gap -25.92% |
 
 ## Pre-trade checklist
 
-### 1. ISRG
+### 1. PAGS
 
-- **Thesis:** Clean uptrend; watch hold above $389.11 with RVOL 1.78 and +2.76% gap.
-- **Stop:** 442.97
-- **Target:** 482.42
-- **Risk:** $13.15/share; 7 shares at $100 max planned risk
+- **Thesis:** Clean uptrend; watch hold above $8.66 with RVOL 5.36 and -25.92% gap.
+- **Stop:** 8.66
+- **Target:** 8.11
+- **Risk:** $-0.18/share; 0 shares at $100 max planned risk
 
 ## Warnings
 
 - Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X
-- Yahoo returned complete price history for 236 of 245 requested symbols.
+- Yahoo returned complete price history for 235 of 245 requested symbols.
 - Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
 - No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- The high-volatility list (12 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (21 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-23T17:45:55.893130+00:00",
-  "data_as_of": "2026-10-23T13:45:00-04:00",
-  "data_freshness": "Market data as of 2026-10-23T13:45:00-04:00",
+  "generated_at": "2026-10-26T19:04:44.261585+00:00",
+  "data_as_of": "2026-10-26T15:03:55-04:00",
+  "data_freshness": "Market data as of 2026-10-26T15:03:55-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -28,35 +28,35 @@
   "candidates": [
     {
       "rank": 1,
-      "symbol": "ISRG",
+      "symbol": "PAGS",
       "company": "",
-      "price": 456.12,
-      "volume": 2246750,
-      "current_volume": 1882985,
-      "rvol": 1.778,
-      "atr_percent": 2.883,
-      "beta": 0.478,
+      "price": 8.475,
+      "volume": 4801110,
+      "current_volume": 15634250,
+      "rvol": 5.362,
+      "atr_percent": 5.094,
+      "beta": 1.344,
       "spread_percent": null,
-      "gap_percent": 2.764,
-      "momentum_percent": 31.51,
-      "volume_spike": 1.27,
-      "volume_confirmation": 1.78,
-      "rsi": 67.9,
-      "pe_ratio": 56.94,
+      "gap_percent": -25.918,
+      "momentum_percent": 25.62,
+      "volume_spike": 0.98,
+      "volume_confirmation": 1.11,
+      "rsi": 65.2,
+      "pe_ratio": null,
       "trend": "uptrend",
-      "levels": "support: 389.11; resistance: 440.4",
+      "levels": "support: 8.66; resistance: 11.76",
       "catalysts": [
-        "Intuitive Surgical Sinks 6% as U.S. da Vinci Growth Slows to “Lowest We’ve Seen Since COVID”",
-        "Gemini Latest Stock Portfolio: Top 4 Stock Picks",
-        "FMS Launches multiFiltratePRO System for U.S. Patients With Acute AKI",
-        "Premarket gap +2.76%"
+        "Why PagSeguro Stock Crashed Today",
+        "StoneCo Sinks 29%, Inter & Co Down 36%, PagSeguro Down 25% on Lula’s Unexpected Election Win",
+        "Top Premarket Decliners",
+        "Premarket gap -25.92%"
       ],
-      "thesis": "Clean uptrend; watch hold above $389.11 with RVOL 1.78 and +2.76% gap.",
-      "stop": "442.97",
-      "target": "482.42",
-      "risk": "$13.15/share; 7 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 13:44 ET / prior-session mean (Yahoo)",
-      "score": 52.95,
+      "thesis": "Clean uptrend; watch hold above $8.66 with RVOL 5.36 and -25.92% gap.",
+      "stop": "8.66",
+      "target": "8.11",
+      "risk": "$-0.18/share; 0 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:03 ET / prior-session mean (Yahoo)",
+      "score": 62.6,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -67,45 +67,44 @@
         "volume_confirmation": true,
         "clean_trend": true,
         "clear_levels": true,
-        "catalyst": true,
-        "revenue_growth": true
+        "catalyst": true
       },
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Intuitive Surgical Sinks 6% as U.S. da Vinci Growth Slows to “Lowest We’ve Seen Since COVID”",
-          "timestamp": "2026-10-23T17:08:50+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/intuitive-surgical-sinks-6-u-170850556.html"
+          "description": "Why PagSeguro Stock Crashed Today",
+          "timestamp": "2026-10-26T15:57:00+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-pagseguro-stock-crashed-today-155700808.html"
         },
         {
           "kind": "news",
-          "description": "Gemini Latest Stock Portfolio: Top 4 Stock Picks",
-          "timestamp": "2026-10-23T15:27:59+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/gemini-latest-stock-portfolio-top-152759855.html"
+          "description": "StoneCo Sinks 29%, Inter & Co Down 36%, PagSeguro Down 25% on Lula’s Unexpected Election Win",
+          "timestamp": "2026-10-26T13:53:15+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stoneco-sinks-29-inter-co-135315464.html"
         },
         {
           "kind": "news",
-          "description": "FMS Launches multiFiltratePRO System for U.S. Patients With Acute AKI",
-          "timestamp": "2026-10-23T13:55:00+00:00",
-          "url": "https://finance.yahoo.com/healthcare/articles/fms-launches-multifiltratepro-system-u-135500267.html"
+          "description": "Top Premarket Decliners",
+          "timestamp": "2026-10-26T11:50:27+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/top-premarket-decliners-115027990.html"
         },
         {
           "kind": "gap",
-          "description": "Premarket gap +2.76%",
+          "description": "Premarket gap -25.92%",
           "timestamp": null,
           "url": null
         }
       ],
-      "fundamental_score": 55.52,
-      "revenue_growth_pct": 21.7,
-      "revenue_ttm": 11216900000,
-      "net_margin_pct": 25.56,
-      "eps_growth_pct": -23.59,
+      "fundamental_score": null,
+      "revenue_growth_pct": null,
+      "revenue_ttm": null,
+      "net_margin_pct": null,
+      "eps_growth_pct": null,
       "debt_to_equity": null,
-      "return_on_equity_pct": 17.93,
-      "fiscal_period_end": "2026-09-30",
-      "profitable": true,
-      "fundamentals_coverage": 0.875
+      "return_on_equity_pct": null,
+      "fiscal_period_end": null,
+      "profitable": null,
+      "fundamentals_coverage": 0
     }
   ],
   "errors": [],
@@ -113,30 +112,30 @@
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
-    "Yahoo returned complete price history for 236 of 245 requested symbols.",
+    "Yahoo returned complete price history for 235 of 245 requested symbols.",
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (12 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (21 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
   "symbols_qualified": 1,
   "rejection_counts": {
-    "atr": 41,
-    "average_volume": 19,
-    "beta": 50,
-    "catalyst": 6,
+    "atr": 38,
+    "average_volume": 18,
+    "beta": 43,
+    "catalyst": 16,
     "clean_trend": 154,
-    "clear_levels": 25,
-    "debt_to_equity": 21,
+    "clear_levels": 22,
+    "debt_to_equity": 20,
     "insufficient_history": 1,
-    "momentum": 179,
-    "price": 4,
+    "momentum": 186,
+    "price": 3,
     "revenue_growth": 98,
-    "rvol": 180,
-    "volume_confirmation": 147
+    "rvol": 186,
+    "volume_confirmation": 166
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
