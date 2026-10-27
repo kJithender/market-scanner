@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-26T19:04:44.261585+00:00",
-  "data_as_of": "2026-10-26T15:03:55-04:00",
-  "data_freshness": "Market data as of 2026-10-26T15:03:55-04:00",
+  "generated_at": "2026-10-27T18:36:01.621768+00:00",
+  "data_as_of": null,
+  "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,119 +22,39 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 1,
+  "candidate_count": 0,
   "target_watchlist_size": "200",
-  "status": "ok",
-  "candidates": [
-    {
-      "rank": 1,
-      "symbol": "PAGS",
-      "company": "",
-      "price": 8.475,
-      "volume": 4801110,
-      "current_volume": 15634250,
-      "rvol": 5.362,
-      "atr_percent": 5.094,
-      "beta": 1.344,
-      "spread_percent": null,
-      "gap_percent": -25.918,
-      "momentum_percent": 25.62,
-      "volume_spike": 0.98,
-      "volume_confirmation": 1.11,
-      "rsi": 65.2,
-      "pe_ratio": null,
-      "trend": "uptrend",
-      "levels": "support: 8.66; resistance: 11.76",
-      "catalysts": [
-        "Why PagSeguro Stock Crashed Today",
-        "StoneCo Sinks 29%, Inter & Co Down 36%, PagSeguro Down 25% on Lula’s Unexpected Election Win",
-        "Top Premarket Decliners",
-        "Premarket gap -25.92%"
-      ],
-      "thesis": "Clean uptrend; watch hold above $8.66 with RVOL 5.36 and -25.92% gap.",
-      "stop": "8.66",
-      "target": "8.11",
-      "risk": "$-0.18/share; 0 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 15:03 ET / prior-session mean (Yahoo)",
-      "score": 62.6,
-      "passed_filters": {
-        "price": true,
-        "average_volume": true,
-        "atr": true,
-        "beta": true,
-        "rvol": true,
-        "momentum": true,
-        "volume_confirmation": true,
-        "clean_trend": true,
-        "clear_levels": true,
-        "catalyst": true
-      },
-      "catalyst_details": [
-        {
-          "kind": "news",
-          "description": "Why PagSeguro Stock Crashed Today",
-          "timestamp": "2026-10-26T15:57:00+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/why-pagseguro-stock-crashed-today-155700808.html"
-        },
-        {
-          "kind": "news",
-          "description": "StoneCo Sinks 29%, Inter & Co Down 36%, PagSeguro Down 25% on Lula’s Unexpected Election Win",
-          "timestamp": "2026-10-26T13:53:15+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/stoneco-sinks-29-inter-co-135315464.html"
-        },
-        {
-          "kind": "news",
-          "description": "Top Premarket Decliners",
-          "timestamp": "2026-10-26T11:50:27+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/top-premarket-decliners-115027990.html"
-        },
-        {
-          "kind": "gap",
-          "description": "Premarket gap -25.92%",
-          "timestamp": null,
-          "url": null
-        }
-      ],
-      "fundamental_score": null,
-      "revenue_growth_pct": null,
-      "revenue_ttm": null,
-      "net_margin_pct": null,
-      "eps_growth_pct": null,
-      "debt_to_equity": null,
-      "return_on_equity_pct": null,
-      "fiscal_period_end": null,
-      "profitable": null,
-      "fundamentals_coverage": 0
-    }
-  ],
+  "status": "empty",
+  "candidates": [],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
-    "Yahoo returned complete price history for 235 of 245 requested symbols.",
+    "Yahoo returned complete price history for 236 of 245 requested symbols.",
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "The high-volatility list (21 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "Only 0 symbols passed every hard gate; watchlist was not padded.",
+    "The high-volatility list (16 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 1,
+  "symbols_qualified": 0,
   "rejection_counts": {
     "atr": 38,
-    "average_volume": 18,
+    "average_volume": 20,
     "beta": 43,
-    "catalyst": 16,
-    "clean_trend": 154,
-    "clear_levels": 22,
+    "catalyst": 50,
+    "clean_trend": 150,
+    "clear_levels": 20,
     "debt_to_equity": 20,
     "insufficient_history": 1,
-    "momentum": 186,
-    "price": 3,
-    "revenue_growth": 98,
-    "rvol": 186,
+    "momentum": 194,
+    "price": 2,
+    "revenue_growth": 99,
+    "rvol": 185,
     "volume_confirmation": 166
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
