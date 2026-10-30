@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-10-29T18:50:15.766019+00:00",
-  "data_as_of": null,
-  "data_freshness": "Data timestamp not supplied — verify freshness",
+  "generated_at": "2026-10-30T18:27:38.116050+00:00",
+  "data_as_of": "2026-10-30T14:26:52-04:00",
+  "data_freshness": "Market data as of 2026-10-30T14:26:52-04:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,10 +22,92 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 0,
+  "candidate_count": 1,
   "target_watchlist_size": "200",
-  "status": "empty",
-  "candidates": [],
+  "status": "ok",
+  "candidates": [
+    {
+      "rank": 1,
+      "symbol": "RBLX",
+      "company": "",
+      "price": 41.635,
+      "volume": 9803955,
+      "current_volume": 20003710,
+      "rvol": 4.825,
+      "atr_percent": 5.866,
+      "beta": 2.043,
+      "spread_percent": null,
+      "gap_percent": -20.635,
+      "momentum_percent": 47.36,
+      "volume_spike": 2.3,
+      "volume_confirmation": 1.47,
+      "rsi": 58.6,
+      "pe_ratio": null,
+      "trend": "uptrend",
+      "levels": "support: 41.81; resistance: 56.08",
+      "catalysts": [
+        "Tech stocks crushed as Nasdaq tumbles more than 800 points",
+        "RBLX Stock Heads For Worst Day Since July As Q4 Outlook Disappoints — Analyst Flags Monetization Risks",
+        "Reddit stock sinks 30%, Roblox tanks 20% after Q3 earnings",
+        "Premarket gap -20.63%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $41.81 with RVOL 4.83 and -20.63% gap.",
+      "stop": "41.81",
+      "target": "41.29",
+      "risk": "$-0.17/share; 0 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 14:26 ET / prior-session mean (Yahoo)",
+      "score": 50.24,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "Tech stocks crushed as Nasdaq tumbles more than 800 points",
+          "timestamp": "2026-10-30T18:11:22+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/tech-stocks-crushed-nasdaq-futures-132530459.html"
+        },
+        {
+          "kind": "news",
+          "description": "RBLX Stock Heads For Worst Day Since July As Q4 Outlook Disappoints — Analyst Flags Monetization Risks",
+          "timestamp": "2026-10-30T17:31:31+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/rblx-stock-heads-worst-day-173131516.html"
+        },
+        {
+          "kind": "news",
+          "description": "Reddit stock sinks 30%, Roblox tanks 20% after Q3 earnings",
+          "timestamp": "2026-10-30T17:01:47+00:00",
+          "url": "https://finance.yahoo.com/markets/article/reddit-pinterest-and-roblox-stocks-tank-after-q3-earnings-134009780.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -20.63%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 22.74,
+      "revenue_growth_pct": 15.59,
+      "revenue_ttm": 5843000000,
+      "net_margin_pct": -15.61,
+      "eps_growth_pct": null,
+      "debt_to_equity": null,
+      "return_on_equity_pct": null,
+      "fiscal_period_end": "2026-09-30",
+      "profitable": false,
+      "fundamentals_coverage": 0.625
+    }
+  ],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
@@ -36,26 +118,25 @@
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "Only 0 symbols passed every hard gate; watchlist was not padded.",
-    "The high-volatility list (20 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
+    "The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 0,
+  "symbols_qualified": 1,
   "rejection_counts": {
     "atr": 37,
-    "average_volume": 20,
-    "beta": 44,
-    "catalyst": 4,
-    "clean_trend": 150,
-    "clear_levels": 12,
-    "debt_to_equity": 20,
+    "average_volume": 19,
+    "beta": 47,
+    "catalyst": 5,
+    "clean_trend": 153,
+    "clear_levels": 7,
+    "debt_to_equity": 19,
     "insufficient_history": 1,
     "momentum": 188,
-    "price": 2,
-    "revenue_growth": 96,
-    "rvol": 160,
-    "volume_confirmation": 170
+    "price": 3,
+    "revenue_growth": 97,
+    "rvol": 128,
+    "volume_confirmation": 184
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }

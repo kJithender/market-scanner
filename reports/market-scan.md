@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-10-29T18:50:15.766019+00:00`  
-Freshness: Data timestamp not supplied — verify freshness  
+Generated: `2026-10-30T18:27:38.116050+00:00`  
+Freshness: Market data as of 2026-10-30T14:26:52-04:00  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **0 / 200 max**
+Watchlist: **1 / 200 max**
 
 ## Applied filters
 
@@ -28,7 +28,18 @@ Watchlist: **0 / 200 max**
 
 ## Ranked watchlist
 
-No stocks met every filter. No trade is a valid outcome.
+| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
+|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
+| 1 | **RBLX** | $41.63 | 9,803,955 | 4.83× | 5.87% | 2.04 | — | -20.64% | uptrend | support: 41.81; resistance: 56.08 | Tech stocks crushed as Nasdaq tumbles more than 800 points; RBLX Stock Heads For Worst Day Since July As Q4 Outlook Disappoints — Analyst Flags Monetization Risks; Reddit stock sinks 30%, Roblox tanks 20% after Q3 earnings; Premarket gap -20.63% |
+
+## Pre-trade checklist
+
+### 1. RBLX
+
+- **Thesis:** Clean uptrend; watch hold above $41.81 with RVOL 4.83 and -20.63% gap.
+- **Stop:** 41.81
+- **Target:** 41.29
+- **Risk:** $-0.17/share; 0 shares at $100 max planned risk
 
 ## Warnings
 
@@ -40,5 +51,4 @@ No stocks met every filter. No trade is a valid outcome.
 - No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- Only 0 symbols passed every hard gate; watchlist was not padded.
-- The high-volatility list (20 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
+- The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
