@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-11-02T22:38:11.633186+00:00",
+  "generated_at": "2026-11-03T20:27:29.225845+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -30,9 +30,9 @@
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
-    "Yahoo request failed for 8 symbols: BITF, DFS, EXAS, LC, MRO, PLYA, SQ, X",
-    "Yahoo returned complete price history for 236 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 112 symbols; verify market session/holiday status before acting.",
+    "Yahoo request failed for 6 symbols: AMC, DFS, MRO, PLYA, SQ, X",
+    "Yahoo returned complete price history for 235 of 245 requested symbols.",
+    "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD",
     "SEC filings yielded no usable fundamentals for 7 symbols: SPOT, IHG, NAVI, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
@@ -43,19 +43,19 @@
   "symbols_scanned": 245,
   "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 35,
+    "atr": 37,
     "average_volume": 19,
-    "beta": 52,
-    "catalyst": 10,
-    "clean_trend": 147,
-    "clear_levels": 28,
+    "beta": 57,
+    "catalyst": 11,
+    "clean_trend": 140,
+    "clear_levels": 27,
     "debt_to_equity": 18,
     "insufficient_history": 1,
-    "momentum": 190,
+    "momentum": 198,
     "price": 3,
-    "revenue_growth": 96,
-    "rvol": 116,
-    "volume_confirmation": 148
+    "revenue_growth": 95,
+    "rvol": 176,
+    "volume_confirmation": 134
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
