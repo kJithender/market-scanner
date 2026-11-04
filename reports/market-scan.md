@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-11-03T20:27:29.225845+00:00`  
-Freshness: Data timestamp not supplied — verify freshness  
+Generated: `2026-11-04T20:41:38.783198+00:00`  
+Freshness: Market data as of 2026-11-04T15:40:57-05:00  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **0 / 200 max**
+Watchlist: **1 / 200 max**
 
 ## Applied filters
 
@@ -28,17 +28,27 @@ Watchlist: **0 / 200 max**
 
 ## Ranked watchlist
 
-No stocks met every filter. No trade is a valid outcome.
+| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
+|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
+| 1 | **AMC** | $3.45 | 21,617,530 | 3.28× | 4.70% | 2.11 | — | 5.19% | uptrend | support: 2.75; resistance: 3.26 | Index Funds Are Better When They’re Lucky and Smart; AMC’s A-List members now make up 20% of its U.S. attendance. Its $4 billion debt is the harder test; Cinemark Earnings Show Movie Theaters Aren’t Dead. What Comes Next for the Stock.; Premarket gap +5.19% |
+
+## Pre-trade checklist
+
+### 1. AMC
+
+- **Thesis:** Clean uptrend; watch hold above $2.75 with RVOL 3.28 and +5.19% gap.
+- **Stop:** 3.29
+- **Target:** 3.77
+- **Risk:** $0.16/share; 616 shares at $100 max planned risk
 
 ## Warnings
 
 - Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
-- Yahoo request failed for 6 symbols: AMC, DFS, MRO, PLYA, SQ, X
-- Yahoo returned complete price history for 235 of 245 requested symbols.
+- Yahoo request failed for 5 symbols: DFS, MRO, PLYA, SQ, X
+- Yahoo returned complete price history for 236 of 245 requested symbols.
 - Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
 - No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD
 - SEC filings yielded no usable fundamentals for 7 symbols: SPOT, IHG, NAVI, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
-- Only 0 symbols passed every hard gate; watchlist was not padded.
 - The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.

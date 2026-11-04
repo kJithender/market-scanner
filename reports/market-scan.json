@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-11-03T20:27:29.225845+00:00",
-  "data_as_of": null,
-  "data_freshness": "Data timestamp not supplied — verify freshness",
+  "generated_at": "2026-11-04T20:41:38.783198+00:00",
+  "data_as_of": "2026-11-04T15:40:57-05:00",
+  "data_freshness": "Market data as of 2026-11-04T15:40:57-05:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,40 +22,121 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 0,
+  "candidate_count": 1,
   "target_watchlist_size": "200",
-  "status": "empty",
-  "candidates": [],
+  "status": "ok",
+  "candidates": [
+    {
+      "rank": 1,
+      "symbol": "AMC",
+      "company": "",
+      "price": 3.4501,
+      "volume": 21617530,
+      "current_volume": 62550081,
+      "rvol": 3.282,
+      "atr_percent": 4.7,
+      "beta": 2.112,
+      "spread_percent": null,
+      "gap_percent": 5.186,
+      "momentum_percent": 22.85,
+      "volume_spike": 1.42,
+      "volume_confirmation": 1.27,
+      "rsi": 64.9,
+      "pe_ratio": null,
+      "trend": "uptrend",
+      "levels": "support: 2.75; resistance: 3.26",
+      "catalysts": [
+        "Index Funds Are Better When They’re Lucky and Smart",
+        "AMC’s A-List members now make up 20% of its U.S. attendance. Its $4 billion debt is the harder test",
+        "Cinemark Earnings Show Movie Theaters Aren’t Dead. What Comes Next for the Stock.",
+        "Premarket gap +5.19%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $2.75 with RVOL 3.28 and +5.19% gap.",
+      "stop": "3.29",
+      "target": "3.77",
+      "risk": "$0.16/share; 616 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:40 ET / prior-session mean (Yahoo)",
+      "score": 50.56,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "Index Funds Are Better When They’re Lucky and Smart",
+          "timestamp": "2026-11-04T11:22:00+00:00",
+          "url": "https://finance.yahoo.com/m/978aa31c-e8d9-3beb-8020-b37d0df28dfd/index-funds-are-better-when.html"
+        },
+        {
+          "kind": "news",
+          "description": "AMC’s A-List members now make up 20% of its U.S. attendance. Its $4 billion debt is the harder test",
+          "timestamp": "2026-11-04T08:03:00+00:00",
+          "url": "https://finance.yahoo.com/media-advertising/articles/amc-list-members-now-20-080300387.html"
+        },
+        {
+          "kind": "news",
+          "description": "Cinemark Earnings Show Movie Theaters Aren’t Dead. What Comes Next for the Stock.",
+          "timestamp": "2026-11-03T21:58:00+00:00",
+          "url": "https://finance.yahoo.com/m/1610187d-29a0-3976-805e-14b9ad5bd216/cinemark-earnings-show-movie.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap +5.19%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 20.74,
+      "revenue_growth_pct": 14.22,
+      "revenue_ttm": 5340200000,
+      "net_margin_pct": -8.08,
+      "eps_growth_pct": null,
+      "debt_to_equity": null,
+      "return_on_equity_pct": null,
+      "fiscal_period_end": "2026-06-30",
+      "profitable": false,
+      "fundamentals_coverage": 0.625
+    }
+  ],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
-    "Yahoo request failed for 6 symbols: AMC, DFS, MRO, PLYA, SQ, X",
-    "Yahoo returned complete price history for 235 of 245 requested symbols.",
+    "Yahoo request failed for 5 symbols: DFS, MRO, PLYA, SQ, X",
+    "Yahoo returned complete price history for 236 of 245 requested symbols.",
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD",
     "SEC filings yielded no usable fundamentals for 7 symbols: SPOT, IHG, NAVI, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
-    "Only 0 symbols passed every hard gate; watchlist was not padded.",
     "The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 0,
+  "symbols_qualified": 1,
   "rejection_counts": {
-    "atr": 37,
+    "atr": 42,
     "average_volume": 19,
-    "beta": 57,
-    "catalyst": 11,
-    "clean_trend": 140,
-    "clear_levels": 27,
+    "beta": 58,
+    "catalyst": 1,
+    "clean_trend": 135,
+    "clear_levels": 3,
     "debt_to_equity": 18,
     "insufficient_history": 1,
-    "momentum": 198,
-    "price": 3,
-    "revenue_growth": 95,
-    "rvol": 176,
-    "volume_confirmation": 134
+    "momentum": 203,
+    "price": 4,
+    "revenue_growth": 100,
+    "rvol": 96,
+    "volume_confirmation": 129
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
