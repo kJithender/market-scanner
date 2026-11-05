@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-11-04T20:41:38.783198+00:00",
-  "data_as_of": "2026-11-04T15:40:57-05:00",
-  "data_freshness": "Market data as of 2026-11-04T15:40:57-05:00",
+  "generated_at": "2026-11-05T20:58:01.429615+00:00",
+  "data_as_of": "2026-11-05T15:56:25-05:00",
+  "data_freshness": "Market data as of 2026-11-05T15:56:25-05:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,41 +22,41 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 1,
+  "candidate_count": 2,
   "target_watchlist_size": "200",
   "status": "ok",
   "candidates": [
     {
       "rank": 1,
-      "symbol": "AMC",
+      "symbol": "ISRG",
       "company": "",
-      "price": 3.4501,
-      "volume": 21617530,
-      "current_volume": 62550081,
-      "rvol": 3.282,
-      "atr_percent": 4.7,
-      "beta": 2.112,
+      "price": 468.68,
+      "volume": 2656710,
+      "current_volume": 3376479,
+      "rvol": 1.635,
+      "atr_percent": 3.463,
+      "beta": 1.123,
       "spread_percent": null,
-      "gap_percent": 5.186,
-      "momentum_percent": 22.85,
-      "volume_spike": 1.42,
+      "gap_percent": -2.784,
+      "momentum_percent": 29,
+      "volume_spike": 1.92,
       "volume_confirmation": 1.27,
-      "rsi": 64.9,
-      "pe_ratio": null,
+      "rsi": 72.5,
+      "pe_ratio": 58.51,
       "trend": "uptrend",
-      "levels": "support: 2.75; resistance: 3.26",
+      "levels": "support: 398.99; resistance: 458.88",
       "catalysts": [
-        "Index Funds Are Better When They’re Lucky and Smart",
-        "AMC’s A-List members now make up 20% of its U.S. attendance. Its $4 billion debt is the harder test",
-        "Cinemark Earnings Show Movie Theaters Aren’t Dead. What Comes Next for the Stock.",
-        "Premarket gap +5.19%"
+        "Intuitive Surgical Insider Sold Shares Worth $4,573,370, According to a Recent SEC Filing",
+        "Intuitive Surgical Insider Sold Shares Worth $529,003, According to a Recent SEC Filing",
+        "ISRG System Placements Rise 28%: Is Capital Equipment Demand Rising?",
+        "Premarket gap -2.78%"
       ],
-      "thesis": "Clean uptrend; watch hold above $2.75 with RVOL 3.28 and +5.19% gap.",
-      "stop": "3.29",
-      "target": "3.77",
-      "risk": "$0.16/share; 616 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 15:40 ET / prior-session mean (Yahoo)",
-      "score": 50.56,
+      "thesis": "Clean uptrend; watch hold above $398.99 with RVOL 1.63 and -2.78% gap.",
+      "stop": "452.45",
+      "target": "501.14",
+      "risk": "$16.23/share; 6 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:56 ET / prior-session mean (Yahoo)",
+      "score": 57.96,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -73,37 +73,118 @@
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "Index Funds Are Better When They’re Lucky and Smart",
-          "timestamp": "2026-11-04T11:22:00+00:00",
-          "url": "https://finance.yahoo.com/m/978aa31c-e8d9-3beb-8020-b37d0df28dfd/index-funds-are-better-when.html"
+          "description": "Intuitive Surgical Insider Sold Shares Worth $4,573,370, According to a Recent SEC Filing",
+          "timestamp": "2026-11-05T18:44:07+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intuitive-surgical-insider-sold-shares-184407941.html"
         },
         {
           "kind": "news",
-          "description": "AMC’s A-List members now make up 20% of its U.S. attendance. Its $4 billion debt is the harder test",
-          "timestamp": "2026-11-04T08:03:00+00:00",
-          "url": "https://finance.yahoo.com/media-advertising/articles/amc-list-members-now-20-080300387.html"
+          "description": "Intuitive Surgical Insider Sold Shares Worth $529,003, According to a Recent SEC Filing",
+          "timestamp": "2026-11-05T18:02:55+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intuitive-surgical-insider-sold-shares-180255767.html"
         },
         {
           "kind": "news",
-          "description": "Cinemark Earnings Show Movie Theaters Aren’t Dead. What Comes Next for the Stock.",
-          "timestamp": "2026-11-03T21:58:00+00:00",
-          "url": "https://finance.yahoo.com/m/1610187d-29a0-3976-805e-14b9ad5bd216/cinemark-earnings-show-movie.html"
+          "description": "ISRG System Placements Rise 28%: Is Capital Equipment Demand Rising?",
+          "timestamp": "2026-11-05T18:00:00+00:00",
+          "url": "https://finance.yahoo.com/healthcare/articles/isrg-system-placements-rise-28-180000831.html"
         },
         {
           "kind": "gap",
-          "description": "Premarket gap +5.19%",
+          "description": "Premarket gap -2.78%",
           "timestamp": null,
           "url": null
         }
       ],
-      "fundamental_score": 20.74,
-      "revenue_growth_pct": 14.22,
-      "revenue_ttm": 5340200000,
-      "net_margin_pct": -8.08,
+      "fundamental_score": 55.52,
+      "revenue_growth_pct": 21.7,
+      "revenue_ttm": 11216900000,
+      "net_margin_pct": 25.56,
+      "eps_growth_pct": -23.59,
+      "debt_to_equity": null,
+      "return_on_equity_pct": 17.93,
+      "fiscal_period_end": "2026-09-30",
+      "profitable": true,
+      "fundamentals_coverage": 0.875
+    },
+    {
+      "rank": 2,
+      "symbol": "AMC",
+      "company": "",
+      "price": 3.09,
+      "volume": 22738090,
+      "current_volume": 39068105,
+      "rvol": 1.86,
+      "atr_percent": 5.317,
+      "beta": 2.303,
+      "spread_percent": null,
+      "gap_percent": -12.216,
+      "momentum_percent": 36.96,
+      "volume_spike": 2.02,
+      "volume_confirmation": 1.46,
+      "rsi": 71.6,
+      "pe_ratio": null,
+      "trend": "uptrend",
+      "levels": "support: 2.75; resistance: 3.36",
+      "catalysts": [
+        "AMC: 3 Key Takeaways for Long-Term Investors",
+        "AMC Says It Has “Finally” Recovered After 6 Years",
+        "B. Riley Adjusts Price Target on AMC Entertainment Holdings to $4 From $3.25, Maintains Neutral Rating",
+        "Premarket gap -12.22%"
+      ],
+      "thesis": "Clean uptrend; watch hold above $2.75 with RVOL 1.86 and -12.22% gap.",
+      "stop": "2.93",
+      "target": "3.42",
+      "risk": "$0.16/share; 608 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:56 ET / prior-session mean (Yahoo)",
+      "score": 52.65,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "AMC: 3 Key Takeaways for Long-Term Investors",
+          "timestamp": "2026-11-05T17:23:01+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/amc-3-key-takeaways-long-172301132.html"
+        },
+        {
+          "kind": "news",
+          "description": "AMC Says It Has “Finally” Recovered After 6 Years",
+          "timestamp": "2026-11-05T16:06:04+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/amc-says-finally-recovered-6-160604802.html"
+        },
+        {
+          "kind": "news",
+          "description": "B. Riley Adjusts Price Target on AMC Entertainment Holdings to $4 From $3.25, Maintains Neutral Rating",
+          "timestamp": "2026-11-05T13:59:46+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/b-riley-adjusts-price-target-135946730.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -12.22%",
+          "timestamp": null,
+          "url": null
+        }
+      ],
+      "fundamental_score": 46.08,
+      "revenue_growth_pct": 31.6,
+      "revenue_ttm": 5653400000,
+      "net_margin_pct": -5.61,
       "eps_growth_pct": null,
       "debt_to_equity": null,
       "return_on_equity_pct": null,
-      "fiscal_period_end": "2026-06-30",
+      "fiscal_period_end": "2026-09-30",
       "profitable": false,
       "fundamentals_coverage": 0.625
     }
@@ -116,27 +197,27 @@
     "Yahoo returned complete price history for 236 of 245 requested symbols.",
     "Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.",
     "No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD",
-    "SEC filings yielded no usable fundamentals for 7 symbols: SPOT, IHG, NAVI, DLO, NU, STNE, PAGS",
+    "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.",
     "The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 1,
+  "symbols_qualified": 2,
   "rejection_counts": {
-    "atr": 42,
-    "average_volume": 19,
-    "beta": 58,
-    "catalyst": 1,
-    "clean_trend": 135,
-    "clear_levels": 3,
+    "atr": 37,
+    "average_volume": 18,
+    "beta": 38,
+    "catalyst": 2,
+    "clean_trend": 132,
+    "clear_levels": 25,
     "debt_to_equity": 18,
     "insufficient_history": 1,
-    "momentum": 203,
+    "momentum": 194,
     "price": 4,
-    "revenue_growth": 100,
-    "rvol": 96,
-    "volume_confirmation": 129
+    "revenue_growth": 102,
+    "rvol": 79,
+    "volume_confirmation": 85
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }

@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-11-04T20:41:38.783198+00:00`  
-Freshness: Market data as of 2026-11-04T15:40:57-05:00  
+Generated: `2026-11-05T20:58:01.429615+00:00`  
+Freshness: Market data as of 2026-11-05T15:56:25-05:00  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **1 / 200 max**
+Watchlist: **2 / 200 max**
 
 ## Applied filters
 
@@ -30,16 +30,24 @@ Watchlist: **1 / 200 max**
 
 | # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
 |---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **AMC** | $3.45 | 21,617,530 | 3.28× | 4.70% | 2.11 | — | 5.19% | uptrend | support: 2.75; resistance: 3.26 | Index Funds Are Better When They’re Lucky and Smart; AMC’s A-List members now make up 20% of its U.S. attendance. Its $4 billion debt is the harder test; Cinemark Earnings Show Movie Theaters Aren’t Dead. What Comes Next for the Stock.; Premarket gap +5.19% |
+| 1 | **ISRG** | $468.68 | 2,656,710 | 1.64× | 3.46% | 1.12 | — | -2.78% | uptrend | support: 398.99; resistance: 458.88 | Intuitive Surgical Insider Sold Shares Worth $4,573,370, According to a Recent SEC Filing; Intuitive Surgical Insider Sold Shares Worth $529,003, According to a Recent SEC Filing; ISRG System Placements Rise 28%: Is Capital Equipment Demand Rising?; Premarket gap -2.78% |
+| 2 | **AMC** | $3.09 | 22,738,090 | 1.86× | 5.32% | 2.30 | — | -12.22% | uptrend | support: 2.75; resistance: 3.36 | AMC: 3 Key Takeaways for Long-Term Investors; AMC Says It Has “Finally” Recovered After 6 Years; B. Riley Adjusts Price Target on AMC Entertainment Holdings to $4 From $3.25, Maintains Neutral Rating; Premarket gap -12.22% |
 
 ## Pre-trade checklist
 
-### 1. AMC
+### 1. ISRG
 
-- **Thesis:** Clean uptrend; watch hold above $2.75 with RVOL 3.28 and +5.19% gap.
-- **Stop:** 3.29
-- **Target:** 3.77
-- **Risk:** $0.16/share; 616 shares at $100 max planned risk
+- **Thesis:** Clean uptrend; watch hold above $398.99 with RVOL 1.63 and -2.78% gap.
+- **Stop:** 452.45
+- **Target:** 501.14
+- **Risk:** $16.23/share; 6 shares at $100 max planned risk
+
+### 2. AMC
+
+- **Thesis:** Clean uptrend; watch hold above $2.75 with RVOL 1.86 and -12.22% gap.
+- **Stop:** 2.93
+- **Target:** 3.42
+- **Risk:** $0.16/share; 608 shares at $100 max planned risk
 
 ## Warnings
 
@@ -49,6 +57,6 @@ Watchlist: **1 / 200 max**
 - Yahoo returned complete price history for 236 of 245 requested symbols.
 - Stale Yahoo timestamps (>30 minutes) for 1 symbols; verify market session/holiday status before acting.
 - No SEC CIK for 1 symbols; fundamental gates were NOT evaluated for them: WBD
-- SEC filings yielded no usable fundamentals for 7 symbols: SPOT, IHG, NAVI, DLO, NU, STNE, PAGS
+- SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: rvol, tight_spread. Those requirements are unproven for every symbol listed below.
 - The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
