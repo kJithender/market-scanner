@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-11-06T20:17:21.390612+00:00`  
-Freshness: Data timestamp not supplied — verify freshness  
+Generated: `2026-11-09T23:18:37.503225+00:00`  
+Freshness: Market data as of 2026-11-09T17:45:00-05:00  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **0 / 200 max**
+Watchlist: **1 / 200 max**
 
 ## Applied filters
 
@@ -28,7 +28,18 @@ Watchlist: **0 / 200 max**
 
 ## Ranked watchlist
 
-No stocks met every filter. No trade is a valid outcome.
+| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
+|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
+| 1 | **V** | $420.85 | 7,392,560 | 1.89× | 2.30% | 0.54 | — | -0.42% | uptrend | support: 375.5; resistance: 442.23 | PayPal’s (PYPL) Turnaround Still Needs Proof; Visa Sees 20%‑Plus Services Growth as U.S. Payment Volumes Gain Momentum; Global Payments Adds Visa API to Authentication Platform |
+
+## Pre-trade checklist
+
+### 1. V
+
+- **Thesis:** Clean uptrend; watch hold above $375.50 with RVOL 1.89 and -0.43% gap.
+- **Stop:** 411.19
+- **Target:** 440.17
+- **Risk:** $9.66/share; 10 shares at $100 max planned risk
 
 ## Warnings
 
@@ -36,7 +47,7 @@ No stocks met every filter. No trade is a valid outcome.
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 5 symbols: DFS, MRO, PLYA, SQ, X
 - Yahoo returned complete price history for 235 of 245 requested symbols.
+- Stale Yahoo timestamps (>30 minutes) for 130 symbols; verify market session/holiday status before acting.
 - SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.
-- Only 0 symbols passed every hard gate; watchlist was not padded.
 - The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-11-06T20:17:21.390612+00:00",
-  "data_as_of": null,
-  "data_freshness": "Data timestamp not supplied — verify freshness",
+  "generated_at": "2026-11-09T23:18:37.503225+00:00",
+  "data_as_of": "2026-11-09T17:45:00-05:00",
+  "data_freshness": "Market data as of 2026-11-09T17:45:00-05:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -22,37 +22,113 @@
     "profitability": "ranking context only",
     "fundamentals_source": "SEC EDGAR filed company facts; an unfiled metric is left unevaluated"
   },
-  "candidate_count": 0,
+  "candidate_count": 1,
   "target_watchlist_size": "200",
-  "status": "empty",
-  "candidates": [],
+  "status": "ok",
+  "candidates": [
+    {
+      "rank": 1,
+      "symbol": "V",
+      "company": "",
+      "price": 420.852,
+      "volume": 7392560,
+      "current_volume": 11518838,
+      "rvol": 1.885,
+      "atr_percent": 2.296,
+      "beta": 0.539,
+      "spread_percent": null,
+      "gap_percent": -0.425,
+      "momentum_percent": 17.19,
+      "volume_spike": 1.28,
+      "volume_confirmation": 1.33,
+      "rsi": 63.2,
+      "pe_ratio": null,
+      "trend": "uptrend",
+      "levels": "support: 375.5; resistance: 442.23",
+      "catalysts": [
+        "PayPal’s (PYPL) Turnaround Still Needs Proof",
+        "Visa Sees 20%‑Plus Services Growth as U.S. Payment Volumes Gain Momentum",
+        "Global Payments Adds Visa API to Authentication Platform"
+      ],
+      "thesis": "Clean uptrend; watch hold above $375.50 with RVOL 1.89 and -0.43% gap.",
+      "stop": "411.19",
+      "target": "440.17",
+      "risk": "$9.66/share; 10 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 16:00 ET / prior-session mean (Yahoo)",
+      "score": 51.3,
+      "passed_filters": {
+        "price": true,
+        "average_volume": true,
+        "atr": true,
+        "beta": true,
+        "rvol": true,
+        "momentum": true,
+        "volume_confirmation": true,
+        "clean_trend": true,
+        "clear_levels": true,
+        "catalyst": true,
+        "revenue_growth": true,
+        "debt_to_equity": true
+      },
+      "catalyst_details": [
+        {
+          "kind": "news",
+          "description": "PayPal’s (PYPL) Turnaround Still Needs Proof",
+          "timestamp": "2026-11-09T20:51:00+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/paypal-pypl-turnaround-still-needs-205100874.html"
+        },
+        {
+          "kind": "news",
+          "description": "Visa Sees 20%‑Plus Services Growth as U.S. Payment Volumes Gain Momentum",
+          "timestamp": "2026-11-09T16:15:14+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/visa-sees-20-plus-services-161514026.html"
+        },
+        {
+          "kind": "news",
+          "description": "Global Payments Adds Visa API to Authentication Platform",
+          "timestamp": "2026-11-09T15:20:40+00:00",
+          "url": "https://finance.yahoo.com/technology/articles/global-payments-adds-visa-api-152040654.html"
+        }
+      ],
+      "fundamental_score": 64.12,
+      "revenue_growth_pct": 14.36,
+      "revenue_ttm": 43936000000,
+      "net_margin_pct": 51.83,
+      "eps_growth_pct": null,
+      "debt_to_equity": 0.536,
+      "return_on_equity_pct": null,
+      "fiscal_period_end": "2026-06-30",
+      "profitable": true,
+      "fundamentals_coverage": 0.625
+    }
+  ],
   "errors": [],
   "warnings": [
     "Yahoo Finance publishes no bid/ask quote; the tight-spread gate was NOT evaluated and remains unproven for every symbol listed.",
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 5 symbols: DFS, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 235 of 245 requested symbols.",
+    "Stale Yahoo timestamps (>30 minutes) for 130 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.",
-    "Only 0 symbols passed every hard gate; watchlist was not padded.",
     "The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
   "provider": "yahoo",
   "symbols_scanned": 245,
-  "symbols_qualified": 0,
+  "symbols_qualified": 1,
   "rejection_counts": {
-    "atr": 33,
+    "atr": 26,
     "average_volume": 18,
-    "beta": 28,
-    "catalyst": 5,
-    "clean_trend": 140,
-    "clear_levels": 55,
+    "beta": 27,
+    "catalyst": 10,
+    "clean_trend": 154,
+    "clear_levels": 17,
     "debt_to_equity": 19,
-    "momentum": 206,
+    "momentum": 212,
     "price": 4,
-    "revenue_growth": 102,
-    "rvol": 156,
-    "volume_confirmation": 64
+    "revenue_growth": 100,
+    "rvol": 166,
+    "volume_confirmation": 87
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
