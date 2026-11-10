@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-11-09T23:18:37.503225+00:00",
-  "data_as_of": "2026-11-09T17:45:00-05:00",
-  "data_freshness": "Market data as of 2026-11-09T17:45:00-05:00",
+  "generated_at": "2026-11-10T20:44:03.289697+00:00",
+  "data_as_of": "2026-11-10T15:43:17-05:00",
+  "data_freshness": "Market data as of 2026-11-10T15:43:17-05:00",
   "timezone": "America/Los_Angeles",
   "filters": {
     "price": "$1–$1000",
@@ -28,34 +28,35 @@
   "candidates": [
     {
       "rank": 1,
-      "symbol": "V",
+      "symbol": "BBY",
       "company": "",
-      "price": 420.852,
-      "volume": 7392560,
-      "current_volume": 11518838,
-      "rvol": 1.885,
-      "atr_percent": 2.296,
-      "beta": 0.539,
+      "price": 104.08,
+      "volume": 2890890,
+      "current_volume": 4750776,
+      "rvol": 2.423,
+      "atr_percent": 4.035,
+      "beta": 0.867,
       "spread_percent": null,
-      "gap_percent": -0.425,
-      "momentum_percent": 17.19,
-      "volume_spike": 1.28,
-      "volume_confirmation": 1.33,
-      "rsi": 63.2,
+      "gap_percent": -2.07,
+      "momentum_percent": 28.96,
+      "volume_spike": 1.37,
+      "volume_confirmation": 1.21,
+      "rsi": 66.7,
       "pe_ratio": null,
       "trend": "uptrend",
-      "levels": "support: 375.5; resistance: 442.23",
+      "levels": "support: 84.83; resistance: 103.54",
       "catalysts": [
-        "PayPal’s (PYPL) Turnaround Still Needs Proof",
-        "Visa Sees 20%‑Plus Services Growth as U.S. Payment Volumes Gain Momentum",
-        "Global Payments Adds Visa API to Authentication Platform"
+        "3 Dividend Stocks To Watch After Hot US Inflation Data",
+        "Uber Joins with Amazon on Food Delivery: A Major Growth Catalyst?",
+        "Best Buy Co., Inc. (BBY) Hits Fresh High: Is There Still Room to Run?",
+        "Premarket gap -2.07%"
       ],
-      "thesis": "Clean uptrend; watch hold above $375.50 with RVOL 1.89 and -0.43% gap.",
-      "stop": "411.19",
-      "target": "440.17",
-      "risk": "$9.66/share; 10 shares at $100 max planned risk",
-      "rvol_method": "regular-session volume through 16:00 ET / prior-session mean (Yahoo)",
-      "score": 51.3,
+      "thesis": "Clean uptrend; watch hold above $84.83 with RVOL 2.42 and -2.07% gap.",
+      "stop": "99.88",
+      "target": "112.48",
+      "risk": "$4.20/share; 23 shares at $100 max planned risk",
+      "rvol_method": "regular-session volume through 15:42 ET / prior-session mean (Yahoo)",
+      "score": 59.38,
       "passed_filters": {
         "price": true,
         "average_volume": true,
@@ -66,40 +67,44 @@
         "volume_confirmation": true,
         "clean_trend": true,
         "clear_levels": true,
-        "catalyst": true,
-        "revenue_growth": true,
-        "debt_to_equity": true
+        "catalyst": true
       },
       "catalyst_details": [
         {
           "kind": "news",
-          "description": "PayPal’s (PYPL) Turnaround Still Needs Proof",
-          "timestamp": "2026-11-09T20:51:00+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/paypal-pypl-turnaround-still-needs-205100874.html"
+          "description": "3 Dividend Stocks To Watch After Hot US Inflation Data",
+          "timestamp": "2026-11-10T20:11:26+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/3-dividend-stocks-watch-hot-201126340.html"
         },
         {
           "kind": "news",
-          "description": "Visa Sees 20%‑Plus Services Growth as U.S. Payment Volumes Gain Momentum",
-          "timestamp": "2026-11-09T16:15:14+00:00",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/visa-sees-20-plus-services-161514026.html"
+          "description": "Uber Joins with Amazon on Food Delivery: A Major Growth Catalyst?",
+          "timestamp": "2026-11-10T18:10:00+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/uber-joins-amazon-food-delivery-181000408.html"
         },
         {
           "kind": "news",
-          "description": "Global Payments Adds Visa API to Authentication Platform",
-          "timestamp": "2026-11-09T15:20:40+00:00",
-          "url": "https://finance.yahoo.com/technology/articles/global-payments-adds-visa-api-152040654.html"
+          "description": "Best Buy Co., Inc. (BBY) Hits Fresh High: Is There Still Room to Run?",
+          "timestamp": "2026-11-10T13:15:01+00:00",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/best-buy-co-inc-bby-131501668.html"
+        },
+        {
+          "kind": "gap",
+          "description": "Premarket gap -2.07%",
+          "timestamp": null,
+          "url": null
         }
       ],
-      "fundamental_score": 64.12,
-      "revenue_growth_pct": 14.36,
-      "revenue_ttm": 43936000000,
-      "net_margin_pct": 51.83,
+      "fundamental_score": null,
+      "revenue_growth_pct": null,
+      "revenue_ttm": null,
+      "net_margin_pct": null,
       "eps_growth_pct": null,
-      "debt_to_equity": 0.536,
+      "debt_to_equity": null,
       "return_on_equity_pct": null,
-      "fiscal_period_end": "2026-06-30",
-      "profitable": true,
-      "fundamentals_coverage": 0.625
+      "fiscal_period_end": null,
+      "profitable": null,
+      "fundamentals_coverage": 0
     }
   ],
   "errors": [],
@@ -108,8 +113,7 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 5 symbols: DFS, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 235 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 130 symbols; verify market session/holiday status before acting.",
-    "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
+    "SEC filings yielded no usable fundamentals for 178 symbols: PLTR, AI, SOUN, RBLX, U, TTWO, SPOT, NFLX, DIS, PARA…",
     "Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.",
     "The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
   ],
@@ -117,18 +121,17 @@
   "symbols_scanned": 245,
   "symbols_qualified": 1,
   "rejection_counts": {
-    "atr": 26,
+    "atr": 29,
     "average_volume": 18,
-    "beta": 27,
+    "beta": 29,
     "catalyst": 10,
-    "clean_trend": 154,
-    "clear_levels": 17,
-    "debt_to_equity": 19,
-    "momentum": 212,
+    "clean_trend": 140,
+    "clear_levels": 4,
+    "momentum": 207,
     "price": 4,
-    "revenue_growth": 100,
-    "rvol": 166,
-    "volume_confirmation": 87
+    "revenue_growth": 7,
+    "rvol": 189,
+    "volume_confirmation": 93
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
