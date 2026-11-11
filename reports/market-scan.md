@@ -2,10 +2,10 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-11-10T20:44:03.289697+00:00`  
-Freshness: Market data as of 2026-11-10T15:43:17-05:00  
+Generated: `2026-11-11T21:06:08.607217+00:00`  
+Freshness: Data timestamp not supplied — verify freshness  
 Schedule timezone: `America/Los_Angeles`  
-Watchlist: **1 / 200 max**
+Watchlist: **0 / 200 max**
 
 ## Applied filters
 
@@ -28,18 +28,7 @@ Watchlist: **1 / 200 max**
 
 ## Ranked watchlist
 
-| # | Symbol | Price | Volume | RVOL | ATR | Beta | Spread | Gap | Trend | Levels | Catalysts |
-|---:|:---|---:|---:|---:|---:|---:|---:|---:|:---|:---|:---|
-| 1 | **BBY** | $104.08 | 2,890,890 | 2.42× | 4.04% | 0.87 | — | -2.07% | uptrend | support: 84.83; resistance: 103.54 | 3 Dividend Stocks To Watch After Hot US Inflation Data; Uber Joins with Amazon on Food Delivery: A Major Growth Catalyst?; Best Buy Co., Inc. (BBY) Hits Fresh High: Is There Still Room to Run?; Premarket gap -2.07% |
-
-## Pre-trade checklist
-
-### 1. BBY
-
-- **Thesis:** Clean uptrend; watch hold above $84.83 with RVOL 2.42 and -2.07% gap.
-- **Stop:** 99.88
-- **Target:** 112.48
-- **Risk:** $4.20/share; 23 shares at $100 max planned risk
+No stocks met every filter. No trade is a valid outcome.
 
 ## Warnings
 
@@ -47,6 +36,7 @@ Watchlist: **1 / 200 max**
 - Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.
 - Yahoo request failed for 5 symbols: DFS, MRO, PLYA, SQ, X
 - Yahoo returned complete price history for 235 of 245 requested symbols.
-- SEC filings yielded no usable fundamentals for 178 symbols: PLTR, AI, SOUN, RBLX, U, TTWO, SPOT, NFLX, DIS, PARA…
+- SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS
 - Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.
+- Only 0 symbols passed every hard gate; watchlist was not padded.
 - The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist.
