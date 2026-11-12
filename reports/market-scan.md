@@ -2,7 +2,7 @@
 
 > **Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading.**
 
-Generated: `2026-11-11T21:06:08.607217+00:00`  
+Generated: `2026-11-12T21:21:27.530908+00:00`  
 Freshness: Data timestamp not supplied — verify freshness  
 Schedule timezone: `America/Los_Angeles`  
 Watchlist: **0 / 200 max**

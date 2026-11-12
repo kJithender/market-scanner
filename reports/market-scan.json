@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-11-11T21:06:08.607217+00:00",
+  "generated_at": "2026-11-12T21:21:27.530908+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -41,18 +41,18 @@
   "symbols_scanned": 245,
   "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 27,
+    "atr": 30,
     "average_volume": 18,
-    "beta": 29,
-    "catalyst": 10,
-    "clean_trend": 150,
-    "clear_levels": 12,
+    "beta": 27,
+    "catalyst": 11,
+    "clean_trend": 165,
+    "clear_levels": 2,
     "debt_to_equity": 19,
-    "momentum": 208,
+    "momentum": 209,
     "price": 4,
     "revenue_growth": 100,
-    "rvol": 206,
-    "volume_confirmation": 102
+    "rvol": 196,
+    "volume_confirmation": 170
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
