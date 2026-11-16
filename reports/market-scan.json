@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-11-13T20:48:43.193803+00:00",
+  "generated_at": "2026-11-16T23:15:16.435160+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -32,7 +32,8 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 5 symbols: DFS, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 235 of 245 requested symbols.",
-    "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
+    "Stale Yahoo timestamps (>30 minutes) for 136 symbols; verify market session/holiday status before acting.",
+    "SEC filings yielded no usable fundamentals for 104 symbols: SPOT, SYF, UNH, JNJ, PFE, MRK, ABBV, LLY, BMY, AMGN…",
     "Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.",
     "Only 0 symbols passed every hard gate; watchlist was not padded.",
     "The high-volatility list (25 names) is screened on liquidity and ATR ≥5% only. Those names have NOT passed the hard gates, carry no thesis, stop, or target, and are not a watchlist."
@@ -41,18 +42,18 @@
   "symbols_scanned": 245,
   "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 33,
+    "atr": 38,
     "average_volume": 18,
-    "beta": 27,
-    "catalyst": 19,
-    "clean_trend": 171,
+    "beta": 28,
+    "catalyst": 15,
+    "clean_trend": 158,
     "clear_levels": 6,
-    "debt_to_equity": 19,
-    "momentum": 212,
+    "debt_to_equity": 3,
+    "momentum": 209,
     "price": 4,
-    "revenue_growth": 100,
-    "rvol": 201,
-    "volume_confirmation": 217
+    "revenue_growth": 51,
+    "rvol": 167,
+    "volume_confirmation": 221
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
