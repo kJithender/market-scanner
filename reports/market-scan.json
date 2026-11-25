@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "generated_at": "2026-11-24T23:25:12.092616+00:00",
+  "generated_at": "2026-11-25T22:58:51.951805+00:00",
   "data_as_of": null,
   "data_freshness": "Data timestamp not supplied — verify freshness",
   "timezone": "America/Los_Angeles",
@@ -32,7 +32,7 @@
     "Yahoo Finance data is unofficial, may be delayed or adjusted without notice, and is rate-limited. Verify every price, level, and catalyst in a broker feed before trading.",
     "Yahoo request failed for 5 symbols: DFS, MRO, PLYA, SQ, X",
     "Yahoo returned complete price history for 235 of 245 requested symbols.",
-    "Stale Yahoo timestamps (>30 minutes) for 133 symbols; verify market session/holiday status before acting.",
+    "Stale Yahoo timestamps (>30 minutes) for 137 symbols; verify market session/holiday status before acting.",
     "SEC filings yielded no usable fundamentals for 6 symbols: SPOT, IHG, DLO, NU, STNE, PAGS",
     "Hard gates left unevaluated because the provider publishes no data for them: tight_spread. Those requirements are unproven for every symbol listed below.",
     "Only 0 symbols passed every hard gate; watchlist was not padded.",
@@ -42,18 +42,18 @@
   "symbols_scanned": 245,
   "symbols_qualified": 0,
   "rejection_counts": {
-    "atr": 43,
+    "atr": 46,
     "average_volume": 17,
-    "beta": 21,
-    "catalyst": 17,
-    "clean_trend": 164,
-    "clear_levels": 7,
+    "beta": 22,
+    "catalyst": 8,
+    "clean_trend": 138,
+    "clear_levels": 6,
     "debt_to_equity": 20,
-    "momentum": 221,
+    "momentum": 215,
     "price": 3,
     "revenue_growth": 99,
-    "rvol": 188,
-    "volume_confirmation": 50
+    "rvol": 177,
+    "volume_confirmation": 61
   },
   "disclaimer": "Research only — not investment advice. Verify all prices, catalysts, liquidity, and risk parameters with a live broker feed before trading."
 }
